@@ -12,6 +12,7 @@ class Animal
         int getAge() const;
         string getBreed() const;
         string getType() const;
+        string toString() const;
 
     private:
         string name;

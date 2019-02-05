@@ -13,7 +13,6 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    void initAnimals();
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
@@ -28,8 +27,9 @@ private slots:
 
     void on_getAnimalsButton_clicked();
 
+    void on_viewAnimalButton_clicked();
+
 private:
-    Animal *animalArr[30];
     Ui::MainWindow *ui;
 };
 

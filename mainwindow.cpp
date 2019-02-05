@@ -9,6 +9,8 @@
 #include <string>
 using namespace std;
 
+bool animalSelected = false;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -24,21 +26,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::initAnimals() {
-
-
-    Animal *b1 = new Animal("Randi", 20, "Russian Terrier", "Dog");
-    Animal *b2 = new Animal("Andy", 21, "Bulldog", "Dog");
-    Animal *b3 = new Animal("Max", 21, "Great Dane", "Dog");
-
-    QPushButton *button1 = new QPushButton(QString::fromStdString(b1->getName()), this);
-    QPushButton *button2 = new QPushButton(QString::fromStdString(b2->getName()), this);
-    QPushButton *button3 = new QPushButton(QString::fromStdString(b3->getName()), this);
-
-    button1->setGeometry(QRect(QPoint(100, 100),
-    QSize(200, 50)));
-
-}
 
 void MainWindow::on_lockButton_clicked()
 {
@@ -176,21 +163,19 @@ void MainWindow::on_loadButton_clicked()
 void MainWindow::on_getAnimalsButton_clicked()
 {
 
-    int i = 0;
     //Deletes all the widgets in the 2nd layout
     QLayoutItem* item;
-    while ( ( item = ui->formLayout->layout()->takeAt( 0 ) ) != NULL )
+    while ( ( item = ui->verticalLayout_2->layout()->takeAt( 0 ) ) != NULL )
     {
         delete item->widget();
         delete item;
     }
 
-    QDir dir("/home/student/build-untitled-Desktop-Debug/Files");
+    QDir dir(QDir::currentPath());
     QStringList files = dir.entryList(QStringList() << "*.txt", QDir::Files);
     foreach(QString filename, files) {
 
         QFile file(filename);
-        QDir::setCurrent("/home/student/build-untitled-Desktop-Debug/Files");
 
         if (file.open(QIODevice::ReadOnly)) {
             QTextStream in(&file);
@@ -215,12 +200,8 @@ void MainWindow::on_getAnimalsButton_clicked()
             }
 
             QPushButton *button = new QPushButton(name, this);
-            //connect(button, &QPushButton::clicked, this, &MainWindow::viewProfile)
-            ui->formLayout->addWidget(button);
-            Animal *newAnimal = new Animal(name.toStdString(), age, breed, type);
+            ui->verticalLayout_2->addWidget(button);
 
-            animalArr[i] = newAnimal;
-            i++;
         }
         else {
             QString str = "Could not open " + filename + "!";
@@ -239,9 +220,28 @@ void MainWindow::on_getAnimalsButton_clicked()
                         break;
                 }
         }
-        QDir::setCurrent("/home/student/build-untitled-Desktop-Debug");
 
     }
 
 
+}
+
+void MainWindow::on_viewAnimalButton_clicked()
+{
+    if (animalSelected == false) {
+        switch( QMessageBox::question(
+                        this,
+                        tr("ERROR"),
+                        tr("You must select an animal if there is any."),
+
+                        QMessageBox::Ok,
+
+                        QMessageBox::Ok ) )
+            {
+                case QMessageBox::Ok:
+                    break;
+                default:
+                    break;
+            }
+    }
 }
