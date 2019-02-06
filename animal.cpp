@@ -3,16 +3,40 @@ using namespace std;
 #include <sstream>
 #include <iostream>
 
-Animal::Animal(string n, int a, string b, string t)
+Animal::Animal(string n, int a, string b, string t, int w, bool fl, string cp, bool c, bool sh, string g, string co)
 {
     name = n;
     age = a;
     breed = b;
     type = t;
+    weight = w;
+    hasFur = fl;
+    climatePref = cp;
+    claws = c;
+    sheds = sh;
+    gender = g;
+    colour = co;
 }
 
-Animal::~Animal(){
+/*
+Animal::Animal(string n, int a, string b, string t, int w, int fl, string cp, bool c, bool sh, string g, string co, string ff, int in, int ag, int cour, int pl, int stren, string specs, int kf, int cs, int ht, int cu){
 
+}
+
+  */
+Animal::~Animal()
+{
+    name = "";
+    age = 0;
+    breed = "";
+    type = "";
+    weight = 0;
+    hasFur = false;
+    climatePref = "";
+    claws = false;
+    sheds = false;
+    gender = "";
+    colour = "";
 }
 
 string Animal::getName() const {
@@ -35,8 +59,8 @@ int Animal::getWeight() const{
     return weight;
 }
 
-int Animal::getFurLength() const{
-    return furLength;
+bool Animal::getHasFur() const{
+    return hasFur;
 }
 
 string Animal::getClimatePref() const{
@@ -59,57 +83,49 @@ string Animal::getColour() const{
     return colour;
 }
 
-string Animal::getBreed() const{
-    return breed;
-}
-
 //setters
-int Animal::setWeight(int s){
+void Animal::setWeight(int s){
     weight = s;
 }
 
-int Animal::setFurLength(int s){
-    furLength = s;
+void Animal::setHasFur(int s){
+    hasFur = s;
 }
 
-string Animal::setClimatePref(string s){
+void Animal::setClimatePref(string s){
     climatePref = s;
 }
 
-bool Animal::setClaws(bool b){
+void Animal::setClaws(bool b){
     claws = b;
 }
 
-bool Animal::setSheds(bool b){
+void Animal::setSheds(bool b){
     sheds = b;
 }
 
-string Animal::setName(string s){
+void Animal::setName(string s){
     name = s;
 }
 
-int Animal::setAge(int d){
+void Animal::setAge(int d){
     age = d;
 }
 
-string Animal::setBreed(string s){
+void Animal::setBreed(string s){
     breed = s;
 }
 
-string Animal::setType(string s){
+void Animal::setType(string s){
     type = s;
 }
 
-string Animal::setGender(string s){
+void Animal::setGender(string s){
     gender = s;
 }
 
-string Animal::setColour(string s){
+void Animal::setColour(string s){
     colour = s;
-}
-
-string Animal::setBreed(string s){
-    breed = s;
 }
 
 string Animal::toString() const {
