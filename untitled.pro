@@ -35,4 +35,6 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
-DISTFILES +=
+RESOURCES += \
+    animalmemstor.qrc
+
