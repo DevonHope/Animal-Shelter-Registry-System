@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/memstorage">
+        <file>AnimalClient Files/Animal/A-Stitch.txt</file>
+        <file>AnimalClient Files/Animal/A-Gary.txt</file>
+    </qresource>
+</RCC>
