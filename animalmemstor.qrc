@@ -2,5 +2,7 @@
     <qresource prefix="/memstorage">
         <file>AnimalClient Files/Animal/A-Stitch.txt</file>
         <file>AnimalClient Files/Animal/A-Gary.txt</file>
+        <file>AnimalClient Files/Animal/A-Brian.txt</file>
+        <file>AnimalClient Files/Animal/A-cary.txt</file>
     </qresource>
 </RCC>
