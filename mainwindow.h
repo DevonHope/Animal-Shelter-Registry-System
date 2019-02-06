@@ -13,6 +13,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    int setTracker(int);
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
@@ -27,10 +28,13 @@ private slots:
 
     void on_getAnimalsButton_clicked();
 
-    void on_viewAnimalButton_clicked();
+    void showProfile();
+
 
 private:
     Ui::MainWindow *ui;
+    Animal *arr[30];
+    int tracker;
 };
 
 #endif // MAINWINDOW_H

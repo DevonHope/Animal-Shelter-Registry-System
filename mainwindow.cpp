@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+   // ui->scrollArea_2->setWidget(ui->scrollAreaWidgetContents_2);
     //initAnimals();
 
 }
@@ -162,9 +162,11 @@ void MainWindow::on_loadButton_clicked()
 
 void MainWindow::on_getAnimalsButton_clicked()
 {
+    int i = 0;
 
+    ui->scrollArea_2->takeWidget();
     //Deletes all the widgets in the 2nd layout
-    QLayoutItem* item;
+   QLayoutItem* item;
     while ( ( item = ui->verticalLayout_2->layout()->takeAt( 0 ) ) != NULL )
     {
         delete item->widget();
@@ -199,9 +201,16 @@ void MainWindow::on_getAnimalsButton_clicked()
                 count++;
             }
 
-            QPushButton *button = new QPushButton(name, this);
-            ui->verticalLayout_2->addWidget(button);
+            Animal *a = new Animal(name.toStdString(), age, breed, type);
 
+            arr[i] = a;
+            i++;
+
+
+            QPushButton *button = new QPushButton(name, this);
+            button->setStyleSheet("height: 30px");
+            connect(button, SIGNAL(clicked()), this, SLOT(showProfile()));
+            ui->verticalLayout_2->addWidget(button);
         }
         else {
             QString str = "Could not open " + filename + "!";
@@ -221,27 +230,22 @@ void MainWindow::on_getAnimalsButton_clicked()
                 }
         }
 
+        ui->scrollArea_2->setWidget(ui->verticalLayoutWidget_2);
+
     }
-
-
 }
 
-void MainWindow::on_viewAnimalButton_clicked()
-{
-    if (animalSelected == false) {
-        switch( QMessageBox::question(
-                        this,
-                        tr("ERROR"),
-                        tr("You must select an animal if there is any."),
+void MainWindow::showProfile() {
 
-                        QMessageBox::Ok,
+     //qDebug() << ((QPushButton*)sender())->text();
 
-                        QMessageBox::Ok ) )
-            {
-                case QMessageBox::Ok:
-                    break;
-                default:
-                    break;
-            }
+    QMessageBox msg;
+    msg.setWindowTitle("Profile Information");
+    for(int i = 0; i < 9; i++) {
+
+        if (((QPushButton*)sender())->text().toStdString() == arr[i]->getName()) {
+            msg.setText(((QPushButton*)sender())->text());
+            msg.exec();
+        }
     }
 }
