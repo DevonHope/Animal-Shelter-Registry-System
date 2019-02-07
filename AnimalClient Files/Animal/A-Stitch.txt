@@ -8,6 +8,7 @@ Blue
 Warm
 Y
 N
+Y
 Junk food
 10
 8
