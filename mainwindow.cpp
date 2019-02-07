@@ -157,7 +157,50 @@ void MainWindow::on_saveButton_clicked()
 
 void MainWindow::on_loadButton_clicked()
 {
+    bool confirm = false;
+       QString fileName;
+       QString text;
 
+       switch( QMessageBox::question(
+                   this,
+                   tr("Application Name"),
+                   tr("Are you sure you want to load? Any unsaved data may be lost."),
+                   QMessageBox::Cancel | QMessageBox::Ok,
+                   QMessageBox::Ok ) )
+       {
+           case QMessageBox::Ok:
+               confirm = true;
+               break;
+           case QMessageBox::Cancel:
+               break;
+           default:
+               break;
+       }
+
+       fileName = QFileDialog::getOpenFileName(this,
+              tr("Load Text Document"), "",
+              tr("Plain Text (*.txt);;All Files (*)"));
+
+       if(confirm == true){
+           QFile file(fileName);
+           if (file.open(QIODevice::ReadWrite)) {
+               QTextStream stream(&file);
+               text = stream.readAll();     //For project we will be using readLine()
+               ui->textEdit->setText(text);
+               switch( QMessageBox::question(
+                           this,
+                           tr("Application Name"),
+                           tr("Load was successful."),
+                           QMessageBox::Ok,
+                           QMessageBox::Ok ) )
+               {
+                   case QMessageBox::Ok:
+                       break;
+                   default:
+                       break;
+               }
+           }
+   }
 }
 
 void MainWindow::on_getAnimalsButton_clicked()
