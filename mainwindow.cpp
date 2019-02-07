@@ -214,7 +214,7 @@ void MainWindow::on_getAnimalsButton_clicked()
         delete item;
     }
 
-    QDir dir(QDir::currentPath());
+    QDir dir(QDir::":/memstorage");
     QStringList files = dir.entryList(QStringList() << "*.txt", QDir::Files);
     foreach(QString filename, files) {
 
