@@ -13,10 +13,6 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    struct animalNode {
-        Animal *storedAnimal;
-        string animalFileName;
-    };
     void initAnimals();
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -37,8 +33,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-
-    int arrTracker;
 };
 
 #endif // MAINWINDOW_H

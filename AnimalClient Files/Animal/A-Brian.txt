@@ -1,12 +1,12 @@
 Brian Griffin
 Dog
-NA
 Labrador
 Male
 8
 White
 50
 Warm
+Y
 Y
 Y
 Dog Chow

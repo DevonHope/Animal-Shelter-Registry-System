@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "viewanimalwindow.h"
+#include "ui_viewanimalwindow.h"
+
 #include "animal.h"
 #include <QFile>
 #include <QTextStream>
@@ -9,9 +12,13 @@
 #include <string>
 using namespace std;
 
-bool animalSelected = false;
+struct animalNode {
+    Animal *storedAnimal;
+    string animalFileName;
+};
 
-MainWindow::animalNode nodes[30];
+animalNode nodes[30];
+int arrTracker = 0;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -40,11 +47,11 @@ void MainWindow::initAnimals() {
         delete item;
     }
 
-    QDir dir(QDir::currentPath() + "/Animals/");
+    QDir dir(":/memstorage/AnimalClient Files/Animal/");
     QStringList files = dir.entryList(QStringList() << "*.txt", QDir::Files);
     foreach(QString filename, files) {
-
-        QFile file(QDir::currentPath() + "/Animals/" + filename);
+        qDebug() << filename;
+        QFile file(":/memstorage/AnimalClient Files/Animal/" + filename);
         if (file.open(QIODevice::ReadOnly)) {
 
             QTextStream in(&file);
@@ -55,7 +62,7 @@ void MainWindow::initAnimals() {
             string breed = "";
             string type = "";
             int weight = 0;
-            int furLength = 0;
+            bool hasFur = false;
             string climatePref = "";
             bool claws = false;
             bool sheds = false;
@@ -66,39 +73,47 @@ void MainWindow::initAnimals() {
                 if (count == 0)
                     name = in.readLine();
                 else if (count == 1)
-                    age = in.readLine().toInt();
+                    type = in.readLine().toStdString();
                 else if (count == 2)
                     breed = in.readLine().toStdString();
                 else if (count == 3)
-                     type = in.readLine().toStdString();
+                     gender = in.readLine().toStdString();
                 else if (count == 4)
-                      weight = in.readLine().toInt();
+                    age = in.readLine().toInt();         
                 else if (count == 5)
-                      furLength = in.readLine().toInt();
-                else if (count == 6)
-                      climatePref = in.readLine().toStdString();
-                else if (count == 7) {
-                      if (in.readLine() == 'Y')
-                        claws = true;
-                      else
-                          claws = false;
-                 }
-                else if (count == 8) {
-                    if (in.readLine() == 'Y')
-                      sheds = true;
-                    else
-                       sheds = false;
-                }
-                else if (count == 9)
-                      gender = in.readLine().toStdString();
-                else if (count == 10)
                       colour = in.readLine().toStdString();
+                else if (count == 6)
+                      weight = in.readLine().toInt();
+                else if (count == 7)
+                      climatePref = in.readLine().toStdString();
+                else if (count == 8) {
+                          if (in.readLine() == 'Y')
+                            claws = true;
+                          else
+                              claws = false;
+
+                }
+                else if (count == 9) {
+                          if (in.readLine() == 'Y')
+                            sheds = true;
+                          else
+                             sheds = false;
+                }
+                else if (count == 10) {
+                    if (in.readLine() == 'Y')
+                      hasFur = true;
+                    else
+                      hasFur = false;
+                }
+                else
+                    break;
+
                 count++;
             }
             file.close();
 
             Animal *animal = new Animal(name.toStdString(), age, breed, type,
-                                        weight, furLength, climatePref, claws, sheds,
+                                        weight, hasFur, climatePref, claws, sheds,
                                         gender, colour);
 
             nodes[i].storedAnimal = animal;
@@ -310,7 +325,7 @@ void MainWindow::on_getAnimalsButton_clicked()
                 count++;
             }
 
-            Animal *a = new Animal(name.toStdString(), age, breed, type);
+            //Animal *a = new Animal(name.toStdString(), age, breed, type);
 
 
 
@@ -349,8 +364,25 @@ void MainWindow::showProfile() {
     for(int i = 0; i < arrTracker; i++) {
 
         if (((QPushButton*)sender())->text().toStdString() == nodes[i].storedAnimal->getName()) {
-            msg.setText(((QPushButton*)sender())->text());
-            msg.exec();
+            ViewAnimalWindow viewAnim;
+
+            /*string name = nodes[i].storedAnimal->getName();
+            string breed = nodes[i].storedAnimal->getBreed();
+            string type = nodes[i].storedAnimal->getType();
+
+            QString qName = QString::fromUtf8(name.c_str());
+            QString qBreed = QString::fromUtf8(breed.c_str());
+            QString qType = QString::fromUtf8(type.c_str());
+
+
+            viewAnim.ui->nameInput->setText(qName);
+            viewAnim.ui->breedInput->setText(qBreed);
+            viewAnim.ui->typeInput->setText(qType);
+
+            viewAnim.setModal(true);
+            viewAnim.exec();*/
+
+
         }
     }
 }

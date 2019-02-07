@@ -1,12 +1,12 @@
 Garold "Gary" Wilson Jr.
 Snail
-NA
 Seasnail (43% Starfish, 6% Amoeba)
 Male
 Pink Shell, Blue Body, Green Belly
 20
 Cool Water
 Y
+N
 N
 Snail-Po
 6
@@ -20,4 +20,3 @@ Can tie shoes
 10
 10
 4
-

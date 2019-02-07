@@ -1,7 +1,6 @@
 Stitch
 Alien
 NA
-NA
 Male
 52
 Blue
@@ -9,6 +8,7 @@ Blue
 Warm
 Y
 N
+Y
 Junk food
 10
 8
@@ -20,6 +20,4 @@ Indestructable
 6
 3
 10
-10 
-
-
+10
