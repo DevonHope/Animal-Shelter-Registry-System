@@ -11,13 +11,14 @@ using namespace std;
 
 bool animalSelected = false;
 
+MainWindow::animalNode nodes[30];
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-   // ui->scrollArea_2->setWidget(ui->scrollAreaWidgetContents_2);
-    //initAnimals();
+    initAnimals();
 
 }
 
@@ -26,6 +27,114 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::initAnimals() {
+
+    int i = 0;
+
+    //Deletes all the widgets in the 2nd layout
+    ui->scrollArea_2->takeWidget();
+   QLayoutItem* item;
+    while ( ( item = ui->verticalLayout_2->layout()->takeAt( 0 ) ) != NULL )
+    {
+        delete item->widget();
+        delete item;
+    }
+
+    QDir dir(QDir::currentPath() + "/Animals/");
+    QStringList files = dir.entryList(QStringList() << "*.txt", QDir::Files);
+    foreach(QString filename, files) {
+
+        QFile file(QDir::currentPath() + "/Animals/" + filename);
+        if (file.open(QIODevice::ReadOnly)) {
+
+            QTextStream in(&file);
+            int count = 0;
+
+            QString name = "";
+            int age = 0;
+            string breed = "";
+            string type = "";
+            int weight = 0;
+            int furLength = 0;
+            string climatePref = "";
+            bool claws = false;
+            bool sheds = false;
+            string gender = "";
+            string colour = "";
+
+            while(!in.atEnd()) {
+                if (count == 0)
+                    name = in.readLine();
+                else if (count == 1)
+                    age = in.readLine().toInt();
+                else if (count == 2)
+                    breed = in.readLine().toStdString();
+                else if (count == 3)
+                     type = in.readLine().toStdString();
+                else if (count == 4)
+                      weight = in.readLine().toInt();
+                else if (count == 5)
+                      furLength = in.readLine().toInt();
+                else if (count == 6)
+                      climatePref = in.readLine().toStdString();
+                else if (count == 7) {
+                      if (in.readLine() == 'Y')
+                        claws = true;
+                      else
+                          claws = false;
+                 }
+                else if (count == 8) {
+                    if (in.readLine() == 'Y')
+                      sheds = true;
+                    else
+                       sheds = false;
+                }
+                else if (count == 9)
+                      gender = in.readLine().toStdString();
+                else if (count == 10)
+                      colour = in.readLine().toStdString();
+                count++;
+            }
+            file.close();
+
+            Animal *animal = new Animal(name.toStdString(), age, breed, type,
+                                        weight, furLength, climatePref, claws, sheds,
+                                        gender, colour);
+
+            nodes[i].storedAnimal = animal;
+            nodes[i].animalFileName = filename.toStdString();
+
+            QPushButton *button = new QPushButton(name, this);
+            button->setStyleSheet("height: 25px");
+            connect(button, SIGNAL(clicked()), this, SLOT(showProfile()));
+            ui->verticalLayout_2->addWidget(button);
+
+            i++;
+            arrTracker = i;
+
+        }
+        else {
+            QString str = "Could not open " + filename + "!";
+            switch( QMessageBox::question(
+                            this,
+                            tr("ERROR"),
+                            str,
+
+                            QMessageBox::Ok,
+
+                            QMessageBox::Ok ) )
+                {
+                    case QMessageBox::Ok:
+                        break;
+                    default:
+                        break;
+                }
+        }
+
+        ui->scrollArea_2->setWidget(ui->verticalLayoutWidget_2);
+        //QDir::setCurrent("/home/student/build-untitled-Desktop-Debug/untitled");
+    }
+}
 
 void MainWindow::on_lockButton_clicked()
 {
@@ -203,8 +312,6 @@ void MainWindow::on_getAnimalsButton_clicked()
 
             Animal *a = new Animal(name.toStdString(), age, breed, type);
 
-            arr[i] = a;
-            i++;
 
 
             QPushButton *button = new QPushButton(name, this);
@@ -237,13 +344,11 @@ void MainWindow::on_getAnimalsButton_clicked()
 
 void MainWindow::showProfile() {
 
-     //qDebug() << ((QPushButton*)sender())->text();
-
     QMessageBox msg;
     msg.setWindowTitle("Profile Information");
-    for(int i = 0; i < 9; i++) {
+    for(int i = 0; i < arrTracker; i++) {
 
-        if (((QPushButton*)sender())->text().toStdString() == arr[i]->getName()) {
+        if (((QPushButton*)sender())->text().toStdString() == nodes[i].storedAnimal->getName()) {
             msg.setText(((QPushButton*)sender())->text());
             msg.exec();
         }

@@ -3,12 +3,19 @@ using namespace std;
 #include <sstream>
 #include <iostream>
 
-Animal::Animal(string n, int a, string b, string t)
+Animal::Animal(string n, int a, string b, string t, int w, int fL, string cP, bool cl, bool sh, string g, string col)
 {
     name = n;
     age = a;
     breed = b;
     type = t;
+    weight = w;
+    furLength = fL;
+    climatePref = cP;
+    claws = cl;
+    sheds = sh;
+    gender = g;
+    colour = col;
 }
 
 Animal::~Animal(){
@@ -59,58 +66,51 @@ string Animal::getColour() const{
     return colour;
 }
 
-string Animal::getBreed() const{
-    return breed;
-}
-
 //setters
-int Animal::setWeight(int s){
+void Animal::setWeight(int s){
     weight = s;
 }
 
-int Animal::setFurLength(int s){
+void Animal::setFurLength(int s){
     furLength = s;
 }
 
-string Animal::setClimatePref(string s){
+void Animal::setClimatePref(string s){
     climatePref = s;
 }
 
-bool Animal::setClaws(bool b){
+void Animal::setClaws(bool b){
     claws = b;
 }
 
-bool Animal::setSheds(bool b){
+void Animal::setSheds(bool b){
     sheds = b;
 }
 
-string Animal::setName(string s){
+void Animal::setName(string s){
     name = s;
 }
 
-int Animal::setAge(int d){
+void Animal::setAge(int d){
     age = d;
 }
 
-string Animal::setBreed(string s){
+void Animal::setBreed(string s){
     breed = s;
 }
 
-string Animal::setType(string s){
+void Animal::setType(string s){
     type = s;
 }
 
-string Animal::setGender(string s){
+void Animal::setGender(string s){
     gender = s;
 }
 
-string Animal::setColour(string s){
+void Animal::setColour(string s){
     colour = s;
 }
 
-string Animal::setBreed(string s){
-    breed = s;
-}
 
 string Animal::toString() const {
     ostringstream out;

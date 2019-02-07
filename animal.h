@@ -7,7 +7,7 @@ using namespace std;
 class Animal
 {
     public:
-        Animal(string="", int=0, string="", string="");
+        Animal(string="", int=0, string="", string="", int = 0, int = 0, string="", bool=false, bool=false, string="", string ="");
         string toString() const;
         string getName() const;
         int getAge() const;
@@ -20,21 +20,20 @@ class Animal
         bool getSheds() const;
         string getGender() const;
         string getColour() const;
-        string getBreed() const;
+        ~Animal();
 
         //setters
-        string setName(string);
-        int setAge(int);
-        string setBreed(string);
-        string setType(string);
-        int setWeight(int);
-        int setFurLength(int);
-        string setClimatePref(string);
-        bool setClaws(bool);
-        bool setSheds(bool);
-        string setGender(string);
-        string setColour(string);
-        string setBreed(string);
+        void setName(string);
+        void setAge(int);
+        void setBreed(string);
+        void setType(string);
+        void setWeight(int);
+        void setFurLength(int);
+        void setClimatePref(string);
+        void setClaws(bool);
+        void setSheds(bool);
+        void setGender(string);
+        void setColour(string);
 
 
     private:
