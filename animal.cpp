@@ -3,23 +3,40 @@ using namespace std;
 #include <sstream>
 #include <iostream>
 
-Animal::Animal(string n, int a, string b, string t, int w, int fL, string cP, bool cl, bool sh, string g, string col)
+Animal::Animal(string n, int a, string b, string t, int w, bool fl, string cp, bool c, bool sh, string g, string co)
 {
     name = n;
     age = a;
     breed = b;
     type = t;
     weight = w;
-    furLength = fL;
-    climatePref = cP;
-    claws = cl;
+    hasFur = fl;
+    climatePref = cp;
+    claws = c;
     sheds = sh;
     gender = g;
-    colour = col;
+    colour = co;
 }
 
-Animal::~Animal(){
+/*
+Animal::Animal(string n, int a, string b, string t, int w, int fl, string cp, bool c, bool sh, string g, string co, string ff, int in, int ag, int cour, int pl, int stren, string specs, int kf, int cs, int ht, int cu){
 
+}
+
+  */
+Animal::~Animal()
+{
+    name = "";
+    age = 0;
+    breed = "";
+    type = "";
+    weight = 0;
+    hasFur = false;
+    climatePref = "";
+    claws = false;
+    sheds = false;
+    gender = "";
+    colour = "";
 }
 
 string Animal::getName() const {
@@ -42,8 +59,8 @@ int Animal::getWeight() const{
     return weight;
 }
 
-int Animal::getFurLength() const{
-    return furLength;
+bool Animal::getHasFur() const{
+    return hasFur;
 }
 
 string Animal::getClimatePref() const{
@@ -71,8 +88,8 @@ void Animal::setWeight(int s){
     weight = s;
 }
 
-void Animal::setFurLength(int s){
-    furLength = s;
+void Animal::setHasFur(int s){
+    hasFur = s;
 }
 
 void Animal::setClimatePref(string s){
@@ -110,7 +127,6 @@ void Animal::setGender(string s){
 void Animal::setColour(string s){
     colour = s;
 }
-
 
 string Animal::toString() const {
     ostringstream out;
