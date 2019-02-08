@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1347</width>
-    <height>428</height>
+    <width>1346</width>
+    <height>513</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -143,10 +143,10 @@
    <widget class="QScrollArea" name="scrollArea_2">
     <property name="geometry">
      <rect>
-      <x>780</x>
-      <y>30</y>
-      <width>321</width>
-      <height>261</height>
+      <x>790</x>
+      <y>50</y>
+      <width>451</width>
+      <height>321</height>
      </rect>
     </property>
     <property name="verticalScrollBarPolicy">
@@ -160,8 +160,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>305</width>
-       <height>259</height>
+       <width>435</width>
+       <height>319</height>
       </rect>
      </property>
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -169,8 +169,8 @@
        <rect>
         <x>40</x>
         <y>20</y>
-        <width>231</width>
-        <height>211</height>
+        <width>361</width>
+        <height>271</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -193,13 +193,43 @@
      </widget>
     </widget>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>10</y>
+      <width>161</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>DejaVu Sans</family>
+      <pointsize>15</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(233, 185, 110);
+font: 15pt &quot;DejaVu Sans&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string>List of Animals</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1347</width>
+     <width>1346</width>
      <height>22</height>
     </rect>
    </property>

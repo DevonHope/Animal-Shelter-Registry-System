@@ -147,7 +147,6 @@ void MainWindow::initAnimals() {
         }
 
         ui->scrollArea_2->setWidget(ui->verticalLayoutWidget_2);
-        //QDir::setCurrent("/home/student/build-untitled-Desktop-Debug/untitled");
     }
 }
 
@@ -284,103 +283,19 @@ void MainWindow::on_loadButton_clicked()
 
 }
 
-void MainWindow::on_getAnimalsButton_clicked()
-{
-    int i = 0;
-
-    ui->scrollArea_2->takeWidget();
-    //Deletes all the widgets in the 2nd layout
-   QLayoutItem* item;
-    while ( ( item = ui->verticalLayout_2->layout()->takeAt( 0 ) ) != NULL )
-    {
-        delete item->widget();
-        delete item;
-    }
-
-    QDir dir(QDir::currentPath());
-    QStringList files = dir.entryList(QStringList() << "*.txt", QDir::Files);
-    foreach(QString filename, files) {
-
-        QFile file(filename);
-
-        if (file.open(QIODevice::ReadOnly)) {
-            QTextStream in(&file);
-            int count = 0;
-
-            QString name = "";
-            int age = 0;
-            string breed = "";
-            string type = "";
-
-            while(!in.atEnd()) {
-
-                if (count == 0)
-                    name = in.readLine();
-                else if (count == 1)
-                    age = in.readLine().toInt();
-                else if (count == 2)
-                    breed = in.readLine().toStdString();
-                else
-                     type = in.readLine().toStdString();
-                count++;
-            }
-
-            //Animal *a = new Animal(name.toStdString(), age, breed, type);
-
-
-
-            QPushButton *button = new QPushButton(name, this);
-            button->setStyleSheet("height: 30px");
-            connect(button, SIGNAL(clicked()), this, SLOT(showProfile()));
-            ui->verticalLayout_2->addWidget(button);
-        }
-        else {
-            QString str = "Could not open " + filename + "!";
-            switch( QMessageBox::question(
-                            this,
-                            tr("ERROR"),
-                            str,
-
-                            QMessageBox::Ok,
-
-                            QMessageBox::Ok ) )
-                {
-                    case QMessageBox::Ok:
-                        break;
-                    default:
-                        break;
-                }
-        }
-
-        ui->scrollArea_2->setWidget(ui->verticalLayoutWidget_2);
-
-    }
-}
 
 void MainWindow::showProfile() {
 
-    QMessageBox msg;
-    msg.setWindowTitle("Profile Information");
     for(int i = 0; i < arrTracker; i++) {
 
         if (((QPushButton*)sender())->text().toStdString() == nodes[i].storedAnimal->getName()) {
             ViewAnimalWindow viewAnim;
 
-            /*string name = nodes[i].storedAnimal->getName();
-            string breed = nodes[i].storedAnimal->getBreed();
-            string type = nodes[i].storedAnimal->getType();
-
-            QString qName = QString::fromUtf8(name.c_str());
-            QString qBreed = QString::fromUtf8(breed.c_str());
-            QString qType = QString::fromUtf8(type.c_str());
-
-
-            viewAnim.ui->nameInput->setText(qName);
-            viewAnim.ui->breedInput->setText(qBreed);
-            viewAnim.ui->typeInput->setText(qType);
+            Animal a = *(nodes[i].storedAnimal);
+            viewAnim.fillProfileInfo(a);
 
             viewAnim.setModal(true);
-            viewAnim.exec();*/
+            viewAnim.exec();
 
 
         }

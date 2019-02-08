@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>759</width>
+    <width>638</width>
     <height>470</height>
    </rect>
   </property>
@@ -16,8 +16,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>10</y>
+     <x>200</x>
+     <y>-10</y>
      <width>221</width>
      <height>41</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>60</y>
+     <x>40</x>
+     <y>40</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -39,11 +39,11 @@
     <string>Name</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit">
+  <widget class="QPlainTextEdit" name="nameText">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>50</y>
+     <x>80</x>
+     <y>30</y>
      <width>521</width>
      <height>31</height>
     </rect>
@@ -52,8 +52,8 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>100</y>
+     <x>40</x>
+     <y>80</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -62,11 +62,11 @@
     <string>Age</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_2">
+  <widget class="QPlainTextEdit" name="ageText">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>90</y>
+     <x>80</x>
+     <y>70</y>
      <width>91</width>
      <height>31</height>
     </rect>
@@ -75,8 +75,8 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>100</y>
+     <x>190</x>
+     <y>80</y>
      <width>81</width>
      <height>17</height>
     </rect>
@@ -85,11 +85,11 @@
     <string>Weight (lbs)</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_3">
+  <widget class="QPlainTextEdit" name="weightText">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>90</y>
+     <x>280</x>
+     <y>70</y>
      <width>91</width>
      <height>31</height>
     </rect>
@@ -98,8 +98,8 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>100</y>
+     <x>420</x>
+     <y>80</y>
      <width>81</width>
      <height>17</height>
     </rect>
@@ -108,21 +108,21 @@
     <string>Colour</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_4">
+  <widget class="QPlainTextEdit" name="colourText">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>90</y>
+     <x>470</x>
+     <y>70</y>
      <width>101</width>
      <height>31</height>
     </rect>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_5">
+  <widget class="QPlainTextEdit" name="typeText">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>130</y>
+     <x>80</x>
+     <y>110</y>
      <width>231</width>
      <height>31</height>
     </rect>
@@ -131,8 +131,8 @@
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>140</y>
+     <x>40</x>
+     <y>120</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -141,11 +141,11 @@
     <string>Type</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_6">
+  <widget class="QPlainTextEdit" name="breedText">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>130</y>
+     <x>370</x>
+     <y>110</y>
      <width>231</width>
      <height>31</height>
     </rect>
@@ -154,8 +154,8 @@
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>140</y>
+     <x>320</x>
+     <y>120</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -164,11 +164,11 @@
     <string>Breed</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_7">
+  <widget class="QPlainTextEdit" name="climateText">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>170</y>
+     <x>80</x>
+     <y>150</y>
      <width>231</width>
      <height>31</height>
     </rect>
@@ -177,8 +177,8 @@
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>180</y>
+     <x>20</x>
+     <y>160</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -188,20 +188,26 @@
    </property>
   </widget>
   <widget class="QPlainTextEdit" name="plainTextEdit_8">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>170</y>
+     <x>410</x>
+     <y>150</y>
      <width>191</width>
      <height>31</height>
     </rect>
    </property>
   </widget>
   <widget class="QLabel" name="label_9">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>180</y>
+     <x>320</x>
+     <y>160</y>
      <width>81</width>
      <height>17</height>
     </rect>
@@ -211,10 +217,13 @@
    </property>
   </widget>
   <widget class="QLabel" name="label_10">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>220</y>
+     <x>20</x>
+     <y>200</y>
      <width>101</width>
      <height>17</height>
     </rect>
@@ -224,20 +233,26 @@
    </property>
   </widget>
   <widget class="QPlainTextEdit" name="plainTextEdit_9">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>210</y>
+     <x>130</x>
+     <y>190</y>
      <width>231</width>
      <height>31</height>
     </rect>
    </property>
   </widget>
   <widget class="QSlider" name="horizontalSlider">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>260</y>
+     <x>140</x>
+     <y>240</y>
      <width>160</width>
      <height>16</height>
     </rect>
@@ -256,13 +271,19 @@
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="tickPosition">
+    <enum>QSlider::TicksBothSides</enum>
    </property>
   </widget>
   <widget class="QSlider" name="horizontalSlider_2">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>260</y>
+     <x>420</x>
+     <y>240</y>
      <width>160</width>
      <height>16</height>
     </rect>
@@ -282,12 +303,18 @@
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
+   <property name="tickPosition">
+    <enum>QSlider::TicksBothSides</enum>
+   </property>
   </widget>
   <widget class="QLabel" name="label_11">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>260</y>
+     <x>60</x>
+     <y>240</y>
      <width>71</width>
      <height>20</height>
     </rect>
@@ -297,10 +324,13 @@
    </property>
   </widget>
   <widget class="QLabel" name="label_12">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>260</y>
+     <x>330</x>
+     <y>240</y>
      <width>81</width>
      <height>20</height>
     </rect>
@@ -310,10 +340,13 @@
    </property>
   </widget>
   <widget class="QSlider" name="horizontalSlider_3">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>280</y>
+     <x>140</x>
+     <y>260</y>
      <width>160</width>
      <height>16</height>
     </rect>
@@ -333,12 +366,18 @@
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
+   <property name="tickPosition">
+    <enum>QSlider::TicksBothSides</enum>
+   </property>
   </widget>
   <widget class="QLabel" name="label_13">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>280</y>
+     <x>30</x>
+     <y>260</y>
      <width>101</width>
      <height>20</height>
     </rect>
@@ -348,10 +387,13 @@
    </property>
   </widget>
   <widget class="QLabel" name="label_14">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>280</y>
+     <x>350</x>
+     <y>260</y>
      <width>81</width>
      <height>20</height>
     </rect>
@@ -361,9 +403,43 @@
    </property>
   </widget>
   <widget class="QSlider" name="horizontalSlider_4">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>420</x>
+     <y>260</y>
+     <width>160</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="maximum">
+    <number>5</number>
+   </property>
+   <property name="pageStep">
+    <number>5</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="tickPosition">
+    <enum>QSlider::TicksBothSides</enum>
+   </property>
+  </widget>
+  <widget class="QSlider" name="horizontalSlider_5">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>140</x>
      <y>280</y>
      <width>160</width>
      <height>16</height>
@@ -384,37 +460,18 @@
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
-  </widget>
-  <widget class="QSlider" name="horizontalSlider_5">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>300</y>
-     <width>160</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>160</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="maximum">
-    <number>5</number>
-   </property>
-   <property name="pageStep">
-    <number>5</number>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
+   <property name="tickPosition">
+    <enum>QSlider::TicksBothSides</enum>
    </property>
   </widget>
   <widget class="QLabel" name="label_15">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>300</y>
+     <x>50</x>
+     <y>280</y>
      <width>91</width>
      <height>20</height>
     </rect>
@@ -424,10 +481,13 @@
    </property>
   </widget>
   <widget class="QLabel" name="label_16">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>300</y>
+     <x>350</x>
+     <y>280</y>
      <width>81</width>
      <height>20</height>
     </rect>
@@ -437,9 +497,43 @@
    </property>
   </widget>
   <widget class="QSlider" name="horizontalSlider_6">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>420</x>
+     <y>280</y>
+     <width>160</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="maximum">
+    <number>5</number>
+   </property>
+   <property name="pageStep">
+    <number>5</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="tickPosition">
+    <enum>QSlider::TicksBothSides</enum>
+   </property>
+  </widget>
+  <widget class="QSlider" name="horizontalSlider_7">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>140</x>
      <y>300</y>
      <width>160</width>
      <height>16</height>
@@ -460,37 +554,18 @@
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
-  </widget>
-  <widget class="QSlider" name="horizontalSlider_7">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>320</y>
-     <width>160</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>160</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="maximum">
-    <number>5</number>
-   </property>
-   <property name="pageStep">
-    <number>5</number>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
+   <property name="tickPosition">
+    <enum>QSlider::TicksBothSides</enum>
    </property>
   </widget>
   <widget class="QLabel" name="label_17">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>320</y>
+     <x>50</x>
+     <y>300</y>
      <width>81</width>
      <height>20</height>
     </rect>
@@ -500,22 +575,59 @@
    </property>
   </widget>
   <widget class="QLabel" name="label_18">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>320</y>
+     <x>320</x>
+     <y>300</y>
      <width>141</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>Communication Skills</string>
+    <string>Comm. Skills</string>
    </property>
   </widget>
   <widget class="QSlider" name="horizontalSlider_8">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>420</x>
+     <y>300</y>
+     <width>160</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="maximum">
+    <number>5</number>
+   </property>
+   <property name="pageStep">
+    <number>5</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="tickPosition">
+    <enum>QSlider::TicksBothSides</enum>
+   </property>
+  </widget>
+  <widget class="QSlider" name="horizontalSlider_9">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>140</x>
      <y>320</y>
      <width>160</width>
      <height>16</height>
@@ -536,37 +648,18 @@
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
-  </widget>
-  <widget class="QSlider" name="horizontalSlider_9">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>340</y>
-     <width>160</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>160</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="maximum">
-    <number>5</number>
-   </property>
-   <property name="pageStep">
-    <number>5</number>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
+   <property name="tickPosition">
+    <enum>QSlider::TicksBothSides</enum>
    </property>
   </widget>
   <widget class="QLabel" name="label_19">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>340</y>
+     <x>30</x>
+     <y>320</y>
      <width>101</width>
      <height>20</height>
     </rect>
@@ -576,10 +669,13 @@
    </property>
   </widget>
   <widget class="QLabel" name="label_20">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>340</y>
+     <x>310</x>
+     <y>320</y>
      <width>111</width>
      <height>20</height>
     </rect>
@@ -589,9 +685,43 @@
    </property>
   </widget>
   <widget class="QSlider" name="horizontalSlider_10">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>420</x>
+     <y>320</y>
+     <width>160</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="maximum">
+    <number>5</number>
+   </property>
+   <property name="pageStep">
+    <number>5</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="tickPosition">
+    <enum>QSlider::TicksBothSides</enum>
+   </property>
+  </widget>
+  <widget class="QSlider" name="horizontalSlider_11">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>140</x>
      <y>340</y>
      <width>160</width>
      <height>16</height>
@@ -612,37 +742,18 @@
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
-  </widget>
-  <widget class="QSlider" name="horizontalSlider_11">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>360</y>
-     <width>160</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>160</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="maximum">
-    <number>5</number>
-   </property>
-   <property name="pageStep">
-    <number>5</number>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
+   <property name="tickPosition">
+    <enum>QSlider::TicksBothSides</enum>
    </property>
   </widget>
   <widget class="QLabel" name="label_21">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>360</y>
+     <x>70</x>
+     <y>340</y>
      <width>71</width>
      <height>20</height>
     </rect>
@@ -651,11 +762,11 @@
     <string>Curiosity</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="checkBox">
+  <widget class="QCheckBox" name="furCheck">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>390</y>
+     <x>40</x>
+     <y>370</y>
      <width>90</width>
      <height>23</height>
     </rect>
@@ -664,11 +775,11 @@
     <string>Has Fur</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="checkBox_2">
+  <widget class="QCheckBox" name="shedsCheck">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>390</y>
+     <x>140</x>
+     <y>370</y>
      <width>90</width>
      <height>23</height>
     </rect>
@@ -680,8 +791,8 @@
   <widget class="QLabel" name="label_22">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>220</y>
+     <x>380</x>
+     <y>200</y>
      <width>64</width>
      <height>17</height>
     </rect>
@@ -690,11 +801,11 @@
     <string>Gender</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="checkBox_3">
+  <widget class="QCheckBox" name="maleCheck">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>220</y>
+     <x>440</x>
+     <y>200</y>
      <width>90</width>
      <height>23</height>
     </rect>
@@ -703,11 +814,11 @@
     <string>Male</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="checkBox_4">
+  <widget class="QCheckBox" name="femaleCheck">
    <property name="geometry">
     <rect>
-     <x>560</x>
-     <y>220</y>
+     <x>510</x>
+     <y>200</y>
      <width>90</width>
      <height>23</height>
     </rect>
@@ -716,82 +827,17 @@
     <string>Female</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit">
+  <widget class="QCheckBox" name="clawsCheck">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>260</y>
-     <width>31</width>
-     <height>21</height>
+     <x>230</x>
+     <y>370</y>
+     <width>90</width>
+     <height>23</height>
     </rect>
    </property>
-   <property name="verticalScrollBarPolicy">
-    <enum>Qt::ScrollBarAlwaysOff</enum>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="textEdit_2">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>280</y>
-     <width>31</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="verticalScrollBarPolicy">
-    <enum>Qt::ScrollBarAlwaysOff</enum>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="textEdit_3">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>300</y>
-     <width>31</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="verticalScrollBarPolicy">
-    <enum>Qt::ScrollBarAlwaysOff</enum>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="textEdit_4">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>320</y>
-     <width>31</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="verticalScrollBarPolicy">
-    <enum>Qt::ScrollBarAlwaysOff</enum>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="textEdit_5">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>340</y>
-     <width>31</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="verticalScrollBarPolicy">
-    <enum>Qt::ScrollBarAlwaysOff</enum>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="textEdit_6">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>360</y>
-     <width>31</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="verticalScrollBarPolicy">
-    <enum>Qt::ScrollBarAlwaysOff</enum>
+   <property name="text">
+    <string>Has Claws</string>
    </property>
   </widget>
  </widget>

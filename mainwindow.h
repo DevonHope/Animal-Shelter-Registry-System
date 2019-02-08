@@ -26,10 +26,7 @@ private slots:
 
     void on_loadButton_clicked();
 
-    void on_getAnimalsButton_clicked();
-
     void showProfile();
-
 
 private:
     Ui::MainWindow *ui;
