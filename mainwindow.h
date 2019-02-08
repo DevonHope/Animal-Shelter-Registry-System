@@ -19,15 +19,11 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_lockButton_clicked();
-
-    void on_unlockButton_clicked();
-
-    void on_saveButton_clicked();
-
-    void on_loadButton_clicked();
-
     void showProfile();
+
+    void on_addAnimalButton_clicked();
+
+    void on_refreshAnimalsButton_clicked();
 
 private:
     Ui::MainWindow *ui;

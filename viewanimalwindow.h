@@ -14,11 +14,16 @@ class ViewAnimalWindow:public QDialog
 
 public:
     void fillProfileInfo(Animal);
+    void selectedFileName(QString);
     explicit ViewAnimalWindow(QWidget *parent = 0);
     ~ViewAnimalWindow();
 
+private slots:
+    void on_deleteButton_clicked();
+
 private:
     Ui::ViewAnimalWindow *ui;
+   QString fName;
 };
 
 #endif // VIEWANIMALWINDOW_H

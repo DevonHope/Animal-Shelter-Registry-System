@@ -27,16 +27,19 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     animal.cpp \
-    viewanimalwindow.cpp
+    viewanimalwindow.cpp \
+    addanimalwindow.cpp
 
 HEADERS += \
         mainwindow.h \
     animal.h \
-    viewanimalwindow.h
+    viewanimalwindow.h \
+    addanimalwindow.h
 
 FORMS += \
         mainwindow.ui \
-    viewanimalwindow.ui
+    viewanimalwindow.ui \
+    addanimalwindow.ui
 
 RESOURCES += \
     animalmemstor.qrc

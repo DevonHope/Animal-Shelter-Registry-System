@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "viewanimalwindow.h"
 #include "ui_viewanimalwindow.h"
+#include "addanimalwindow.h"
+#include "ui_addanimalwindow.h"
 
 #include "animal.h"
 #include <QFile>
@@ -160,183 +162,6 @@ void MainWindow::refreshAnimals() {
     initAnimals();
 }
 
-void MainWindow::on_lockButton_clicked()
-{
-    //ui->textEdit->setEnabled(false);
-    ui->textEdit->setReadOnly(true);
-    ui->modeLabel->setText("READ ONLY");
-
-}
-
-void MainWindow::on_unlockButton_clicked()
-{
-    //ui->textEdit->setEnabled(true);
-    ui->textEdit->setReadOnly(false);
-     ui->modeLabel->setText("EDITING");
-}
-
-void MainWindow::on_saveButton_clicked()
-{
-    ui->saveButton->setEnabled(false);
-        QString txt = ui->textEdit->toPlainText();
-        bool confirm = false;
-
-
-        QString fileName = QFileDialog::getSaveFileName(this,
-            tr("Save Profile"), "",
-            tr("Profile (*.txt);;All Files (*)"));
-
-        if (!fileName.isEmpty()) {
-
-            fileName = fileName + ".txt";
-            QFile file(fileName);
-            if (!file.open(QIODevice::WriteOnly)) {
-                QMessageBox::information(this, tr("Unable to open file"),
-                    file.errorString());
-                return;
-            }
-            else {
-                confirm = true;
-                QTextStream stream(&file);
-                stream << txt << endl;
-            }
-           }
-
-        if (confirm) {
-            ui->textEdit->setText("");
-            switch( QMessageBox::question(
-                                    this,
-                                    tr("Application Name"),
-                                    tr("Profile has been saved in the system!"),
-
-                                    QMessageBox::Ok,
-
-                                    QMessageBox::Ok ) )
-                        {
-                            case QMessageBox::Ok:
-                                break;
-                            default:
-                                break;
-                        }
-        }
-        /*switch( QMessageBox::question(
-                        this,
-                        tr("Application Name"),
-                        tr("Are you sure you want to save?"),
-
-                        QMessageBox::Cancel |
-                        QMessageBox::Ok,
-
-                        QMessageBox::Ok ) )
-            {
-                case QMessageBox::Ok:
-                    confirm = true;
-                    break;
-                case QMessageBox::Cancel:
-                    break;
-                default:
-                    break;
-            }
-
-   if (confirm == true) {
-        QString filename = "TestDataForAndy.txt";
-        QFile file(filename);
-        file.open(QFile::WriteOnly|QFile::Truncate);
-        file.close();
-
-        if (file.open(QIODevice::ReadWrite)) {
-            QTextStream stream(&file);
-            stream << txt << endl;
-
-            switch( QMessageBox::question(
-                            this,
-                            tr("Message"),
-                            tr("Save has completed successfully!!"),
-
-                            QMessageBox::Ok,
-
-                            QMessageBox::Ok ) )
-                {
-                    case QMessageBox::Ok:
-                        break;
-                    default:
-                        break;
-                }
-        }
-        else {
-            switch( QMessageBox::question(
-                            this,
-                            tr("Message"),
-                            tr("Save may have failed!"),
-
-                            QMessageBox::Ok,
-
-                            QMessageBox::Ok ) )
-                {
-                    case QMessageBox::Ok:
-                        break;
-                    default:
-                        break;
-                }
-        }
-
-        }*/
-
-
-
-
-    ui->saveButton->setEnabled(true);
-}
-
-void MainWindow::on_loadButton_clicked()
-{
-    bool confirm = false;
-       QString fileName;
-       QString text;
-
-       switch( QMessageBox::question(
-                   this,
-                   tr("Application Name"),
-                   tr("Are you sure you want to load? Any unsaved data may be lost."),
-                   QMessageBox::Cancel | QMessageBox::Ok,
-                   QMessageBox::Ok ) )
-       {
-           case QMessageBox::Ok:
-               confirm = true;
-               break;
-           case QMessageBox::Cancel:
-               break;
-           default:
-               break;
-       }
-
-       fileName = QFileDialog::getOpenFileName(this,
-              tr("Load Text Document"), "",
-              tr("Plain Text (*.txt);;All Files (*)"));
-
-       if(confirm == true){
-           QFile file(fileName);
-           if (file.open(QIODevice::ReadWrite)) {
-               QTextStream stream(&file);
-               text = stream.readAll();     //For project we will be using readLine()
-               ui->textEdit->setText(text);
-               switch( QMessageBox::question(
-                           this,
-                           tr("Application Name"),
-                           tr("Load was successful."),
-                           QMessageBox::Ok,
-                           QMessageBox::Ok ) )
-               {
-                   case QMessageBox::Ok:
-                       break;
-                   default:
-                       break;
-               }
-           }
-   }
-}
-
-
 void MainWindow::showProfile() {
 
     for(int i = 0; i < arrTracker; i++) {
@@ -346,11 +171,22 @@ void MainWindow::showProfile() {
 
             Animal a = *(nodes[i].storedAnimal);
             viewAnim.fillProfileInfo(a);
+            viewAnim.selectedFileName(QString::fromStdString(nodes[i].animalFileName));
 
             viewAnim.setModal(true);
             viewAnim.exec();
-
-
         }
     }
+}
+
+void MainWindow::on_addAnimalButton_clicked()
+{
+    AddAnimalWIndow addAnim;
+    addAnim.setModal(true);
+    addAnim.exec();
+}
+
+void MainWindow::on_refreshAnimalsButton_clicked()
+{
+    refreshAnimals();
 }

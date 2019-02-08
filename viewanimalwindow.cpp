@@ -1,6 +1,10 @@
 #include "viewanimalwindow.h"
 #include "ui_viewanimalwindow.h"
 #include "animal.h"
+#include <QTextStream>
+#include <QMessageBox>
+#include <QDirIterator>
+#include <QtWidgets>
 
 ViewAnimalWindow::ViewAnimalWindow(QWidget *parent) :
     QDialog(parent),
@@ -25,7 +29,7 @@ void ViewAnimalWindow::fillProfileInfo(Animal a) {
     ui->breedText->setPlainText(QString::fromStdString(a.getBreed()));
     ui->typeText->setPlainText(QString::fromStdString(a.getType()));
     ui->climateText->setPlainText(QString::fromStdString(a.getClimatePref()));
-    ui->colourText->setPlainText(QString::fromStdString(a.getClimatePref()));
+    ui->colourText->setPlainText(QString::fromStdString(a.getColour()));
     ui->weightText->setPlainText(QString::number(a.getWeight()));
 
     if (a.getGender() == "Male") {
@@ -67,7 +71,42 @@ void ViewAnimalWindow::fillProfileInfo(Animal a) {
     }
 }
 
+
 ViewAnimalWindow::~ViewAnimalWindow()
 {
     delete ui;
+}
+
+void ViewAnimalWindow::on_deleteButton_clicked()
+{
+
+    bool confirm = false;
+    QString fileName = fName;
+
+        switch( QMessageBox::question(
+                    this,
+                    tr("Application Name"),
+                    tr("Are you sure you want to delete this file? All data within it will be lost."),
+                    QMessageBox::Cancel | QMessageBox::Ok,
+                    QMessageBox::Ok ) )
+        {
+            case QMessageBox::Ok:
+                confirm = true;
+                break;
+            case QMessageBox::Cancel:
+                break;
+            default:
+                break;
+        }
+
+    if (confirm == true) {
+        QFile file(QDir::currentPath() + "/Animals/" + fileName);
+        file.remove();
+    }
+    this->destroy();
+
+}
+
+void ViewAnimalWindow::selectedFileName(QString f) {
+    fName = f;
 }
