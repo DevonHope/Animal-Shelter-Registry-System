@@ -26,14 +26,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    animal.cpp
+    animal.cpp \
+    viewanimalwindow.cpp \
+    addanimalwindow.cpp
 
 HEADERS += \
         mainwindow.h \
-    animal.h
+    animal.h \
+    viewanimalwindow.h \
+    addanimalwindow.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    viewanimalwindow.ui \
+    addanimalwindow.ui
 
 RESOURCES += \
     animalmemstor.qrc
+
