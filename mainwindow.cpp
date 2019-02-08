@@ -17,7 +17,7 @@ struct animalNode {
     string animalFileName;
 };
 
-animalNode nodes[30];
+animalNode *nodes = new animalNode[30];
 int arrTracker = 0;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -47,11 +47,12 @@ void MainWindow::initAnimals() {
         delete item;
     }
 
-    QDir dir(":/memstorage/AnimalClient Files/Animal/");
+    //QDir dir(":/memstorage/AnimalClient Files/Animal/");
+    QDir dir(QDir::currentPath() + "/Animals/");
     QStringList files = dir.entryList(QStringList() << "*.txt", QDir::Files);
     foreach(QString filename, files) {
-        qDebug() << filename;
-        QFile file(":/memstorage/AnimalClient Files/Animal/" + filename);
+        //QFile file(":/memstorage/AnimalClient Files/Animal/" + filename);
+        QFile file(QDir::currentPath() + "/Animals/" + filename);
         if (file.open(QIODevice::ReadOnly)) {
 
             QTextStream in(&file);
@@ -148,6 +149,15 @@ void MainWindow::initAnimals() {
 
         ui->scrollArea_2->setWidget(ui->verticalLayoutWidget_2);
     }
+}
+
+void MainWindow::refreshAnimals() {
+    delete [] nodes;
+
+    nodes = new animalNode[30];
+    arrTracker = 0;
+
+    initAnimals();
 }
 
 void MainWindow::on_lockButton_clicked()

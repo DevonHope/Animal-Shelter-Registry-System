@@ -14,6 +14,7 @@ class MainWindow : public QMainWindow
 
 public:
     void initAnimals();
+    void refreshAnimals();
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
