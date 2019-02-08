@@ -13,21 +13,17 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    void initAnimals();
+    void refreshAnimals();
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
 private slots:
-    void on_lockButton_clicked();
+    void showProfile();
 
-    void on_unlockButton_clicked();
+    void on_addAnimalButton_clicked();
 
-    void on_saveButton_clicked();
-
-    void on_loadButton_clicked();
-
-    void on_getAnimalsButton_clicked();
-
-    void on_viewAnimalButton_clicked();
+    void on_refreshAnimalsButton_clicked();
 
 private:
     Ui::MainWindow *ui;

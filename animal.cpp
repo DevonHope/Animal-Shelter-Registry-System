@@ -132,16 +132,16 @@ string Animal::toString() const {
     ostringstream out;
 
     out << getName() << "\n";
-    out << getAge() << "\n";
-    out << getBreed() << "\n";
     out << getType() << "\n";
+    out << getBreed() << "\n";
+    out << getGender() << "\n";
+    out << getAge() << "\n";
+    out << getColour() << "\n";
     out << getWeight() << "\n";
-    out << getHasFur() << "\n";
     out << getClimatePref() << "\n";
     out << getClaws() << "\n";
     out << getSheds() << "\n";
-    out << getGender() << "\n";
-    out << getColour() << "\n";
+    out << getHasFur() << "\n";
 
     return out.str();
 
