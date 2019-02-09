@@ -45,9 +45,9 @@ MainWindow::~MainWindow()
  */
 void MainWindow::initAnimals() {
 
-    int i = 0;
+    int i = 0; //Counter for how many animals were allocated for later accessing of current animals in the array
 
-    //Deletes all the widgets in the 2nd layout
+    //Deletes all the widgets (buttons containing the animal names) in the scrolling area layout
     ui->scrollArea_2->takeWidget();
    QLayoutItem* item;
     while ( ( item = ui->verticalLayout_2->layout()->takeAt( 0 ) ) != NULL )
@@ -59,14 +59,15 @@ void MainWindow::initAnimals() {
     //QDir dir(":/memstorage/AnimalClient Files/Animal/");
     QDir dir(QDir::currentPath() + "/Animals/");
     QStringList files = dir.entryList(QStringList() << "*.txt", QDir::Files);
-    foreach(QString filename, files) {
+    foreach(QString filename, files) { //It generates a string list of the directory continaing all the text files, iterating through each of the files obtaining their filenames
         //QFile file(":/memstorage/AnimalClient Files/Animal/" + filename);
         QFile file(QDir::currentPath() + "/Animals/" + filename);
         if (file.open(QIODevice::ReadOnly)) {
 
             QTextStream in(&file);
-            int count = 0;
+            int count = 0; //Indicates what # the line is
 
+            //Variables for constructing animal object with their traits
             QString name = "";
             int age = 0;
             string breed = "";
@@ -79,6 +80,7 @@ void MainWindow::initAnimals() {
             string gender = "";
             string colour = "";
 
+            //Reads each line of the animal file and each line corresponds to each respective physical trait of the animal, plus sets it to it's corresponding variable
             while(!in.atEnd()) {
                 if (count == 0)
                     name = in.readLine();
@@ -118,6 +120,9 @@ void MainWindow::initAnimals() {
                 else
                     break;
 
+                /*There is no readline calls for non-physical traits which are the other remaining lines. Therefore, this break statement is there in the else statement for the
+                 * while loop to not infinitely loop */
+
                 count++;
             }
             file.close();
@@ -131,8 +136,8 @@ void MainWindow::initAnimals() {
 
             QPushButton *button = new QPushButton(name, this);
             button->setStyleSheet("height: 25px");
-            connect(button, SIGNAL(clicked()), this, SLOT(showProfile()));
-            ui->verticalLayout_2->addWidget(button);
+            connect(button, SIGNAL(clicked()), this, SLOT(showProfile())); //Connect each button to view animal ui form
+            ui->verticalLayout_2->addWidget(button); //Add button to the scrolling area layout
 
             i++;
             arrTracker = i;
