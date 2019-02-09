@@ -128,6 +128,9 @@ void Animal::setColour(string s){
     colour = s;
 }
 
+/*
+ * Outputs the data contained within the class in the format of a string.
+ */
 string Animal::toString() const {
     ostringstream out;
 

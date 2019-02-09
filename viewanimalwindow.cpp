@@ -14,8 +14,13 @@ ViewAnimalWindow::ViewAnimalWindow(QWidget *parent) :
     this->setWindowTitle("Profile Information");
 }
 
+/*
+ * Sets the UI fields to the values contained within
+ * the animal object.
+ */
 void ViewAnimalWindow::fillProfileInfo(Animal a) {
 
+    //Set fields to read only so they cannot be modified by user
     ui->nameText->setReadOnly(true);
     ui->ageText->setReadOnly(true);
     ui->breedText->setReadOnly(true);
@@ -24,6 +29,7 @@ void ViewAnimalWindow::fillProfileInfo(Animal a) {
     ui->colourText->setReadOnly(true);
     ui->weightText->setReadOnly(true);
 
+    //Display specific animal information from the object
     ui->nameText->setPlainText(QString::fromStdString(a.getName()));
     ui->ageText->setPlainText(QString::number(a.getAge()));
     ui->breedText->setPlainText(QString::fromStdString(a.getBreed()));
@@ -32,6 +38,7 @@ void ViewAnimalWindow::fillProfileInfo(Animal a) {
     ui->colourText->setPlainText(QString::fromStdString(a.getColour()));
     ui->weightText->setPlainText(QString::number(a.getWeight()));
 
+    //Set check box values and disable them from being changed.
     if (a.getGender() == "Male") {
         ui->maleCheck->setChecked(true);
         ui->maleCheck->setEnabled(false);
@@ -77,11 +84,15 @@ ViewAnimalWindow::~ViewAnimalWindow()
     delete ui;
 }
 
+/*
+ * Deletes the animal being viewed from the file system, it will
+ * remain loaded in until the user refreshes the animal list.
+ */
 void ViewAnimalWindow::on_deleteButton_clicked()
 {
 
     bool confirm = false;
-    QString fileName = fName;
+    QString fileName = fName; //File name is retrieved from the animal node struct
 
         switch( QMessageBox::question(
                     this,
@@ -101,9 +112,9 @@ void ViewAnimalWindow::on_deleteButton_clicked()
 
     if (confirm == true) {
         QFile file(QDir::currentPath() + "/Animals/" + fileName);
-        file.remove();
+        file.remove(); //Delete file
     }
-    this->destroy();
+    this->destroy(); //Close window
 
 }
 

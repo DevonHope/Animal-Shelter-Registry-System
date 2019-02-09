@@ -14,6 +14,10 @@
 #include <string>
 using namespace std;
 
+/*
+ * A struct to contain the animal class and its corresponding
+ * file name where its information is stored.
+ */
 struct animalNode {
     Animal *storedAnimal;
     string animalFileName;
@@ -36,6 +40,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/*
+ * Loads all animals from storage into the program
+ */
 void MainWindow::initAnimals() {
 
     int i = 0;
@@ -153,6 +160,10 @@ void MainWindow::initAnimals() {
     }
 }
 
+/*
+ * Refreshes the list of animals, to be used
+ * in the case of additions and deletions.
+ */
 void MainWindow::refreshAnimals() {
     delete [] nodes;
 
@@ -162,6 +173,10 @@ void MainWindow::refreshAnimals() {
     initAnimals();
 }
 
+/*
+ * Opens up a new window that is used to view a specific
+ * animal's information.
+ */
 void MainWindow::showProfile() {
 
     for(int i = 0; i < arrTracker; i++) {
@@ -179,6 +194,10 @@ void MainWindow::showProfile() {
     }
 }
 
+/*
+ * Opens up the addAnimalWIndow which will
+ * be used to add animals to the list.
+ */
 void MainWindow::on_addAnimalButton_clicked()
 {
     AddAnimalWIndow addAnim;
@@ -186,6 +205,9 @@ void MainWindow::on_addAnimalButton_clicked()
     addAnim.exec();
 }
 
+/*
+ * Refreshes the list of animals.
+ */
 void MainWindow::on_refreshAnimalsButton_clicked()
 {
     refreshAnimals();
