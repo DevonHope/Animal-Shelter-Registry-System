@@ -30,9 +30,21 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    QString storagePath = QDir::currentPath() + "/Animals/";
+
+    //If project was executed for the first time, create a folder containing 5 animals from persistent storage in the build folder
+    if (!QDir(storagePath).exists()) {
+        QDir().mkdir("Animals");
+
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/A-Brian.txt", storagePath + "A-Brain.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/A-Gary.txt", storagePath + "A-Gary.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/A-Stitch.txt", storagePath + "A-Stitch.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/A-Pikachu.txt", storagePath + "A-Pikachu.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Garfield.txt", storagePath + "Garfield.txt");
+    }
+
     ui->setupUi(this);
     initAnimals();
-
 }
 
 MainWindow::~MainWindow()
@@ -62,6 +74,7 @@ void MainWindow::initAnimals() {
     foreach(QString filename, files) { //It generates a string list of the directory continaing all the text files, iterating through each of the files obtaining their filenames
         //QFile file(":/memstorage/AnimalClient Files/Animal/" + filename);
         QFile file(QDir::currentPath() + "/Animals/" + filename);
+
         if (file.open(QIODevice::ReadOnly)) {
 
             QTextStream in(&file);

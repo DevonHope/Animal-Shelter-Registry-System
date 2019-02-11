@@ -92,11 +92,11 @@ void AddAnimalWIndow::saveAs(Animal a){
            tr("Save Text Document"), "",
            tr("Plain Text (*.txt);;All Files (*)"));
 
-    if(!(fileName.endsWith(".txt"))){
-        fileName += ".txt";
-    }
-
     if(!(fileName.isEmpty())){ //Check if a file name was entered
+        if(!(fileName.endsWith(".txt"))){
+            fileName += ".txt";
+        }
+
         QFile file(fileName);
         file.open(QFile::WriteOnly|QFile::Truncate); //Clear file contents
         file.close();
