@@ -1,0 +1,11 @@
+Pikachu
+Mouse
+Pokemon
+Female
+12
+Yellow
+50
+Warm
+Y
+N
+N

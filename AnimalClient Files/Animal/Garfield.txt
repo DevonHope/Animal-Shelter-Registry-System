@@ -1,0 +1,11 @@
+Garfield
+Cat
+Orange Tabby
+Male
+40
+Orange
+60
+Warm
+Y
+Y
+Y
