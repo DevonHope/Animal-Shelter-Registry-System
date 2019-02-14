@@ -26,17 +26,6 @@ Animal::Animal(string n, int a, string b, string t, int w, int fl, string cp, bo
   */
 Animal::~Animal()
 {
-    name = "";
-    age = 0;
-    breed = "";
-    type = "";
-    weight = 0;
-    hasFur = false;
-    climatePref = "";
-    claws = false;
-    sheds = false;
-    gender = "";
-    colour = "";
 }
 
 string Animal::getName() const {
