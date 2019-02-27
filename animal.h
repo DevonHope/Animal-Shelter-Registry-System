@@ -7,7 +7,7 @@ using namespace std;
 class Animal
 {
     public:
-        Animal(string n, int a, string b, string t, int w, bool fl, string cp, bool c, bool sh, string g, string co);
+        Animal(string n, int a, string b, string t, int w, bool fl, string cp, bool c, bool sh, string g, string co, string n, int a, string b, string t, int w, int fl, string cp, bool c, bool sh, string g, string co, string ff, int in, int ag, int cour, int pl, int stren, string specs, int kf, int cs, int ht, int cu);
         ~Animal();
 
         string toString() const;

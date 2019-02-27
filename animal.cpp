@@ -3,7 +3,7 @@ using namespace std;
 #include <sstream>
 #include <iostream>
 
-Animal::Animal(string n, int a, string b, string t, int w, bool fl, string cp, bool c, bool sh, string g, string co)
+Animal::Animal(string n, int a, string b, string t, int w, bool fl, string cp, bool c, bool sh, string g, string co, string n, int a, string b, string t, int w, int fl, string cp, bool c, bool sh, string g, string co, string ff, int in, int ag, int cour, int pl, int stren, string specs, int kf, int cs, int ht, int cu)
 {
     name = n;
     age = a;
@@ -18,26 +18,7 @@ Animal::Animal(string n, int a, string b, string t, int w, bool fl, string cp, b
     colour = co;
 }
 
-/*
-Animal::Animal(string n, int a, string b, string t, int w, int fl, string cp, bool c, bool sh, string g, string co, string ff, int in, int ag, int cour, int pl, int stren, string specs, int kf, int cs, int ht, int cu){
-
-}
-
-  */
-Animal::~Animal()
-{
-    name = "";
-    age = 0;
-    breed = "";
-    type = "";
-    weight = 0;
-    hasFur = false;
-    climatePref = "";
-    claws = false;
-    sheds = false;
-    gender = "";
-    colour = "";
-}
+Animal::~Animal(){}
 
 string Animal::getName() const {
     return name;
