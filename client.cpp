@@ -3,7 +3,7 @@ using namespace std;
 #include <sstream>
 #include <iostream>
 
-Client::Client(string n, int a, string g, string add, string cl, int pnum, string ty, string bre, bool clws, bool shd, int intel, int ag, int cour, int pl, int stren, string sskill, int kf, int cs, int ht, int tru, int cur, int clen, bool HF){
+Client::Client(string n, int a, string g, string add, string cl, int pnum, string mail){
 
 	name = n;
 	age = a;
@@ -11,7 +11,8 @@ Client::Client(string n, int a, string g, string add, string cl, int pnum, strin
 	address = add;
 	climate = cl;
 	pNumber = pnum;
-	type = ty;
+	eMail = mail;
+	/*type = ty;
 	breed = bre;
 	claws = clws;
 	sheds = shd;
@@ -27,7 +28,7 @@ Client::Client(string n, int a, string g, string add, string cl, int pnum, strin
 	trust = tru;
 	curiosity = cur;
 	clean = clen;
-	hasFur = HF;
+	hasFur = HF;*/
 }
 
 Client::~Client(){}
@@ -36,13 +37,15 @@ string Client::getName() const {return name;}
 int Client::getAge() const {return age;}
 string Client::getAddress() const {return address;}
 int Client::getPNum() const {return pNumber;}
+string Client::getClimate() const{ return climate;}
+string Client::getGender() const{return gender;}
+string Client::getMail() const {return eMail;}
+/*
 string Client::getBreed() const {return breed;}
 string Client::getType() const {return type;}
 bool Client::getHasFur() const{return hasFur;}
-string Client::getClimate() const{ return climate;}
 bool Client::getClaws() const{return claws;}
 bool Client::getSheds() const{ return sheds;}
-string Client::getGender() const{return gender;}
 string Client::getColour() const{return colour;}
 int Client::getIntell() const{return intell;}
 int Client::getAggro() const{return aggro;}
@@ -58,19 +61,22 @@ int Client::getCSkill() const {return commSkills;}
 int Client::getHTrained() const {return houseTrained;}
 int Client::getTrust() const{ return trust;} 
 int Client::getCuriosity() const{  return curiosity;}
+*/
 
 //setters
 void Client::setName(string s){name = s;}
 void Client::setAge(int d){age = d;}
 void Client::setAddress(string add) {address = add;}
 void Client::setPNum(int d) {pNumber = d;}
-void Client::setHasFur(int s){ hasFur = s;}
 void Client::setClimate(string s){  climate = s;}
+void Client::setGender(string s){gender = s;}
+void Client::setMail(string m){eMail = m;}
+/*
+void Client::setHasFur(int s){ hasFur = s;}
 void Client::setClaws(bool b){ claws = b;}
 void Client::setSheds(bool b){ sheds = b;}
 void Client::setBreed(string s){breed = s;}
 void Client::setType(string s){type = s;}
-void Client::setGender(string s){gender = s;}
 void Client::setColour(string s){colour = s;}
 void Client::setIntell(int intel){intell = intel;}
 void Client::setAggro(int ag){aggro = ag;}
@@ -83,6 +89,7 @@ void Client::setcommSkill(int cs){commSkills = cs;}
 void Client::sethouseTrained(int ht){houseTrained = ht;}
 void Client::setTrust(int tru){trust = tru;}
 void Client::setCuriosity(int cur){curiosity = cur;}
+*/
 
 string Client::toString() const{
 	ostringstream out;
@@ -91,11 +98,14 @@ string Client::toString() const{
     out << getAge() << "\n";
     out << getAddress() << "\n";
     out << getPNum() << "\n";
+    out << getMail() << "\n";
+    out << getClimate() << "\n";
+    out << getGender() << "\n";
+    
+    /*
     out << getType() << "\n";
     out << getBreed() << "\n";
-    out << getGender() << "\n";
     out << getColour() << "\n";
-    out << getClimate() << "\n";
     out << getClaws() << "\n";
     out << getSheds() << "\n";
     out << getHasFur() << "\n";
@@ -110,6 +120,7 @@ string Client::toString() const{
     out << getHTrained() << "\n";
     out << getTrust() << "\n";
     out << getCuriosity() << "\n";
+	*/
 
     return out.str();
 }
