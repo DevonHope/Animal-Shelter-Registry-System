@@ -164,7 +164,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		animal.cpp \
 		viewanimalwindow.cpp \
 		addanimalwindow.cpp
-QMAKE_TARGET  = untitled
+QMAKE_TARGET  = cuACS
 DESTDIR       = 
 TARGET        = cuACS
 
