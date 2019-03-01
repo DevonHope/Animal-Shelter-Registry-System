@@ -5,5 +5,8 @@
         <file>AnimalClient Files/Animal/A-Brian.txt</file>
         <file>AnimalClient Files/Animal/Garfield.txt</file>
         <file>AnimalClient Files/Animal/A-Pikachu.txt</file>
+        <file>AnimalClient Files/Client/Andrew.txt</file>
+        <file>AnimalClient Files/Client/Andy.txt</file>
+        <file>AnimalClient Files/Client/Devon.txt</file>
     </qresource>
 </RCC>
