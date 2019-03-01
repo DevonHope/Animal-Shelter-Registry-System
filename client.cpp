@@ -3,32 +3,32 @@ using namespace std;
 #include <sstream>
 #include <iostream>
 
-Client::Client(string n, int a, string g, string add, string cl, int pnum, string mail){
+Client::Client(string n, int a, string g, string add,int cl, string pnum, string mail){
 
-	name = n;
-	age = a;
-	gender = g; 
-	address = add;
-	climate = cl;
-	pNumber = pnum;
-	eMail = mail;
-	/*type = ty;
-	breed = bre;
-	claws = clws;
-	sheds = shd;
-	intell = intel;
-	aggro = ag;
-	courage = cour;
-	play = pl; 
-	strength = stren;
-	specialSkill = sskill;
-	kidFriendly = kf;
-	commSkills = cs;
-	houseTrained = ht;
-	trust = tru;
-	curiosity = cur;
-	clean = clen;
-	hasFur = HF;*/
+    name = n;
+    age = a;
+    gender = g;
+    address = add;
+    climate = cl;
+    pNumber = pnum;
+    eMail = mail;
+    /*type = ty;
+    breed = bre;
+    claws = clws;
+    sheds = shd;
+    intell = intel;
+    aggro = ag;
+    courage = cour;
+    play = pl;
+    strength = stren;
+    specialSkill = sskill;
+    kidFriendly = kf;
+    commSkills = cs;
+    houseTrained = ht;
+    trust = tru;
+    curiosity = cur;
+    clean = clen;
+    hasFur = HF;*/
 }
 
 Client::~Client(){}
@@ -36,8 +36,8 @@ Client::~Client(){}
 string Client::getName() const {return name;}
 int Client::getAge() const {return age;}
 string Client::getAddress() const {return address;}
-int Client::getPNum() const {return pNumber;}
-string Client::getClimate() const{ return climate;}
+string Client::getPNum() const {return pNumber;}
+int Client::getClimate() const{ return climate;}
 string Client::getGender() const{return gender;}
 string Client::getMail() const {return eMail;}
 /*
@@ -59,7 +59,7 @@ int Client::getKF() const { return kidFriendly;}
 int Client::getCSkill() const {return commSkills;}
 // house trained
 int Client::getHTrained() const {return houseTrained;}
-int Client::getTrust() const{ return trust;} 
+int Client::getTrust() const{ return trust;}
 int Client::getCuriosity() const{  return curiosity;}
 */
 
@@ -67,8 +67,8 @@ int Client::getCuriosity() const{  return curiosity;}
 void Client::setName(string s){name = s;}
 void Client::setAge(int d){age = d;}
 void Client::setAddress(string add) {address = add;}
-void Client::setPNum(int d) {pNumber = d;}
-void Client::setClimate(string s){  climate = s;}
+void Client::setPNum(string d) {pNumber = d;}
+void Client::setClimate(int s){  climate = s;}
 void Client::setGender(string s){gender = s;}
 void Client::setMail(string m){eMail = m;}
 /*
@@ -92,7 +92,7 @@ void Client::setCuriosity(int cur){curiosity = cur;}
 */
 
 string Client::toString() const{
-	ostringstream out;
+    ostringstream out;
 
     out << getName() << "\n";
     out << getAge() << "\n";
@@ -101,7 +101,7 @@ string Client::toString() const{
     out << getMail() << "\n";
     out << getClimate() << "\n";
     out << getGender() << "\n";
-    
+
     /*
     out << getType() << "\n";
     out << getBreed() << "\n";
@@ -120,7 +120,7 @@ string Client::toString() const{
     out << getHTrained() << "\n";
     out << getTrust() << "\n";
     out << getCuriosity() << "\n";
-	*/
+    */
 
     return out.str();
 }

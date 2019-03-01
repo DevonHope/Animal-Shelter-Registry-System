@@ -6,23 +6,23 @@ using namespace std;
 
 class Client {
 
-	public:
-		//(, string ty, string bre, bool clws, bool shd, int intel, int ag, int cour, int pl, int stren, string sskill, int kf, int cs, int ht, int tru, int cur, int clen, bool HF)
-		Client(string n, int a, string g, string add, string cl, string pnum, string mail);
-		~Client();
-		string toString() const;
-		bool verifyAtt();
+    public:
+        //(, string ty, string bre, bool clws, bool shd, int intel, int ag, int cour, int pl, int stren, string sskill, int kf, int cs, int ht, int tru, int cur, int clen, bool HF)
+        Client(string n, int a, string g, string add, int cl, string pnum, string mail);
+        ~Client();
+        string toString() const;
+        bool verifyAtt();
 
 
-		//getters
-		string getName() const;
+        //getters
+        string getName() const;
         int getAge() const;
         string getAddress() const;
         string getPNum() const;
-        string getMail() cont;
-        string getClimate() const;
+        string getMail() const;
+        int getClimate() const;
         string getGender() const;
-        
+
         /*
         string getBreed() const;
         string getType() const;
@@ -39,17 +39,17 @@ class Client {
         int getKF() const; // kidfriendly
         int getCSkill() const; //commskills
         int getHTrained() const; // house trained
-        int getTrust() const; 
+        int getTrust() const;
         int getCuriosity() const;
         */
 
-		//setters
-		void setName(string);
+        //setters
+        void setName(string);
         void setAge(int);
         void setAddress(string);
         void setPNum(string);
         void setMail(string);
-        void setClimate(string);
+        void setClimate(int);
         void setGender(string);
 
         /*
@@ -70,36 +70,36 @@ class Client {
         void sethouseTrained(int);
         void setTrust(int);
         void setCuriosity(int);
-		*/
+        */
 
-	protected:
-		string type;
-		string breed;
-		bool claws;
-		bool sheds;
-		bool hasFur;
-		int intell;
-		int aggro;
-		int courage;
-		int play;
-		int strength;
-		string specialSkill;
-		int kidFriendly;
-		int commSkills;
-		int houseTrained;
-		int trust;
-		int curiosity;
-		int clean;
-		bool hasFur;
+    protected:
+        string type;
+        string breed;
+        bool claws;
+        bool sheds;
+        bool hasFur;
+        int intell;
+        int aggro;
+        int courage;
+        int play;
+        int strength;
+        string specialSkill;
+        int kidFriendly;
+        int commSkills;
+        int houseTrained;
+        int trust;
+        int curiosity;
+        int clean;
+        bool hasFur;
 
-	private:
-		string name;
-		int age;
-		string gender;
-		string address;
-		string climate;
-		string pNumber;
-		string eMail;
+    private:
+        string name;
+        int age;
+        string gender;
+        string address;
+        int climate;
+        string pNumber;
+        string eMail;
 };
 
 #endif // CLIENT_H

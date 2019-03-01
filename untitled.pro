@@ -28,13 +28,15 @@ SOURCES += \
         mainwindow.cpp \
     animal.cpp \
     viewanimalwindow.cpp \
-    addanimalwindow.cpp
+    addanimalwindow.cpp \
+    client.cpp
 
 HEADERS += \
         mainwindow.h \
     animal.h \
     viewanimalwindow.h \
-    addanimalwindow.h
+    addanimalwindow.h \
+    client.h
 
 FORMS += \
         mainwindow.ui \
