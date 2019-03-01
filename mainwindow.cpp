@@ -4,8 +4,11 @@
 #include "ui_viewanimalwindow.h"
 #include "addanimalwindow.h"
 #include "ui_addanimalwindow.h"
+#include "viewclientwindow.h"
+#include "ui_viewclientwindow.h"
 
 #include "animal.h"
+#include "client.h"
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
@@ -23,8 +26,20 @@ struct animalNode {
     string animalFileName;
 };
 
+/*
+ * A struct to contain the client class and its corresponding
+ * file name where its information is stored.
+ */
+struct clientNode {
+    Client *storedClient;
+    string clientFileName;
+};
+
 animalNode *nodes = new animalNode[30];
 int arrTracker = 0;
+
+clientNode *nodes2 = new clientNode[30];
+int arrTracker2 = 0;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -43,8 +58,21 @@ MainWindow::MainWindow(QWidget *parent) :
         QFile::copy(":/memstorage/AnimalClient Files/Animal/Garfield.txt", storagePath + "Garfield.txt");
     }
 
+    QString storagePath2 = QDir::currentPath() + "/Clients/";
+
+    //If project was executed for the first time, create a folder containing 5 clients from persistent storage in the build folder
+    if (!QDir(storagePath2).exists()) {
+        QDir().mkdir("Clients");
+
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Andy.txt", storagePath2 + "Andy.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Andrew.txt", storagePath2 + "Andrew.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Devon.txt", storagePath2 + "Devon.txt");
+    }
+
+
     ui->setupUi(this);
     initAnimals();
+    initClients();
 }
 
 MainWindow::~MainWindow()
@@ -149,7 +177,7 @@ void MainWindow::initAnimals() {
 
             QPushButton *button = new QPushButton(name, this);
             button->setStyleSheet("height: 25px");
-            connect(button, SIGNAL(clicked()), this, SLOT(showProfile())); //Connect each button to view animal ui form
+            connect(button, SIGNAL(clicked()), this, SLOT(showAnimalProfile())); //Connect each button to view animal ui form
             ui->verticalLayout_2->addWidget(button); //Add button to the scrolling area layout
 
             i++;
@@ -179,6 +207,104 @@ void MainWindow::initAnimals() {
 }
 
 /*
+ * Loads all clients from storage into the program
+ */
+void MainWindow::initClients() {
+
+    int i = 0; //Counter for how many clients were allocated for later accessing of current clients in the array
+
+    //Deletes all the widgets (buttons containing the client names) in the scrolling area layout
+    ui->scrollArea_3->takeWidget();
+   QLayoutItem* item;
+    while ( ( item = ui->verticalLayout_4->layout()->takeAt( 0 ) ) != NULL )
+    {
+        delete item->widget();
+        delete item;
+    }
+
+    QDir dir(QDir::currentPath() + "/Clients/");
+    QStringList files = dir.entryList(QStringList() << "*.txt", QDir::Files);
+    foreach(QString filename, files) { //It generates a string list of the directory continaing all the text files, iterating through each of the files obtaining their filenames
+        QFile file(QDir::currentPath() + "/Clients/" + filename);
+
+        if (file.open(QIODevice::ReadOnly)) {
+
+            QTextStream in(&file);
+            int count = 0; //Indicates what # the line is
+
+            //Variables for constructing client object with their basic info
+            QString name = "";
+            int age = 0;
+            string address = "";
+            string pNum = "";
+            string email = "";
+            string gender = "";
+            string climate = "";
+
+            //Reads each line of the client file and each line corresponds to each respective basic info of the client, plus sets it to it's corresponding variable
+            while(!in.atEnd()) {
+                if (count == 0)
+                    name = in.readLine();
+                else if (count == 1)
+                    age = in.readLine().toInt();
+                else if (count == 2)
+                    address = in.readLine().toStdString();
+                else if (count == 3)
+                    pNum = in.readLine().toStdString();
+                else if (count == 4)
+                    email = in.readLine().toStdString();
+                else if (count == 5)
+                     climate = in.readLine().toStdString();
+                else if (count == 6)
+                     gender = in.readLine().toStdString();
+
+                else
+                    break;
+
+                /*There is no readline calls for preferences which are the other remaining lines. Therefore, this break statement is there in the else statement for the
+                 * while loop to not infinitely loop */
+
+                count++;
+            }
+            file.close();
+
+            Client *client = new Client(name.toStdString(), age, gender, address, climate, pNum, email);
+
+            nodes2[i].storedClient = client;
+            nodes2[i].clientFileName = filename.toStdString();
+
+            QPushButton *button = new QPushButton(name, this);
+            button->setStyleSheet("height: 25px");
+            connect(button, SIGNAL(clicked()), this, SLOT(showClientProfile())); //Connect each button to view client ui form
+            ui->verticalLayout_4->addWidget(button); //Add button to the scrolling area layout
+
+            i++;
+            arrTracker2 = i;
+
+        }
+        else {
+            QString str = "Could not open " + filename + "!";
+            switch( QMessageBox::question(
+                            this,
+                            tr("ERROR"),
+                            str,
+
+                            QMessageBox::Ok,
+
+                            QMessageBox::Ok ) )
+                {
+                    case QMessageBox::Ok:
+                        break;
+                    default:
+                        break;
+                }
+        }
+
+        ui->scrollArea_3->setWidget(ui->verticalLayoutWidget_4);
+    }
+}
+
+/*
  * Refreshes the list of animals, to be used
  * in the case of additions and deletions.
  */
@@ -192,10 +318,23 @@ void MainWindow::refreshAnimals() {
 }
 
 /*
+ * Refreshes the list of clients, to be used
+ * in the case of additions and deletions.
+ */
+void MainWindow::refreshClients() {
+    delete [] nodes2;
+
+    nodes2 = new clientNode[30];
+    arrTracker2 = 0;
+
+    initClients();
+}
+
+/*
  * Opens up a new window that is used to view a specific
  * animal's information.
  */
-void MainWindow::showProfile() {
+void MainWindow::showAnimalProfile() {
 
     for(int i = 0; i < arrTracker; i++) {
 
@@ -208,6 +347,27 @@ void MainWindow::showProfile() {
 
             viewAnim.setModal(true);
             viewAnim.exec();
+        }
+    }
+}
+
+/*
+ * Opens up a new window that is used to view a specific
+ * client's information.
+ */
+void MainWindow::showClientProfile() {
+
+    for(int i = 0; i < arrTracker2; i++) {
+
+        if (((QPushButton*)sender())->text().toStdString() == nodes2[i].storedClient->getName()) {
+            ViewClientWindow viewCln;
+
+            Client c = *(nodes2[i].storedClient);
+            viewCln.fillProfileInfo(c);
+            viewCln.selectedFileName(QString::fromStdString(nodes2[i].clientFileName));
+
+            viewCln.setModal(true);
+            viewCln.exec();
         }
     }
 }
@@ -229,4 +389,12 @@ void MainWindow::on_addAnimalButton_clicked()
 void MainWindow::on_refreshAnimalsButton_clicked()
 {
     refreshAnimals();
+}
+
+/*
+ * Refreshes the list of clients.
+ */
+void MainWindow::on_refreshClientsButton_clicked()
+{
+    refreshClients();
 }

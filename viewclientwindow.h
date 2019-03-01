@@ -2,7 +2,7 @@
 #define VIEWCLIENTWINDOW_H
 
 #include <QDialog>
-//#include "client.h"
+#include "client.h"
 
 namespace Ui {
 class ViewClientWindow;
@@ -13,7 +13,7 @@ class ViewClientWindow : public QDialog
     Q_OBJECT
 
 public:
-    //void fillProfileInfo(Client);
+    void fillProfileInfo(Client);
     void selectedFileName(QString);
     explicit ViewClientWindow(QWidget *parent = 0);
     ~ViewClientWindow();

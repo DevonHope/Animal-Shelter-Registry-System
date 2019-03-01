@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "animal.h"
+#include "client.h"
 
 namespace Ui {
 class MainWindow;
@@ -14,16 +15,22 @@ class MainWindow : public QMainWindow
 
 public:
     void initAnimals();
+    void initClients();
     void refreshAnimals();
+    void refreshClients();
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
 private slots:
-    void showProfile();
+    void showAnimalProfile();
+
+    void showClientProfile();
 
     void on_addAnimalButton_clicked();
 
     void on_refreshAnimalsButton_clicked();
+
+    void on_refreshClientsButton_clicked();
 
 private:
     Ui::MainWindow *ui;

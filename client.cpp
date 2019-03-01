@@ -4,7 +4,7 @@ using namespace std;
 #include <sstream>
 #include <iostream>
 
-Client::Client(string n, int a, string g, string add, string cl, int pnum, string mail){
+Client::Client(string n, int a, string g, string add, string cl, string pnum, string mail){
 
     name = n;
     age = a;
@@ -37,7 +37,7 @@ Client::~Client(){}
 string Client::getName() const {return name;}
 int Client::getAge() const {return age;}
 string Client::getAddress() const {return address;}
-int Client::getPNum() const {return pNumber;}
+string Client::getPNum() const {return pNumber;}
 string Client::getClimate() const{ return climate;}
 string Client::getGender() const{return gender;}
 string Client::getMail() const {return eMail;}
@@ -68,7 +68,7 @@ int Client::getCuriosity() const{  return curiosity;}
 void Client::setName(string s){name = s;}
 void Client::setAge(int d){age = d;}
 void Client::setAddress(string add) {address = add;}
-void Client::setPNum(int d) {pNumber = d;}
+void Client::setPNum(string d) {pNumber = d;}
 void Client::setClimate(string s){  climate = s;}
 void Client::setGender(string s){gender = s;}
 void Client::setMail(string m){eMail = m;}
@@ -125,15 +125,4 @@ string Client::toString() const{
 
     return out.str();
 }
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+
