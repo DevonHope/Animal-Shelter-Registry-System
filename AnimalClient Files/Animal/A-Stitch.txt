@@ -5,7 +5,7 @@ Male
 52
 Blue
 30
-Warm
+10
 Y
 N
 Y
@@ -21,3 +21,4 @@ Indestructable
 3
 10
 10
+4

@@ -5,7 +5,7 @@ Male
 8
 White
 50
-Warm
+8
 Y
 Y
 Y
@@ -21,3 +21,4 @@ Drinks a lot
 10
 3
 2
+6

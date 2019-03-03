@@ -5,7 +5,20 @@ Female
 12
 Yellow
 50
-Warm
+7
 Y
 N
 N
+Berries
+6
+0
+8
+10
+5
+Can generate electricity
+10
+5
+8
+8
+6
+0

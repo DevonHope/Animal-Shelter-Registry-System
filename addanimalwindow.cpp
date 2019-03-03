@@ -56,7 +56,7 @@ void AddAnimalWIndow::on_addButton_clicked()
     }
 
     bool hasFur = ui->furCheck->isChecked();
-    QString climatePref = ui->climateText->toPlainText();
+    int climatePref = ui->climateSlider->sliderPosition();
     bool claws = ui->clawsCheck->isChecked();
     bool sheds = ui->shedsCheck->isChecked();
 
@@ -77,6 +77,8 @@ void AddAnimalWIndow::on_addButton_clicked()
     }
 
     QString colour = ui->colourText->toPlainText();
+    QString favFood = ui->favFoodText->toPlainText();
+    QString specialSkill = ui->skillText->toPlainText();
 
     int furLength = ui->furLenSlider->sliderPosition();
     int aggressiveness = ui->aggressivenessSlider->sliderPosition();
@@ -91,8 +93,10 @@ void AddAnimalWIndow::on_addButton_clicked()
     int trust = ui->trustSlider->sliderPosition();
 
     if(validAnimal){ //Valid Animal
-        Animal a(name.toStdString(), age, breed.toStdString(), type.toStdString(), weight, hasFur,
-                 climatePref.toStdString(), claws, sheds, gender.toStdString(), colour.toStdString());
+        Animal a(name.toStdString(), age, breed.toStdString(), type.toStdString(), weight, furLength,
+                 climatePref, claws, sheds, hasFur, gender.toStdString(), colour.toStdString(),
+                 favFood.toStdString(), intelligence, aggressiveness, courage, playfulness, strength,
+                 specialSkill.toStdString(), kidFriendly, commSkills, houseTrained, curiosity, trust); //Construct animal
         saveAs(a); //Save constructed animal
         this->destroy(); //Close Window
     }

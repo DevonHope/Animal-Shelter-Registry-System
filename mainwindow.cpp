@@ -127,11 +127,24 @@ void MainWindow::initAnimals() {
             string type = "";
             int weight = 0;
             bool hasFur = false;
-            string climatePref = "";
+            int climatePref = 0;
             bool claws = false;
             bool sheds = false;
             string gender = "";
             string colour = "";
+            string favFood = "";
+            int intell = 0;
+            int aggro = 0;
+            int courage = 0;
+            int play = 0;
+            int strength = 0;
+            string specSkill = "";
+            int kidFriendly = 0;
+            int commSkill = 0;
+            int houseTrained = 0;
+            int trust = 0;
+            int curiosity = 0;
+            int furLength = 0;
 
             //Reads each line of the animal file and each line corresponds to each respective physical trait of the animal, plus sets it to it's corresponding variable
             while(!in.atEnd()) {
@@ -150,7 +163,7 @@ void MainWindow::initAnimals() {
                 else if (count == 6)
                       weight = in.readLine().toInt();
                 else if (count == 7)
-                      climatePref = in.readLine().toStdString();
+                      climatePref = in.readLine().toInt();
                 else if (count == 8) {
                           if (in.readLine() == 'Y')
                             claws = true;
@@ -170,6 +183,32 @@ void MainWindow::initAnimals() {
                     else
                       hasFur = false;
                 }
+                else if (count == 11)
+                    favFood = in.readLine().toStdString();
+                else if (count == 12)
+                    intell = in.readLine().toInt();
+                else if (count == 13)
+                    aggro = in.readLine().toInt();
+                else if (count == 14)
+                    courage = in.readLine().toInt();
+                else if (count == 15)
+                    play = in.readLine().toInt();
+                else if (count == 16)
+                    strength = in.readLine().toInt();
+                else if (count == 17)
+                    specSkill = in.readLine().toStdString();
+                else if (count == 18)
+                    kidFriendly = in.readLine().toInt();
+                else if (count == 19)
+                    commSkill = in.readLine().toInt();
+                else if (count == 20)
+                    houseTrained = in.readLine().toInt();
+                else if (count == 21)
+                    trust = in.readLine().toInt();
+                else if (count == 22)
+                    curiosity = in.readLine().toInt();
+                else if (count == 23)
+                    furLength = in.readLine().toInt();
                 else
                     break;
 
@@ -181,8 +220,9 @@ void MainWindow::initAnimals() {
             file.close();
 
             Animal *animal = new Animal(name.toStdString(), age, breed, type,
-                                        weight, hasFur, climatePref, claws, sheds,
-                                        gender, colour);
+                                        weight, furLength, climatePref, claws, sheds, hasFur,
+                                        gender, colour, favFood, intell, aggro, courage, play,
+                                        strength, specSkill, kidFriendly, commSkill, houseTrained, curiosity, trust);
 
             nodes[i].storedAnimal = animal;
             nodes[i].animalFileName = filename.toStdString();
