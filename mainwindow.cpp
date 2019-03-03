@@ -73,6 +73,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     initAnimals();
     initClients();
+
+    ui->label_3->setText("Current User: Staff");
+
+    ui->staffButton->setDisabled(true);
+
+    ui->clientButton->setDisabled(false);
+    ui->scrollArea_3->setDisabled(false);
+    ui->addAnimalButton->setDisabled(false);
+    ui->addClientButton->setDisabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -397,4 +406,29 @@ void MainWindow::on_refreshAnimalsButton_clicked()
 void MainWindow::on_refreshClientsButton_clicked()
 {
     refreshClients();
+}
+
+void MainWindow::on_clientButton_clicked()
+{
+    ui->label_3->setText("Current User: Client");
+
+    ui->scrollArea_3->setDisabled(true);
+    ui->addAnimalButton->setDisabled(true);
+    ui->addClientButton->setDisabled(true);
+    ui->clientButton->setDisabled(true);
+
+    ui->staffButton->setDisabled(false);
+
+}
+
+void MainWindow::on_staffButton_clicked()
+{
+    ui->label_3->setText("Current User: Staff");
+
+    ui->staffButton->setDisabled(true);
+
+    ui->clientButton->setDisabled(false);
+    ui->scrollArea_3->setDisabled(false);
+    ui->addAnimalButton->setDisabled(false);
+    ui->addClientButton->setDisabled(false);
 }

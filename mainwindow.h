@@ -32,6 +32,10 @@ private slots:
 
     void on_refreshClientsButton_clicked();
 
+    void on_clientButton_clicked();
+
+    void on_staffButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
