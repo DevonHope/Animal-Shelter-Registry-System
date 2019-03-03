@@ -30,7 +30,8 @@ SOURCES += \
     viewanimalwindow.cpp \
     addanimalwindow.cpp \
     viewclientwindow.cpp \
-    client.cpp
+    client.cpp \
+    addclientwindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,13 +39,15 @@ HEADERS += \
     viewanimalwindow.h \
     addanimalwindow.h \
     viewclientwindow.h \
-    client.h
+    client.h \
+    addclientwindow.h
 
 FORMS += \
         mainwindow.ui \
     viewanimalwindow.ui \
     addanimalwindow.ui \
-    viewclientwindow.ui
+    viewclientwindow.ui \
+    addclientwindow.ui
 
 RESOURCES += \
     animalmemstor.qrc

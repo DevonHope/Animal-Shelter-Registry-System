@@ -36,8 +36,11 @@ private slots:
 
     void on_staffButton_clicked();
 
+    void on_addClientButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+    string currentUser;
 };
 
 #endif // MAINWINDOW_H

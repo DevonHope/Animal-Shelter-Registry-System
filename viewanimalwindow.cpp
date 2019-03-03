@@ -28,6 +28,21 @@ void ViewAnimalWindow::fillProfileInfo(Animal a) {
     ui->climateText->setReadOnly(true);
     ui->colourText->setReadOnly(true);
     ui->weightText->setReadOnly(true);
+    ui->specialSkillText->setReadOnly(true);
+    ui->favFoodText->setReadOnly(true);
+
+    //Disables the sliders so they cannot be modified by the user
+    ui->furLenSlider->setDisabled(true);
+    ui->aggressivenessSlider->setDisabled(true);
+    ui->playfulSlider->setDisabled(true);
+    ui->kidFriendlySlider->setDisabled(true);
+    ui->houseTrainedSlider->setDisabled(true);
+    ui->curiositySlider->setDisabled(true);
+    ui->intSlider->setDisabled(true);
+    ui->courageSlider->setDisabled(true);
+    ui->strSlider->setDisabled(true);
+    ui->commSlider->setDisabled(true);
+    ui->trustSlider->setDisabled(true);
 
     //Display specific animal information from the object
     ui->nameText->setPlainText(QString::fromStdString(a.getName()));
@@ -120,4 +135,8 @@ void ViewAnimalWindow::on_deleteButton_clicked()
 
 void ViewAnimalWindow::selectedFileName(QString f) {
     fName = f;
+}
+
+void ViewAnimalWindow::disableDeleteButton() {
+    ui->deleteButton->setEnabled(false);
 }

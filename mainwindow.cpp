@@ -6,6 +6,8 @@
 #include "ui_addanimalwindow.h"
 #include "viewclientwindow.h"
 #include "ui_viewclientwindow.h"
+#include "addclientwindow.h"
+#include "ui_addclientwindow.h"
 
 #include "animal.h"
 #include "client.h"
@@ -74,6 +76,7 @@ MainWindow::MainWindow(QWidget *parent) :
     initAnimals();
     initClients();
 
+    currentUser = "Staff";
     ui->label_3->setText("Current User: Staff");
 
     ui->staffButton->setDisabled(true);
@@ -354,8 +357,12 @@ void MainWindow::showAnimalProfile() {
             viewAnim.fillProfileInfo(a);
             viewAnim.selectedFileName(QString::fromStdString(nodes[i].animalFileName));
 
+            if (currentUser == "Client")
+                viewAnim.disableDeleteButton();
+
             viewAnim.setModal(true);
             viewAnim.exec();
+
         }
     }
 }
@@ -393,6 +400,17 @@ void MainWindow::on_addAnimalButton_clicked()
 }
 
 /*
+ * Opens up the addClientWindow which will
+ * be used to add clients to the list.
+ */
+void MainWindow::on_addClientButton_clicked()
+{
+    AddClientWindow addCln;
+    addCln.setModal(true);
+    addCln.exec();
+}
+
+/*
  * Refreshes the list of animals.
  */
 void MainWindow::on_refreshAnimalsButton_clicked()
@@ -408,11 +426,13 @@ void MainWindow::on_refreshClientsButton_clicked()
     refreshClients();
 }
 
+// Enables set user privelleges for being a client
 void MainWindow::on_clientButton_clicked()
 {
+    currentUser = "Client";
     ui->label_3->setText("Current User: Client");
 
-    ui->scrollArea_3->setDisabled(true);
+    ui->scrollArea_3->setDisabled(true); //Disabled viewing detailed info of animals
     ui->addAnimalButton->setDisabled(true);
     ui->addClientButton->setDisabled(true);
     ui->clientButton->setDisabled(true);
@@ -421,14 +441,18 @@ void MainWindow::on_clientButton_clicked()
 
 }
 
+// Enables set user privelleges for being a staff
 void MainWindow::on_staffButton_clicked()
 {
+    currentUser = "Staff";
     ui->label_3->setText("Current User: Staff");
 
     ui->staffButton->setDisabled(true);
 
     ui->clientButton->setDisabled(false);
-    ui->scrollArea_3->setDisabled(false);
+    ui->scrollArea_3->setDisabled(false); //Enabled viewing detailed info of animals
     ui->addAnimalButton->setDisabled(false);
     ui->addClientButton->setDisabled(false);
 }
+
+

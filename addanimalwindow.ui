@@ -189,7 +189,7 @@
   </widget>
   <widget class="QPlainTextEdit" name="plainTextEdit_8">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -202,7 +202,7 @@
   </widget>
   <widget class="QLabel" name="label_9">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -218,7 +218,7 @@
   </widget>
   <widget class="QLabel" name="label_10">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -234,7 +234,7 @@
   </widget>
   <widget class="QPlainTextEdit" name="plainTextEdit_9">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -245,9 +245,9 @@
     </rect>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider">
+  <widget class="QSlider" name="furLenSlider">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -264,7 +264,7 @@
     </size>
    </property>
    <property name="maximum">
-    <number>5</number>
+    <number>10</number>
    </property>
    <property name="pageStep">
     <number>5</number>
@@ -276,9 +276,9 @@
     <enum>QSlider::TicksBothSides</enum>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider_2">
+  <widget class="QSlider" name="intSlider">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -295,7 +295,7 @@
     </size>
    </property>
    <property name="maximum">
-    <number>5</number>
+    <number>10</number>
    </property>
    <property name="pageStep">
     <number>5</number>
@@ -309,7 +309,7 @@
   </widget>
   <widget class="QLabel" name="label_11">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -325,7 +325,7 @@
   </widget>
   <widget class="QLabel" name="label_12">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -339,9 +339,9 @@
     <string>Intelligence</string>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider_3">
+  <widget class="QSlider" name="aggressivenessSlider">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -358,7 +358,7 @@
     </size>
    </property>
    <property name="maximum">
-    <number>5</number>
+    <number>10</number>
    </property>
    <property name="pageStep">
     <number>5</number>
@@ -372,7 +372,7 @@
   </widget>
   <widget class="QLabel" name="label_13">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -388,7 +388,7 @@
   </widget>
   <widget class="QLabel" name="label_14">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -402,9 +402,9 @@
     <string>Courage</string>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider_4">
+  <widget class="QSlider" name="courageSlider">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -421,7 +421,7 @@
     </size>
    </property>
    <property name="maximum">
-    <number>5</number>
+    <number>10</number>
    </property>
    <property name="pageStep">
     <number>5</number>
@@ -433,9 +433,9 @@
     <enum>QSlider::TicksBothSides</enum>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider_5">
+  <widget class="QSlider" name="playfulSlider">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -452,7 +452,7 @@
     </size>
    </property>
    <property name="maximum">
-    <number>5</number>
+    <number>10</number>
    </property>
    <property name="pageStep">
     <number>5</number>
@@ -466,7 +466,7 @@
   </widget>
   <widget class="QLabel" name="label_15">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -482,7 +482,7 @@
   </widget>
   <widget class="QLabel" name="label_16">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -496,9 +496,9 @@
     <string>Strength</string>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider_6">
+  <widget class="QSlider" name="strSlider">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -515,7 +515,7 @@
     </size>
    </property>
    <property name="maximum">
-    <number>5</number>
+    <number>10</number>
    </property>
    <property name="pageStep">
     <number>5</number>
@@ -527,9 +527,9 @@
     <enum>QSlider::TicksBothSides</enum>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider_7">
+  <widget class="QSlider" name="kidFriendlySlider">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -546,7 +546,7 @@
     </size>
    </property>
    <property name="maximum">
-    <number>5</number>
+    <number>10</number>
    </property>
    <property name="pageStep">
     <number>5</number>
@@ -560,7 +560,7 @@
   </widget>
   <widget class="QLabel" name="label_17">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -576,7 +576,7 @@
   </widget>
   <widget class="QLabel" name="label_18">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -590,9 +590,9 @@
     <string>Comm. Skills</string>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider_8">
+  <widget class="QSlider" name="commSlider">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -609,7 +609,7 @@
     </size>
    </property>
    <property name="maximum">
-    <number>5</number>
+    <number>10</number>
    </property>
    <property name="pageStep">
     <number>5</number>
@@ -621,9 +621,9 @@
     <enum>QSlider::TicksBothSides</enum>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider_9">
+  <widget class="QSlider" name="houseTrainedSlider">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -640,7 +640,7 @@
     </size>
    </property>
    <property name="maximum">
-    <number>5</number>
+    <number>10</number>
    </property>
    <property name="pageStep">
     <number>5</number>
@@ -654,7 +654,7 @@
   </widget>
   <widget class="QLabel" name="label_19">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -670,7 +670,7 @@
   </widget>
   <widget class="QLabel" name="label_20">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -684,9 +684,9 @@
     <string>Trustworthiness</string>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider_10">
+  <widget class="QSlider" name="trustSlider">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -703,7 +703,7 @@
     </size>
    </property>
    <property name="maximum">
-    <number>5</number>
+    <number>10</number>
    </property>
    <property name="pageStep">
     <number>5</number>
@@ -715,9 +715,9 @@
     <enum>QSlider::TicksBothSides</enum>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider_11">
+  <widget class="QSlider" name="curiositySlider">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
@@ -734,7 +734,7 @@
     </size>
    </property>
    <property name="maximum">
-    <number>5</number>
+    <number>10</number>
    </property>
    <property name="pageStep">
     <number>5</number>
@@ -748,7 +748,7 @@
   </widget>
   <widget class="QLabel" name="label_21">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>

@@ -1,6 +1,6 @@
-#include "addanimalwindow.h"
-#include "ui_addanimalwindow.h"
-#include "animal.h"
+#include "addclientwindow.h"
+#include "ui_addclientwindow.h"
+#include "client.h"
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
@@ -8,28 +8,49 @@
 #include <QtWidgets>
 #include <string>
 
-AddAnimalWIndow::AddAnimalWIndow(QWidget *parent) :
+AddClientWindow::AddClientWindow(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AddAnimalWIndow)
+    ui(new Ui::AddClientWindow)
 {
     ui->setupUi(this);
 }
 
-/* Collects all data from the field of the form and
- * creates an animal object from them. THat object
- * is then saved to a flat file
- * */
-void AddAnimalWIndow::on_addButton_clicked()
+AddClientWindow::~AddClientWindow()
 {
-    bool validAnimal = true;
+    delete ui;
+}
 
+/*
+ * Used to prevent both male and female being checked at the same time.
+ */
+void AddClientWindow::on_maleCheck_clicked()
+{
+    ui->femaleCheck->setChecked(false);
+}
+
+/*
+ * Used to prevent both male and female being checked at the same time.
+ */
+void AddClientWindow::on_femaleCheck_clicked()
+{
+    ui->maleCheck->setChecked(false);
+}
+
+/*
+ * Collects all data from the field of the form and
+ * creates an client object from them. That object
+ * is then saved to a flat file.
+ */
+void AddClientWindow::on_addButton_clicked()
+{
+    bool validClient = true;
     //Retrive data from UI
     QString name = ui->nameText->toPlainText();
 
     QString ageString = ui->ageText->toPlainText();
     int age = ageString.toInt();
     if(age == 0){ //toInt returns 0 if the string is not an integer number
-        validAnimal = false; //Not a valid animal (does not save)
+        validClient = false; //Not a valid client (does not save)
         switch( QMessageBox::question(this, tr("Error"), tr("Age is not valid, please enter a non-zero number"), QMessageBox::Ok, QMessageBox::Ok ) )
         {
             case QMessageBox::Ok:
@@ -39,34 +60,13 @@ void AddAnimalWIndow::on_addButton_clicked()
         }
     }
 
-    QString type = ui->typeText->toPlainText();
-    QString breed = ui->breedText->toPlainText();
-
-    QString weightString = ui->weightText->toPlainText();
-    int weight = weightString.toInt();
-    if(weight == 0){ //toInt returns 0 if the string is not an integer number
-        validAnimal = false; //Not a valid animal (does not save)
-        switch( QMessageBox::question(this, tr("Error"), tr("Weight is not valid, please enter a non-zero number"), QMessageBox::Ok, QMessageBox::Ok ) )
-        {
-            case QMessageBox::Ok:
-                break;
-            default:
-                break;
-        }
-    }
-
-    bool hasFur = ui->furCheck->isChecked();
-    QString climatePref = ui->climateText->toPlainText();
-    bool claws = ui->clawsCheck->isChecked();
-    bool sheds = ui->shedsCheck->isChecked();
-
     QString gender;
     if(ui->maleCheck->isChecked()){
         gender = "Male";
     } else if (ui->femaleCheck->isChecked()){
         gender = "Female";
     } else{ //Neither is selected
-        validAnimal = false; //Not a valid animal (does not save)
+        validClient = false; //Not a valid client (does not save)
         switch( QMessageBox::question(this, tr("Error"), tr("Please check a gender"), QMessageBox::Ok, QMessageBox::Ok ) )
         {
             case QMessageBox::Ok:
@@ -76,33 +76,24 @@ void AddAnimalWIndow::on_addButton_clicked()
         }
     }
 
-    QString colour = ui->colourText->toPlainText();
+    QString pNumString = ui->pNumText->toPlainText();
 
-    int furLength = ui->furLenSlider->sliderPosition();
-    int aggressiveness = ui->aggressivenessSlider->sliderPosition();
-    int playfulness = ui->playfulSlider->sliderPosition();
-    int kidFriendly = ui->kidFriendlySlider->sliderPosition();
-    int houseTrained = ui->houseTrainedSlider->sliderPosition();
-    int curiosity = ui->curiositySlider->sliderPosition();
-    int intelligence = ui->intSlider->sliderPosition();
-    int courage = ui->courageSlider->sliderPosition();
-    int strength = ui->strSlider->sliderPosition();
-    int commSkills = ui->commSlider->sliderPosition();
-    int trust = ui->trustSlider->sliderPosition();
+    QString addr = ui->addrText->toPlainText();
+    QString email = ui->emailText->toPlainText();
 
-    if(validAnimal){ //Valid Animal
-        Animal a(name.toStdString(), age, breed.toStdString(), type.toStdString(), weight, hasFur,
-                 climatePref.toStdString(), claws, sheds, gender.toStdString(), colour.toStdString());
-        saveAs(a); //Save constructed animal
-        this->destroy(); //Close Window
+    if(validClient){ //Valid Cleint
+        Client c(name.toStdString(), age, gender.toStdString(), addr.toStdString(), "Warm", pNumString.toStdString(), email.toStdString()); //Construct Client
+        saveAs(c); //Save constructed client
+        this->destroy(); //Close Window*/
     }
 }
 
 /*
- * Will save the animal input in a text document by
- * utilizing the Animal's toString() function.
+ * Will save the client input in a text document by
+ * utilizing the Client's toString() function.
  */
-void AddAnimalWIndow::saveAs(Animal a){
+void AddClientWindow::saveAs(Client c)
+{
     //Get file name from user
     QString fileName = QFileDialog::getSaveFileName(this,
            tr("Save Text Document"), "",
@@ -118,7 +109,7 @@ void AddAnimalWIndow::saveAs(Animal a){
         file.close();
         if (file.open(QIODevice::ReadWrite)) {
             QTextStream stream(&file);
-            QString data = QString::fromStdString(a.toString()); //get animal data in the form of a string
+            QString data = QString::fromStdString(c.toString()); //get client data in the form of a string
             stream << data << endl; //output data to file
             switch( QMessageBox::question(
                         this,
@@ -150,9 +141,9 @@ void AddAnimalWIndow::saveAs(Animal a){
 }
 
 /*
- * Returns the user back to the main window; does not save a new animal
+ * Returns the user back to the main window; does not save a new client
  */
-void AddAnimalWIndow::on_cancelButton_clicked()
+void AddClientWindow::on_cancelButton_clicked()
 {
     bool confirm = false;
     switch( QMessageBox::question(
@@ -174,25 +165,4 @@ void AddAnimalWIndow::on_cancelButton_clicked()
     if(confirm){
         this->destroy(); //Close window
     }
-}
-
-/*
- * Used to prevent both male and female being checked at the same time.
- */
-void AddAnimalWIndow::on_maleCheck_clicked()
-{
-    ui->femaleCheck->setChecked(false);
-}
-
-/*
- * Used to prevent both male and female being checked at the same time.
- */
-void AddAnimalWIndow::on_femaleCheck_clicked()
-{
-    ui->maleCheck->setChecked(false);
-}
-
-AddAnimalWIndow::~AddAnimalWIndow()
-{
-    delete ui;
 }
