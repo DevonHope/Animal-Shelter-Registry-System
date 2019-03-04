@@ -165,20 +165,23 @@ void MainWindow::initAnimals() {
                 else if (count == 7)
                       climatePref = in.readLine().toInt();
                 else if (count == 8) {
-                          if (in.readLine() == 'Y')
+                        QString c = in.readLine();
+                          if (c == 'Y' || c == '1')
                             claws = true;
                           else
                               claws = false;
 
                 }
                 else if (count == 9) {
-                          if (in.readLine() == 'Y')
+                    QString s = in.readLine();
+                          if (s == 'Y' || s == '1')
                             sheds = true;
                           else
                              sheds = false;
                 }
                 else if (count == 10) {
-                    if (in.readLine() == 'Y')
+                    QString f = in.readLine();
+                    if (f == 'Y' || f == '1')
                       hasFur = true;
                     else
                       hasFur = false;
@@ -212,8 +215,8 @@ void MainWindow::initAnimals() {
                 else
                     break;
 
-                /*There is no readline calls for non-physical traits which are the other remaining lines. Therefore, this break statement is there in the else statement for the
-                 * while loop to not infinitely loop */
+                /*It supposedly reaches the end of the file, but this break statement is there to ensure the
+                 * while loop does not infinitely loop */
 
                 count++;
             }
@@ -397,7 +400,7 @@ void MainWindow::showAnimalProfile() {
             viewAnim.fillProfileInfo(a);
             viewAnim.selectedFileName(QString::fromStdString(nodes[i].animalFileName));
 
-            if (currentUser == "Client")
+            if (currentUser == "Client") //Clients cannot delete animals, so if current user is a client then disable the delete button when viewing an animal
                 viewAnim.disableDeleteButton();
 
             viewAnim.setModal(true);

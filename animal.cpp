@@ -87,7 +87,7 @@ int Animal::getFurLength() const {return furLength;}
 
 //setters
 void Animal::setWeight(int s){weight = s;}
-void Animal::setHasFur(int s){ hasFur = s;}
+void Animal::setHasFur(bool s){ hasFur = s;}
 void Animal::setClimatePref(int cp){  climatePref = cp;}
 void Animal::setClaws(bool b){ claws = b;}
 void Animal::setSheds(bool b){ sheds = b;}

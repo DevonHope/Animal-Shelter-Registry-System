@@ -44,7 +44,7 @@ class Animal
         void setBreed(string);
         void setType(string);
         void setWeight(int);
-        void setHasFur(int);
+        void setHasFur(bool);
         void setClimatePref(int);
         void setClaws(bool);
         void setSheds(bool);
