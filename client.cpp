@@ -4,13 +4,12 @@ using namespace std;
 #include <sstream>
 #include <iostream>
 
-Client::Client(string n, int a, string g, string add, string cl, string pnum, string mail){
-
+Client::Client(string n, int a, string g, string add, string pnum, string mail){
     name = n;
     age = a;
     gender = g;
     address = add;
-    climate = cl;
+    //climate = cl;
     pNumber = pnum;
     eMail = mail;
     /*type = ty;
@@ -38,7 +37,7 @@ string Client::getName() const {return name;}
 int Client::getAge() const {return age;}
 string Client::getAddress() const {return address;}
 string Client::getPNum() const {return pNumber;}
-string Client::getClimate() const{ return climate;}
+//int Client::getClimate() const{ return climate;}
 string Client::getGender() const{return gender;}
 string Client::getMail() const {return eMail;}
 /*
@@ -69,7 +68,7 @@ void Client::setName(string s){name = s;}
 void Client::setAge(int d){age = d;}
 void Client::setAddress(string add) {address = add;}
 void Client::setPNum(string d) {pNumber = d;}
-void Client::setClimate(string s){  climate = s;}
+//void Client::setClimate(int s){  climate = s;}
 void Client::setGender(string s){gender = s;}
 void Client::setMail(string m){eMail = m;}
 /*
@@ -100,7 +99,7 @@ string Client::toString() const{
     out << getAddress() << "\n";
     out << getPNum() << "\n";
     out << getMail() << "\n";
-    out << getClimate() << "\n";
+    //out << getClimate() << "\n";
     out << getGender() << "\n";
 
     /*
@@ -125,4 +124,3 @@ string Client::toString() const{
 
     return out.str();
 }
-

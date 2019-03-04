@@ -294,7 +294,6 @@ void MainWindow::initClients() {
             string pNum = "";
             string email = "";
             string gender = "";
-            string climate = "";
 
             //Reads each line of the client file and each line corresponds to each respective basic info of the client, plus sets it to it's corresponding variable
             while(!in.atEnd()) {
@@ -309,8 +308,6 @@ void MainWindow::initClients() {
                 else if (count == 4)
                     email = in.readLine().toStdString();
                 else if (count == 5)
-                     climate = in.readLine().toStdString();
-                else if (count == 6)
                      gender = in.readLine().toStdString();
 
                 else
@@ -323,7 +320,7 @@ void MainWindow::initClients() {
             }
             file.close();
 
-            Client *client = new Client(name.toStdString(), age, gender, address, climate, pNum, email);
+            Client *client = new Client(name.toStdString(), age, gender, address, pNum, email);
 
             nodes2[i].storedClient = client;
             nodes2[i].clientFileName = filename.toStdString();

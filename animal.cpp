@@ -142,5 +142,3 @@ string Animal::toString() const {
     return out.str();
 
 }
-
-

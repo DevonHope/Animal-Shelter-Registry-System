@@ -9,10 +9,10 @@ class Animal
     public:
         Animal(string n, int a, string b, string t, int w, int fl, int cp, bool c, bool sh, bool hs, string g, string co, string ff, int in, int ag, int cour, int pl, int stren, string specs, int kf, int cs, int ht, int cu, int tst);
         ~Animal();
-
         string toString() const;
 
         //getters
+
         string getName() const;
         int getAge() const;
         string getBreed() const;
@@ -94,7 +94,6 @@ class Animal
         int furLength;
 
 };
-
 
 
 #endif // ANIMAL_H

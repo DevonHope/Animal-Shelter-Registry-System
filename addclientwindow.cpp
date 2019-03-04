@@ -82,7 +82,7 @@ void AddClientWindow::on_addButton_clicked()
     QString email = ui->emailText->toPlainText();
 
     if(validClient){ //Valid Cleint
-        Client c(name.toStdString(), age, gender.toStdString(), addr.toStdString(), "Warm", pNumString.toStdString(), email.toStdString()); //Construct Client
+        Client c(name.toStdString(), age, gender.toStdString(), addr.toStdString(), pNumString.toStdString(), email.toStdString()); //Construct Client
         saveAs(c); //Save constructed client
         this->destroy(); //Close Window*/
     }
