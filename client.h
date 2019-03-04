@@ -7,8 +7,8 @@ using namespace std;
 class Client {
 
     public:
-        //(, string ty, string bre, bool clws, bool shd, int intel, int ag, int cour, int pl, int stren, string sskill, int kf, int cs, int ht, int tru, int cur, int clen, bool HF)
-        Client(string n, int a, string g, string add, int cl, string pnum, string mail);
+        //(,  int cl, string ty, string bre, bool clws, bool shd, int intel, int ag, int cour, int pl, int stren, string sskill, int kf, int cs, int ht, int tru, int cur, int clen, bool HF)
+        Client(string n, int a, string g, string add, string pnum, string mail);
         ~Client();
         string toString() const;
         bool verifyAtt();
@@ -20,7 +20,7 @@ class Client {
         string getAddress() const;
         string getPNum() const;
         string getMail() const;
-        int getClimate() const;
+        //int getClimate() const;
         string getGender() const;
 
         /*
@@ -49,7 +49,7 @@ class Client {
         void setAddress(string);
         void setPNum(string);
         void setMail(string);
-        void setClimate(int);
+        //void setClimate(int);
         void setGender(string);
 
         /*
