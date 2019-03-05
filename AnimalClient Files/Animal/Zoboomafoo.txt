@@ -1,0 +1,24 @@
+Zoboomafoo
+Lemur
+Coquerel's Sifaka
+Male
+10
+Black and White
+40
+5
+0
+1
+1
+Bananas
+10
+1
+5
+10
+3
+Explorer, Can Talk
+10
+6
+10
+524288
+9
+
