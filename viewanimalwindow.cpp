@@ -25,18 +25,47 @@ void ViewAnimalWindow::fillProfileInfo(Animal a) {
     ui->ageText->setReadOnly(true);
     ui->breedText->setReadOnly(true);
     ui->typeText->setReadOnly(true);
-    ui->climateText->setReadOnly(true);
     ui->colourText->setReadOnly(true);
     ui->weightText->setReadOnly(true);
+    ui->specialSkillText->setReadOnly(true);
+    ui->favFoodText->setReadOnly(true);
+
+    //Disables the sliders so they cannot be modified by the user
+    ui->furLenSlider->setDisabled(true);
+    ui->aggressivenessSlider->setDisabled(true);
+    ui->playfulSlider->setDisabled(true);
+    ui->kidFriendlySlider->setDisabled(true);
+    ui->houseTrainedSlider->setDisabled(true);
+    ui->curiositySlider->setDisabled(true);
+    ui->intSlider->setDisabled(true);
+    ui->courageSlider->setDisabled(true);
+    ui->strSlider->setDisabled(true);
+    ui->commSlider->setDisabled(true);
+    ui->trustSlider->setDisabled(true);
+    ui->climateSlider->setDisabled(true);
 
     //Display specific animal information from the object
     ui->nameText->setPlainText(QString::fromStdString(a.getName()));
     ui->ageText->setPlainText(QString::number(a.getAge()));
     ui->breedText->setPlainText(QString::fromStdString(a.getBreed()));
     ui->typeText->setPlainText(QString::fromStdString(a.getType()));
-    ui->climateText->setPlainText(QString::fromStdString(a.getClimatePref()));
     ui->colourText->setPlainText(QString::fromStdString(a.getColour()));
     ui->weightText->setPlainText(QString::number(a.getWeight()));
+    ui->specialSkillText->setPlainText(QString::fromStdString(a.getSSkill()));
+    ui->favFoodText->setPlainText(QString::fromStdString(a.getFF()));
+
+    ui->intSlider->setValue(a.getIntell());
+    ui->climateSlider->setValue(a.getClimatePref());
+    ui->aggressivenessSlider->setValue(a.getAggro());
+    ui->courageSlider->setValue(a.getCourage());
+    ui->playfulSlider->setValue(a.getPlay());
+    ui->strSlider->setValue(a.getStrength());
+    ui->kidFriendlySlider->setValue(a.getKF());
+    ui->commSlider->setValue(a.getCSkill());
+    ui->houseTrainedSlider->setValue(a.getHTrained());
+    ui->curiositySlider->setValue(a.getCuriosity());
+    ui->trustSlider->setValue(a.getTrust());
+    ui->furLenSlider->setValue(a.getFurLength());
 
     //Set check box values and disable them from being changed.
     if (a.getGender() == "Male") {
@@ -120,4 +149,8 @@ void ViewAnimalWindow::on_deleteButton_clicked()
 
 void ViewAnimalWindow::selectedFileName(QString f) {
     fName = f;
+}
+
+void ViewAnimalWindow::disableDeleteButton() {
+    ui->deleteButton->setEnabled(false);
 }

@@ -3,30 +3,32 @@ using namespace std;
 #include <sstream>
 #include <iostream>
 
-Animal::Animal(string n, int a, string b, string t, int w, int fl, string cp, bool c, bool sh, string g, string co, string ff, int in, int ag, int cour, int pl, int stren, string specs, int kf, int cs, int ht, int cu)
+Animal::Animal(string n, int a, string b, string t, int w, int fl, int cp, bool c, bool sh, bool hs, string g, string co, string ff, int in, int ag, int cour, int pl, int stren, string specs, int kf, int cs, int ht, int cu, int tst)
 {
     name = n;
     age = a;
     breed = b;
     type = t;
     weight = w;
-    hasFur = fl;
+    hasFur = hs;
     climatePref = cp;
     claws = c;
     sheds = sh;
     gender = g;
     colour = co;
     favFood = ff;
-    intell = in; 
+    intell = in;
     aggro = ag;
-    courage = cour; 
-    play = pl; 
+    courage = cour;
+    play = pl;
     strength = stren;
     specialSkill = specs;
     kidFriendly = kf;
     commSkills = cs;
-    houseTrained = ht; 
+    houseTrained = ht;
     curiosity = cu;
+    furLength = fl;
+    trust = tst;
 }
 
 Animal::~Animal(){}
@@ -43,7 +45,7 @@ int Animal::getWeight() const{return weight;}
 
 bool Animal::getHasFur() const{return hasFur;}
 
-string Animal::getClimatePref() const{ return climatePref;}
+int Animal::getClimatePref() const{ return climatePref;}
 
 bool Animal::getClaws() const{return claws;}
 
@@ -77,14 +79,16 @@ int Animal::getCSkill() const {return commSkills;}
 // house trained
 int Animal::getHTrained() const {return houseTrained;}
 
-int Animal::getTrust() const{ return trust;} 
+int Animal::getTrust() const{ return trust;}
 
 int Animal::getCuriosity() const{  return curiosity;}
 
+int Animal::getFurLength() const {return furLength;}
+
 //setters
 void Animal::setWeight(int s){weight = s;}
-void Animal::setHasFur(int s){ hasFur = s;}
-void Animal::setClimatePref(string s){  climatePref = s;}
+void Animal::setHasFur(bool s){ hasFur = s;}
+void Animal::setClimatePref(int cp){  climatePref = cp;}
 void Animal::setClaws(bool b){ claws = b;}
 void Animal::setSheds(bool b){ sheds = b;}
 void Animal::setName(string s){name = s;}
@@ -105,6 +109,7 @@ void Animal::setcommSkill(int cs){commSkills = cs;}
 void Animal::sethouseTrained(int ht){houseTrained = ht;}
 void Animal::setTrust(int tru){trust = tru;}
 void Animal::setCuriosity(int cur){curiosity = cur;}
+void Animal::setFurLength(int fl) {furLength = fl;}
 
 string Animal::toString() const {
     ostringstream out;
@@ -132,6 +137,7 @@ string Animal::toString() const {
     out << getHTrained() << "\n";
     out << getTrust() << "\n";
     out << getCuriosity() << "\n";
+    out << getFurLength() << "\n";
 
     return out.str();
 

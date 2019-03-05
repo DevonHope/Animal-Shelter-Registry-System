@@ -5,7 +5,7 @@ Male
 20
 Pink Shell, Blue Body, Green Belly
 20
-Cool Water
+3
 Y
 N
 N
@@ -21,3 +21,4 @@ Can tie shoes
 10
 10
 4
+0

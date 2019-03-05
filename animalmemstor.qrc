@@ -2,8 +2,33 @@
     <qresource prefix="/memstorage">
         <file>AnimalClient Files/Animal/A-Stitch.txt</file>
         <file>AnimalClient Files/Animal/A-Gary.txt</file>
-        <file>AnimalClient Files/Animal/A-Brian.txt</file>
         <file>AnimalClient Files/Animal/Garfield.txt</file>
         <file>AnimalClient Files/Animal/A-Pikachu.txt</file>
+        <file>AnimalClient Files/Client/Andrew.txt</file>
+        <file>AnimalClient Files/Client/Andy.txt</file>
+        <file>AnimalClient Files/Client/Devon.txt</file>
+        <file>AnimalClient Files/Client/Hamza.txt</file>
+        <file>AnimalClient Files/Client/Robert.txt</file>
+        <file>AnimalClient Files/Animal/Astro.txt</file>
+        <file>AnimalClient Files/Animal/A-Brain.txt</file>
+        <file>AnimalClient Files/Animal/Beethoven.txt</file>
+        <file>AnimalClient Files/Animal/Black_Beauty.txt</file>
+        <file>AnimalClient Files/Animal/Clifford.txt</file>
+        <file>AnimalClient Files/Animal/Courage.txt</file>
+        <file>AnimalClient Files/Animal/Dino.txt</file>
+        <file>AnimalClient Files/Animal/Ein.txt</file>
+        <file>AnimalClient Files/Animal/Hobbes.txt</file>
+        <file>AnimalClient Files/Animal/Marcel.txt</file>
+        <file>AnimalClient Files/Animal/Marmaduke.txt</file>
+        <file>AnimalClient Files/Animal/Nibbler.txt</file>
+        <file>AnimalClient Files/Animal/Perry.txt</file>
+        <file>AnimalClient Files/Animal/Rocky.txt</file>
+        <file>AnimalClient Files/Animal/RubyBunny.txt</file>
+        <file>AnimalClient Files/Animal/Scooby.txt</file>
+        <file>AnimalClient Files/Animal/Seymour.txt</file>
+        <file>AnimalClient Files/Animal/Snellie.txt</file>
+        <file>AnimalClient Files/Animal/Snoopy.txt</file>
+        <file>AnimalClient Files/Animal/Stuart.txt</file>
+        <file>AnimalClient Files/Animal/Zoboomafoo.txt</file>
     </qresource>
 </RCC>

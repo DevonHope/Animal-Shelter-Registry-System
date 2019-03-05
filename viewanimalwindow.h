@@ -15,6 +15,7 @@ class ViewAnimalWindow:public QDialog
 public:
     void fillProfileInfo(Animal);
     void selectedFileName(QString);
+    void disableDeleteButton();
     explicit ViewAnimalWindow(QWidget *parent = 0);
     ~ViewAnimalWindow();
 

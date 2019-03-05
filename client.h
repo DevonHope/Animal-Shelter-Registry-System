@@ -90,7 +90,6 @@ class Client {
         int trust;
         int curiosity;
         int clean;
-        bool hasFur;
 
     private:
         string name;

@@ -1,10 +1,10 @@
 #include "client.h"
+
 using namespace std;
 #include <sstream>
 #include <iostream>
 
 Client::Client(string n, int a, string g, string add, string pnum, string mail){
-
     name = n;
     age = a;
     gender = g;

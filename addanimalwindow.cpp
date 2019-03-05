@@ -15,6 +15,10 @@ AddAnimalWIndow::AddAnimalWIndow(QWidget *parent) :
     ui->setupUi(this);
 }
 
+/* Collects all data from the field of the form and
+ * creates an animal object from them. THat object
+ * is then saved to a flat file
+ * */
 void AddAnimalWIndow::on_addButton_clicked()
 {
     bool validAnimal = true;
@@ -26,7 +30,7 @@ void AddAnimalWIndow::on_addButton_clicked()
     int age = ageString.toInt();
     if(age == 0){ //toInt returns 0 if the string is not an integer number
         validAnimal = false; //Not a valid animal (does not save)
-        switch( QMessageBox::question(this, tr("Error"), tr("Age is not valid"), QMessageBox::Ok, QMessageBox::Ok ) )
+        switch( QMessageBox::question(this, tr("Error"), tr("Age is not valid, please enter a non-zero number"), QMessageBox::Ok, QMessageBox::Ok ) )
         {
             case QMessageBox::Ok:
                 break;
@@ -42,7 +46,7 @@ void AddAnimalWIndow::on_addButton_clicked()
     int weight = weightString.toInt();
     if(weight == 0){ //toInt returns 0 if the string is not an integer number
         validAnimal = false; //Not a valid animal (does not save)
-        switch( QMessageBox::question(this, tr("Error"), tr("Weight is not valid"), QMessageBox::Ok, QMessageBox::Ok ) )
+        switch( QMessageBox::question(this, tr("Error"), tr("Weight is not valid, please enter a non-zero number"), QMessageBox::Ok, QMessageBox::Ok ) )
         {
             case QMessageBox::Ok:
                 break;
@@ -52,7 +56,7 @@ void AddAnimalWIndow::on_addButton_clicked()
     }
 
     bool hasFur = ui->furCheck->isChecked();
-    QString climatePref = ui->climateText->toPlainText();
+    int climatePref = ui->climateSlider->sliderPosition();
     bool claws = ui->clawsCheck->isChecked();
     bool sheds = ui->shedsCheck->isChecked();
 
@@ -73,10 +77,26 @@ void AddAnimalWIndow::on_addButton_clicked()
     }
 
     QString colour = ui->colourText->toPlainText();
+    QString favFood = ui->favFoodText->toPlainText();
+    QString specialSkill = ui->skillText->toPlainText();
+
+    int furLength = ui->furLenSlider->sliderPosition();
+    int aggressiveness = ui->aggressivenessSlider->sliderPosition();
+    int playfulness = ui->playfulSlider->sliderPosition();
+    int kidFriendly = ui->kidFriendlySlider->sliderPosition();
+    int houseTrained = ui->houseTrainedSlider->sliderPosition();
+    int curiosity = ui->curiositySlider->sliderPosition();
+    int intelligence = ui->intSlider->sliderPosition();
+    int courage = ui->courageSlider->sliderPosition();
+    int strength = ui->strSlider->sliderPosition();
+    int commSkills = ui->commSlider->sliderPosition();
+    int trust = ui->trustSlider->sliderPosition();
 
     if(validAnimal){ //Valid Animal
-        Animal a(name.toStdString(), age, breed.toStdString(), type.toStdString(), weight, hasFur,
-                 climatePref.toStdString(), claws, sheds, gender.toStdString(), colour.toStdString());
+        Animal a(name.toStdString(), age, breed.toStdString(), type.toStdString(), weight, furLength,
+                 climatePref, claws, sheds, hasFur, gender.toStdString(), colour.toStdString(),
+                 favFood.toStdString(), intelligence, aggressiveness, courage, playfulness, strength,
+                 specialSkill.toStdString(), kidFriendly, commSkills, houseTrained, curiosity, trust); //Construct animal
         saveAs(a); //Save constructed animal
         this->destroy(); //Close Window
     }
