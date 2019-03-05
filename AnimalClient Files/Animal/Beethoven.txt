@@ -1,0 +1,24 @@
+Beethoven
+Dog
+St. Bernard
+Male
+30
+Light Brown
+100
+5
+0
+1
+1
+Steak
+3
+2
+4
+7
+3
+Loyal
+7
+5
+10
+32553
+4
+
