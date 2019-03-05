@@ -58,6 +58,26 @@ MainWindow::MainWindow(QWidget *parent) :
         QFile::copy(":/memstorage/AnimalClient Files/Animal/A-Stitch.txt", storagePath + "A-Stitch.txt");
         QFile::copy(":/memstorage/AnimalClient Files/Animal/A-Pikachu.txt", storagePath + "A-Pikachu.txt");
         QFile::copy(":/memstorage/AnimalClient Files/Animal/Garfield.txt", storagePath + "Garfield.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Astro.txt", storagePath + "Astro.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Beethoven.txt", storagePath + "Beethoven.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Black_Beauty.txt", storagePath + "Black_Beauty.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Clifford.txt", storagePath + "Clifford.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Courage.txt", storagePath + "Courage.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Dino.txt", storagePath + "Dino.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Ein.txt", storagePath + "Ein.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Hobbes.txt", storagePath + "Hobbes.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Marcel.txt", storagePath + "Marcel.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Marmaduke.txt", storagePath + "Marmaduke.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Nibbler.txt", storagePath + "Nibbler.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Perry.txt", storagePath + "Perry.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Rocky.txt", storagePath + "Rocky.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/RubyBunny.txt", storagePath + "RubyBunny.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Scooby.txt", storagePath + "Scooby.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Seymour.txt", storagePath + "Seymour.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Snellie.txt", storagePath + "Snellie.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Snoopy.txt", storagePath + "Snoopy.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Stuart.txt", storagePath + "Stuart.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Animal/Zoboomafoo.txt", storagePath + "Zoboomafoo.txt");
     }
 
     QString storagePath2 = QDir::currentPath() + "/Clients/";
