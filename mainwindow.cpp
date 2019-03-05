@@ -37,10 +37,10 @@ struct clientNode {
     string clientFileName;
 };
 
-animalNode *nodes = new animalNode[30];
+animalNode *nodes = new animalNode[50];
 int arrTracker = 0;
 
-clientNode *nodes2 = new clientNode[30];
+clientNode *nodes2 = new clientNode[50];
 int arrTracker2 = 0;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -69,6 +69,8 @@ MainWindow::MainWindow(QWidget *parent) :
         QFile::copy(":/memstorage/AnimalClient Files/Client/Andy.txt", storagePath2 + "Andy.txt");
         QFile::copy(":/memstorage/AnimalClient Files/Client/Andrew.txt", storagePath2 + "Andrew.txt");
         QFile::copy(":/memstorage/AnimalClient Files/Client/Devon.txt", storagePath2 + "Devon.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Hamza.txt", storagePath2 + "Hamza.txt");
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Robert.txt", storagePath2 + "Robert.txt");
     }
 
 
@@ -363,7 +365,7 @@ void MainWindow::initClients() {
 void MainWindow::refreshAnimals() {
     delete [] nodes;
 
-    nodes = new animalNode[30];
+    nodes = new animalNode[50];
     arrTracker = 0;
 
     initAnimals();
@@ -376,7 +378,7 @@ void MainWindow::refreshAnimals() {
 void MainWindow::refreshClients() {
     delete [] nodes2;
 
-    nodes2 = new clientNode[30];
+    nodes2 = new clientNode[50];
     arrTracker2 = 0;
 
     initClients();
