@@ -21,9 +21,13 @@ public:
 private slots:
     void on_deleteButton_clicked();
 
+    void on_editButton_clicked();
+
 private:
     Ui::ViewClientWindow *ui;
     QString fName;
+    bool isEditing;
+    void saveAs(Client c);
 };
 
 #endif // VIEWCLIENTWINDOW_H

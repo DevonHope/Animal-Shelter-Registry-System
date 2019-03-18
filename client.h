@@ -7,8 +7,7 @@ using namespace std;
 class Client {
 
     public:
-        //(,  int cl, string ty, string bre, bool clws, bool shd, int intel, int ag, int cour, int pl, int stren, string sskill, int kf, int cs, int ht, int tru, int cur, int clen, bool HF)
-        Client(string n, int a, string g, string add, string pnum, string mail);
+        Client(string n, int a, string g, string add, string pnum, string mail, int cl, string ty, string sskill, string food, bool clws, bool shd, bool HF, int intel, int ag, int cour, int pl, int stren, int kf, int cs, int ht, int tru, int cur, int furLen);
         ~Client();
         string toString() const;
         bool verifyAtt();
@@ -20,11 +19,10 @@ class Client {
         string getAddress() const;
         string getPNum() const;
         string getMail() const;
-        //int getClimate() const;
+        int getClimate() const;
         string getGender() const;
 
-        /*
-        string getBreed() const;
+
         string getType() const;
         bool getHasFur() const;
         bool getClaws() const;
@@ -41,7 +39,7 @@ class Client {
         int getHTrained() const; // house trained
         int getTrust() const;
         int getCuriosity() const;
-        */
+        int getFurLen() const;
 
         //setters
         void setName(string);
@@ -49,11 +47,9 @@ class Client {
         void setAddress(string);
         void setPNum(string);
         void setMail(string);
-        //void setClimate(int);
+        void setClimate(int);
         void setGender(string);
 
-        /*
-        void setBreed(string);
         void setType(string);
         void setHasFur(int);
         void setClaws(bool);
@@ -70,11 +66,10 @@ class Client {
         void sethouseTrained(int);
         void setTrust(int);
         void setCuriosity(int);
-        */
+        void setFurLen(int);
 
     protected:
         string type;
-        string breed;
         bool claws;
         bool sheds;
         bool hasFur;
@@ -89,7 +84,7 @@ class Client {
         int houseTrained;
         int trust;
         int curiosity;
-        int clean;
+        int furLength;
 
     private:
         string name;

@@ -154,3 +154,227 @@ void ViewAnimalWindow::selectedFileName(QString f) {
 void ViewAnimalWindow::disableDeleteButton() {
     ui->deleteButton->setEnabled(false);
 }
+
+void ViewAnimalWindow::on_cancelButton_clicked()
+{
+    bool confirm = false;
+    switch( QMessageBox::question(
+                this,
+                tr("Application Name"),
+                tr("Are you sure you want to cancel? Any unsaved data may be lost."),
+                QMessageBox::Cancel | QMessageBox::Ok,
+                QMessageBox::Ok ) )
+    {
+        case QMessageBox::Ok:
+            confirm = true;
+            break;
+        case QMessageBox::Cancel:
+            break;
+        default:
+            break;
+    }
+
+    if(confirm){
+        this->destroy(); //Close window
+    }
+}
+
+void ViewAnimalWindow::on_editButton_clicked()
+{
+    if(isEditing == false){
+        isEditing = true;
+        ui->label->setText("Editing Mode");
+        ui->editButton->setText("Confirm");
+        
+        //Enable all UI elements to edit
+        ui->nameText->setReadOnly(false);
+        ui->ageText->setReadOnly(false);
+        ui->breedText->setReadOnly(false);
+        ui->typeText->setReadOnly(false);
+        ui->colourText->setReadOnly(false);
+        ui->weightText->setReadOnly(false);
+        ui->specialSkillText->setReadOnly(false);
+        ui->favFoodText->setReadOnly(false);
+        
+        ui->furLenSlider->setDisabled(false);
+        ui->aggressivenessSlider->setDisabled(false);
+        ui->playfulSlider->setDisabled(false);
+        ui->kidFriendlySlider->setDisabled(false);
+        ui->houseTrainedSlider->setDisabled(false);
+        ui->curiositySlider->setDisabled(false);
+        ui->intSlider->setDisabled(false);
+        ui->courageSlider->setDisabled(false);
+        ui->strSlider->setDisabled(false);
+        ui->commSlider->setDisabled(false);
+        ui->trustSlider->setDisabled(false);
+        ui->climateSlider->setDisabled(false);
+        
+        ui->maleCheck->setEnabled(true);
+        ui->femaleCheck->setEnabled(true);
+        ui->furCheck->setEnabled(true);
+        ui->clawsCheck->setEnabled(true);
+        ui->shedsCheck->setEnabled(true);
+        
+    } else { //Save edits
+        isEditing = true;
+        ui->label->setText("Reading Mode");
+        ui->editButton->setText("Edit");
+
+        bool validAnimal = true;
+
+        //Retrive data from UI
+        QString name = ui->nameText->toPlainText();
+
+        QString ageString = ui->ageText->toPlainText();
+        int age = ageString.toInt();
+        if(age == 0){ //toInt returns 0 if the string is not an integer number
+            validAnimal = false; //Not a valid animal (does not save)
+            switch( QMessageBox::question(this, tr("Error"), tr("Age is not valid, please enter a non-zero number"), QMessageBox::Ok, QMessageBox::Ok ) )
+            {
+                case QMessageBox::Ok:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        QString type = ui->typeText->toPlainText();
+        QString breed = ui->breedText->toPlainText();
+
+        QString weightString = ui->weightText->toPlainText();
+        int weight = weightString.toInt();
+        if(weight == 0){ //toInt returns 0 if the string is not an integer number
+            validAnimal = false; //Not a valid animal (does not save)
+            switch( QMessageBox::question(this, tr("Error"), tr("Weight is not valid, please enter a non-zero number"), QMessageBox::Ok, QMessageBox::Ok ) )
+            {
+                case QMessageBox::Ok:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        bool hasFur = ui->furCheck->isChecked();
+        int climatePref = ui->climateSlider->sliderPosition();
+        bool claws = ui->clawsCheck->isChecked();
+        bool sheds = ui->shedsCheck->isChecked();
+
+        QString gender;
+        if(ui->maleCheck->isChecked()){
+            gender = "Male";
+        } else if (ui->femaleCheck->isChecked()){
+            gender = "Female";
+        } else{ //Neither is selected
+            validAnimal = false; //Not a valid animal (does not save)
+            switch( QMessageBox::question(this, tr("Error"), tr("Please check a gender"), QMessageBox::Ok, QMessageBox::Ok ) )
+            {
+                case QMessageBox::Ok:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        QString colour = ui->colourText->toPlainText();
+        QString favFood = ui->favFoodText->toPlainText();
+        QString specialSkill = ui->specialSkillText->toPlainText();
+
+        int furLength = ui->furLenSlider->sliderPosition();
+        int aggressiveness = ui->aggressivenessSlider->sliderPosition();
+        int playfulness = ui->playfulSlider->sliderPosition();
+        int kidFriendly = ui->kidFriendlySlider->sliderPosition();
+        int houseTrained = ui->houseTrainedSlider->sliderPosition();
+        int curiosity = ui->curiositySlider->sliderPosition();
+        int intelligence = ui->intSlider->sliderPosition();
+        int courage = ui->courageSlider->sliderPosition();
+        int strength = ui->strSlider->sliderPosition();
+        int commSkills = ui->commSlider->sliderPosition();
+        int trust = ui->trustSlider->sliderPosition();
+
+        if(validAnimal){ //Valid Animal
+            Animal a(name.toStdString(), age, breed.toStdString(), type.toStdString(), weight, furLength,
+                     climatePref, claws, sheds, hasFur, gender.toStdString(), colour.toStdString(),
+                     favFood.toStdString(), intelligence, aggressiveness, courage, playfulness, strength,
+                     specialSkill.toStdString(), kidFriendly, commSkills, houseTrained, curiosity, trust); //Construct animal
+            saveAs(a); //Save constructed animal
+
+            //Disable all UI elements to edit
+            ui->nameText->setReadOnly(true);
+            ui->ageText->setReadOnly(true);
+            ui->breedText->setReadOnly(true);
+            ui->typeText->setReadOnly(true);
+            ui->colourText->setReadOnly(true);
+            ui->weightText->setReadOnly(true);
+            ui->specialSkillText->setReadOnly(true);
+            ui->favFoodText->setReadOnly(true);
+
+            ui->furLenSlider->setDisabled(true);
+            ui->aggressivenessSlider->setDisabled(true);
+            ui->playfulSlider->setDisabled(true);
+            ui->kidFriendlySlider->setDisabled(true);
+            ui->houseTrainedSlider->setDisabled(true);
+            ui->curiositySlider->setDisabled(true);
+            ui->intSlider->setDisabled(true);
+            ui->courageSlider->setDisabled(true);
+            ui->strSlider->setDisabled(true);
+            ui->commSlider->setDisabled(true);
+            ui->trustSlider->setDisabled(true);
+            ui->climateSlider->setDisabled(true);
+
+            ui->maleCheck->setEnabled(false);
+            ui->femaleCheck->setEnabled(false);
+            ui->furCheck->setEnabled(false);
+            ui->clawsCheck->setEnabled(false);
+            ui->shedsCheck->setEnabled(false);
+        }
+    }
+}
+
+/*
+ * Will save the animal input in a text document by
+ * utilizing the Animal's toString() function.
+ */
+void ViewAnimalWindow::saveAs(Animal a){
+    //Get file name from user
+    if(!(fName.isEmpty())){ //Check if a file name was entered
+        if(!(fName.endsWith(".txt"))){
+            fName = fName + ".txt";
+        }
+
+        QString storagePath = QDir::currentPath() + "/Animals/";
+
+        QFile file(storagePath + fName);
+        file.open(QFile::WriteOnly|QFile::Truncate); //Clear file contents
+        file.close();
+        if (file.open(QIODevice::ReadWrite)) {
+            QTextStream stream(&file);
+            QString data = QString::fromStdString(a.toString()); //get animal data in the form of a string
+            stream << data << endl; //output data to file
+            switch( QMessageBox::question(
+                        this,
+                        tr("Application Name"),
+                        tr("Save was successful."),
+                        QMessageBox::Ok,
+                        QMessageBox::Ok ) )
+            {
+                case QMessageBox::Ok:
+                    break;
+                default:
+                    break;
+            }
+        } else { //Save error
+            switch( QMessageBox::question(
+                        this,
+                        tr("Application Name"),
+                        tr("Save may have failed!"),
+                        QMessageBox::Ok,
+                        QMessageBox::Ok ) )
+            {
+                case QMessageBox::Ok:
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
