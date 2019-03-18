@@ -66,7 +66,7 @@ void ViewAnimalWindow::fillProfileInfo(Animal a) {
     ui->curiositySlider->setValue(a.getCuriosity());
     ui->trustSlider->setValue(a.getTrust());
     ui->furLenSlider->setValue(a.getFurLength());
-
+cl, string ty, string bre, bool clws, bool shd, int intel
     //Set check box values and disable them from being changed.
     if (a.getGender() == "Male") {
         ui->maleCheck->setChecked(true);
