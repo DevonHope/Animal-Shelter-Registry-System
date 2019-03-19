@@ -81,62 +81,33 @@ void AddClientWindow::on_addButton_clicked()
     QString addr = ui->addrText->toPlainText();
     QString email = ui->emailText->toPlainText();
 
+    //Animal Preferences
+    QString type = ui->typeText->toPlainText();
+    QString skill = ui->skillText->toPlainText();
+    QString favFood = ui->favFoodText->toPlainText();
+
+    int furLength = ui->furLenSlider->sliderPosition();
+    int aggressiveness = ui->aggressivenessSlider->sliderPosition();
+    int playfulness = ui->playfulSlider->sliderPosition();
+    int kidFriendly = ui->kidFriendlySlider->sliderPosition();
+    int houseTrained = ui->houseTrainedSlider->sliderPosition();
+    int curiosity = ui->curiositySlider->sliderPosition();
+    int intelligence = ui->intSlider->sliderPosition();
+    int courage = ui->courageSlider->sliderPosition();
+    int strength = ui->strSlider->sliderPosition();
+    int commSkills = ui->commSlider->sliderPosition();
+    int trust = ui->trustSlider->sliderPosition();
+
+    bool claws = ui->clawsCheck->isChecked();
+    bool sheds = ui->shedsCheck->isChecked();
+    bool fur = ui->furCheck->isChecked();
+
     if(validClient){ //Valid Cleint
-        Client c(name.toStdString(), age, gender.toStdString(), addr.toStdString(), pNumString.toStdString(), email.toStdString()); //Construct Client
-        saveAs(c); //Save constructed client
+        Client c(name.toStdString(), age, gender.toStdString(), addr.toStdString(), pNumString.toStdString(), email.toStdString(),
+                 type.toStdString(), skill.toStdString(), favFood.toStdString(), claws, sheds, fur, intelligence, aggressiveness,
+                 courage, playfulness, strength, kidFriendly, commSkills, houseTrained, trust, curiosity, furLength); //Construct Client
+        fm.saveClientAs(c); //Save constructed client
         this->destroy(); //Close Window*/
-    }
-}
-
-/*
- * Will save the client input in a text document by
- * utilizing the Client's toString() function.
- */
-void AddClientWindow::saveAs(Client c)
-{
-    //Get file name from user
-    QString fileName = QFileDialog::getSaveFileName(this,
-           tr("Save Text Document"), "",
-           tr("Plain Text (*.txt);;All Files (*)"));
-
-    if(!(fileName.isEmpty())){ //Check if a file name was entered
-        if(!(fileName.endsWith(".txt"))){
-            fileName += ".txt";
-        }
-
-        QFile file(fileName);
-        file.open(QFile::WriteOnly|QFile::Truncate); //Clear file contents
-        file.close();
-        if (file.open(QIODevice::ReadWrite)) {
-            QTextStream stream(&file);
-            QString data = QString::fromStdString(c.toString()); //get client data in the form of a string
-            stream << data << endl; //output data to file
-            switch( QMessageBox::question(
-                        this,
-                        tr("Application Name"),
-                        tr("Save was successful."),
-                        QMessageBox::Ok,
-                        QMessageBox::Ok ) )
-            {
-                case QMessageBox::Ok:
-                    break;
-                default:
-                    break;
-            }
-        } else { //Save error
-            switch( QMessageBox::question(
-                        this,
-                        tr("Application Name"),
-                        tr("Save may have failed!"),
-                        QMessageBox::Ok,
-                        QMessageBox::Ok ) )
-            {
-                case QMessageBox::Ok:
-                    break;
-                default:
-                    break;
-            }
-        }
     }
 }
 

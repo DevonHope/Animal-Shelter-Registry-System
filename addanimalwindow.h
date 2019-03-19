@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "animal.h"
+#include "filemanager.h"
 
 namespace Ui {
 class AddAnimalWIndow;
@@ -28,7 +29,8 @@ private slots:
 
 private:
     Ui::AddAnimalWIndow *ui;
-    void saveAs(Animal a);
+    FileManager fm;
+    //void saveAs(Animal a);
 };
 
 #endif // ADDANIMALWINDOW_H

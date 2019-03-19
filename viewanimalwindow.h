@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "animal.h"
+#include "filemanager.h"
 
 namespace Ui {
 class ViewAnimalWindow;
@@ -22,9 +23,16 @@ public:
 private slots:
     void on_deleteButton_clicked();
 
+    void on_cancelButton_clicked();
+
+    void on_editButton_clicked();
+
 private:
     Ui::ViewAnimalWindow *ui;
    QString fName;
+   bool isEditing = false;
+   FileManager fm;
+   //void saveAs(Animal a);
 };
 
 #endif // VIEWANIMALWINDOW_H
