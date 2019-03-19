@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "animal.h"
+#include "filemanager.h"
 
 namespace Ui {
 class ViewAnimalWindow;
@@ -30,7 +31,8 @@ private:
     Ui::ViewAnimalWindow *ui;
    QString fName;
    bool isEditing = false;
-   void saveAs(Animal a);
+   FileManager fm;
+   //void saveAs(Animal a);
 };
 
 #endif // VIEWANIMALWINDOW_H

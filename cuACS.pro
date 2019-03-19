@@ -31,7 +31,8 @@ SOURCES += \
     addanimalwindow.cpp \
     viewclientwindow.cpp \
     client.cpp \
-    addclientwindow.cpp
+    addclientwindow.cpp \
+    filemanager.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,7 +41,8 @@ HEADERS += \
     addanimalwindow.h \
     viewclientwindow.h \
     client.h \
-    addclientwindow.h
+    addclientwindow.h \
+    filemanager.h
 
 FORMS += \
         mainwindow.ui \

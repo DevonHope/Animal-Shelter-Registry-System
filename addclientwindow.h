@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "client.h"
+#include "filemanager.h"
 
 namespace Ui {
 class AddClientWindow;
@@ -27,7 +28,8 @@ private slots:
 
 private:
     Ui::AddClientWindow *ui;
-    void saveAs(Client c);
+    FileManager fm;
+    //void saveAs(Client c);
 };
 
 #endif // ADDCLIENTWINDOW_H

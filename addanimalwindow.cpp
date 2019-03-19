@@ -97,59 +97,8 @@ void AddAnimalWIndow::on_addButton_clicked()
                  climatePref, claws, sheds, hasFur, gender.toStdString(), colour.toStdString(),
                  favFood.toStdString(), intelligence, aggressiveness, courage, playfulness, strength,
                  specialSkill.toStdString(), kidFriendly, commSkills, houseTrained, curiosity, trust); //Construct animal
-        saveAs(a); //Save constructed animal
+        fm.saveAnimalAs(a); //Save constructed animal to file
         this->destroy(); //Close Window
-    }
-}
-
-/*
- * Will save the animal input in a text document by
- * utilizing the Animal's toString() function.
- */
-void AddAnimalWIndow::saveAs(Animal a){
-    //Get file name from user
-    QString fileName = QFileDialog::getSaveFileName(this,
-           tr("Save Text Document"), "",
-           tr("Plain Text (*.txt);;All Files (*)"));
-
-    if(!(fileName.isEmpty())){ //Check if a file name was entered
-        if(!(fileName.endsWith(".txt"))){
-            fileName += ".txt";
-        }
-
-        QFile file(fileName);
-        file.open(QFile::WriteOnly|QFile::Truncate); //Clear file contents
-        file.close();
-        if (file.open(QIODevice::ReadWrite)) {
-            QTextStream stream(&file);
-            QString data = QString::fromStdString(a.toString()); //get animal data in the form of a string
-            stream << data << endl; //output data to file
-            switch( QMessageBox::question(
-                        this,
-                        tr("Application Name"),
-                        tr("Save was successful."),
-                        QMessageBox::Ok,
-                        QMessageBox::Ok ) )
-            {
-                case QMessageBox::Ok:
-                    break;
-                default:
-                    break;
-            }
-        } else { //Save error
-            switch( QMessageBox::question(
-                        this,
-                        tr("Application Name"),
-                        tr("Save may have failed!"),
-                        QMessageBox::Ok,
-                        QMessageBox::Ok ) )
-            {
-                case QMessageBox::Ok:
-                    break;
-                default:
-                    break;
-            }
-        }
     }
 }
 

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "client.h"
+#include "filemanager.h"
 
 namespace Ui {
 class ViewClientWindow;
@@ -27,7 +28,8 @@ private:
     Ui::ViewClientWindow *ui;
     QString fName;
     bool isEditing;
-    void saveAs(Client c);
+    FileManager fm;
+    //void saveAs(Animal a);
 };
 
 #endif // VIEWCLIENTWINDOW_H

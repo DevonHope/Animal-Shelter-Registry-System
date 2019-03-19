@@ -66,7 +66,6 @@ void ViewAnimalWindow::fillProfileInfo(Animal a) {
     ui->curiositySlider->setValue(a.getCuriosity());
     ui->trustSlider->setValue(a.getTrust());
     ui->furLenSlider->setValue(a.getFurLength());
-cl, string ty, string bre, bool clws, bool shd, int intel
     //Set check box values and disable them from being changed.
     if (a.getGender() == "Male") {
         ui->maleCheck->setChecked(true);
@@ -119,32 +118,9 @@ ViewAnimalWindow::~ViewAnimalWindow()
  */
 void ViewAnimalWindow::on_deleteButton_clicked()
 {
-
-    bool confirm = false;
-    QString fileName = fName; //File name is retrieved from the animal node struct
-
-        switch( QMessageBox::question(
-                    this,
-                    tr("Application Name"),
-                    tr("Are you sure you want to delete this file? All data within it will be lost."),
-                    QMessageBox::Cancel | QMessageBox::Ok,
-                    QMessageBox::Ok ) )
-        {
-            case QMessageBox::Ok:
-                confirm = true;
-                break;
-            case QMessageBox::Cancel:
-                break;
-            default:
-                break;
-        }
-
-    if (confirm == true) {
-        QFile file(QDir::currentPath() + "/Animals/" + fileName);
-        file.remove(); //Delete file
-    }
+    QString storagePath = QDir::currentPath() + "/Animals/";
+    fm.deleteFile(storagePath + fName);
     this->destroy(); //Close window
-
 }
 
 void ViewAnimalWindow::selectedFileName(QString f) {
@@ -296,7 +272,8 @@ void ViewAnimalWindow::on_editButton_clicked()
                      climatePref, claws, sheds, hasFur, gender.toStdString(), colour.toStdString(),
                      favFood.toStdString(), intelligence, aggressiveness, courage, playfulness, strength,
                      specialSkill.toStdString(), kidFriendly, commSkills, houseTrained, curiosity, trust); //Construct animal
-            saveAs(a); //Save constructed animal
+            QString storagePath = QDir::currentPath() + "/Animals/";
+            fm.saveAnimal(a, storagePath + fName); //Save constructed animal
 
             //Disable all UI elements to edit
             ui->nameText->setReadOnly(true);
@@ -326,55 +303,6 @@ void ViewAnimalWindow::on_editButton_clicked()
             ui->furCheck->setEnabled(false);
             ui->clawsCheck->setEnabled(false);
             ui->shedsCheck->setEnabled(false);
-        }
-    }
-}
-
-/*
- * Will save the animal input in a text document by
- * utilizing the Animal's toString() function.
- */
-void ViewAnimalWindow::saveAs(Animal a){
-    //Get file name from user
-    if(!(fName.isEmpty())){ //Check if a file name was entered
-        if(!(fName.endsWith(".txt"))){
-            fName = fName + ".txt";
-        }
-
-        QString storagePath = QDir::currentPath() + "/Animals/";
-
-        QFile file(storagePath + fName);
-        file.open(QFile::WriteOnly|QFile::Truncate); //Clear file contents
-        file.close();
-        if (file.open(QIODevice::ReadWrite)) {
-            QTextStream stream(&file);
-            QString data = QString::fromStdString(a.toString()); //get animal data in the form of a string
-            stream << data << endl; //output data to file
-            switch( QMessageBox::question(
-                        this,
-                        tr("Application Name"),
-                        tr("Save was successful."),
-                        QMessageBox::Ok,
-                        QMessageBox::Ok ) )
-            {
-                case QMessageBox::Ok:
-                    break;
-                default:
-                    break;
-            }
-        } else { //Save error
-            switch( QMessageBox::question(
-                        this,
-                        tr("Application Name"),
-                        tr("Save may have failed!"),
-                        QMessageBox::Ok,
-                        QMessageBox::Ok ) )
-            {
-                case QMessageBox::Ok:
-                    break;
-                default:
-                    break;
-            }
         }
     }
 }

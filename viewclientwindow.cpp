@@ -61,30 +61,8 @@ ViewClientWindow::~ViewClientWindow()
 
 void ViewClientWindow::on_deleteButton_clicked()
 {
-
-    bool confirm = false;
-    QString fileName = fName; //File name is retrieved from the client node struct
-
-        switch( QMessageBox::question(
-                    this,
-                    tr("Application Name"),
-                    tr("Are you sure you want to delete this file? All data within it will be lost."),
-                    QMessageBox::Cancel | QMessageBox::Ok,
-                    QMessageBox::Ok ) )
-        {
-            case QMessageBox::Ok:
-                confirm = true;
-                break;
-            case QMessageBox::Cancel:
-                break;
-            default:
-                break;
-        }
-
-    if (confirm == true) {
-        QFile file(QDir::currentPath() + "/Clients/" + fileName);
-        file.remove(); //Delete file
-    }
+    QString storagePath = QDir::currentPath() + "/Clients/";
+    fm.deleteFile(storagePath + fName);
     this->destroy(); //Close window
 }
 
@@ -189,8 +167,11 @@ void ViewClientWindow::on_editButton_clicked()
         int trust = ui->trustSlider->sliderPosition();
 
         if(validClient){ //Valid Cleint
-            Client c(name.toStdString(), age, gender.toStdString(), addr.toStdString(), pNumString.toStdString(), email.toStdString()); //Construct Client
-            saveAs(c); //Save constructed client
+            Client c(name.toStdString(), age, gender.toStdString(), addr.toStdString(), pNumString.toStdString(), email.toStdString(),
+                     type.toStdString(), skill.toStdString(), favFood.toStdString(), claws, sheds, fur, intelligence, aggressiveness,
+                     courage, playfulness, strength, kidFriendly, commSkills, houseTrained, trust, curiosity, furLength); //Construct Client
+            QString storagePath = QDir::currentPath() + "/Clients/";
+            fm.saveClient(c, storagePath + fName); //Save constructed client
 
             //Disable all UI elements to edit
             ui->nameText->setReadOnly(true);
