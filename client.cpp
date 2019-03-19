@@ -100,7 +100,6 @@ string Client::toString() const{
     out << getClimate() << "\n";
     out << getGender() << "\n";
     out << getType() << "\n";
-    out << getColour() << "\n";
     out << getClaws() << "\n";
     out << getSheds() << "\n";
     out << getHasFur() << "\n";

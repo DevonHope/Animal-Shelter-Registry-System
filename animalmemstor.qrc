@@ -30,5 +30,6 @@
         <file>AnimalClient Files/Animal/Snoopy.txt</file>
         <file>AnimalClient Files/Animal/Stuart.txt</file>
         <file>AnimalClient Files/Animal/Zoboomafoo.txt</file>
+        <file>AnimalClient Files/Client/Craig.txt</file>
     </qresource>
 </RCC>

@@ -54,3 +54,7 @@ FORMS += \
 RESOURCES += \
     animalmemstor.qrc
 
+DISTFILES += \
+    AnimalClient Files/Client/Craig.txt \
+    AnimalClient Files/Client/Dean.txt
+
