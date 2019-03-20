@@ -168,7 +168,7 @@ void ViewClientWindow::on_editButton_clicked()
         ui->shedsCheck->setEnabled(true);
 
     } else { //Save edits
-        isEditing = true;
+        isEditing = false;
         ui->label->setText("Reading Mode");
         ui->editButton->setText("Edit");
 
