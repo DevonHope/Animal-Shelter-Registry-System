@@ -7,7 +7,7 @@ using namespace std;
 class Client {
 
     public:
-        Client(string n, int a, string g, string add, string pnum, string mail, int cl, string ty, string sskill, string food, bool clws, bool shd, bool HF, int intel, int ag, int cour, int pl, int stren, int kf, int cs, int ht, int tru, int cur, int furLen);
+        Client(string n, int a, string g, string add, string pnum, string mail, string ty, string sskill, string food, bool clws, bool shd, bool HF, int intel, int ag, int cour, int pl, int stren, int kf, int cs, int ht, int tru, int cur, int furLen, int cl);
         ~Client();
         string toString() const;
         bool verifyAtt();
@@ -24,10 +24,10 @@ class Client {
 
 
         string getType() const;
+        string getFavFood() const;
         bool getHasFur() const;
         bool getClaws() const;
         bool getSheds() const;
-        string getColour() const;
         int getIntell() const;
         int getAggro() const;
         int getCourage() const;
@@ -51,10 +51,10 @@ class Client {
         void setGender(string);
 
         void setType(string);
+        void setFavFood(string);
         void setHasFur(int);
         void setClaws(bool);
         void setSheds(bool);
-        void setColour(string);
         void setIntell(int);
         void setAggro(int);
         void setCourage(int);
@@ -70,6 +70,7 @@ class Client {
 
     protected:
         string type;
+        string favFood;
         bool claws;
         bool sheds;
         bool hasFur;

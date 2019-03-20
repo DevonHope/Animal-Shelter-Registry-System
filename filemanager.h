@@ -7,13 +7,14 @@
 
 class FileManager
 {
+
 public:
     FileManager();
-    void saveAnimal(Animal a, QString fileName);
-    void saveAnimalAs(Animal a);
-    void saveClient(Client c, QString fileName);
-    void saveClientAs(Client c);
-    void deleteFile(QString fileName);
+    void saveAnimal(Animal a, QString fileName, QWidget *parent);
+    void saveAnimalAs(Animal a, QWidget *parent);
+    void saveClient(Client c, QString fileName, QWidget *parent);
+    void saveClientAs(Client c, QWidget *parent);
+    void deleteFile(QString fileName, QWidget *parent);
 };
 
 #endif // FILEMANAGER_H

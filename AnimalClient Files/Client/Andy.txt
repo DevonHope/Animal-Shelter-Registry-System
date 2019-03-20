@@ -3,12 +3,12 @@ Andy Pham
 2453 Carlsen Avenue
 8072204422
 andygbg23@gmail.com
-6
 Male
 Lizard
 Y
 N
 N
+Kibble
 9
 9
 9
@@ -21,3 +21,4 @@ Can breathe fire
 6
 7
 0
+6

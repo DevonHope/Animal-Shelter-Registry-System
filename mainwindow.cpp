@@ -122,6 +122,8 @@ MainWindow::MainWindow(QWidget *parent) :
         QFile(storagePath2 + "Hamza.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
         QFile::copy(":/memstorage/AnimalClient Files/Client/Robert.txt", storagePath2 + "Robert.txt");
         QFile(storagePath2 + "Robert.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Craig.txt", storagePath2 + "Craig.txt");
+        QFile(storagePath2 + "Craig.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
     }
 
 
@@ -168,7 +170,7 @@ void MainWindow::initAnimals() {
         //QFile file(":/memstorage/AnimalClient Files/Animal/" + filename);
         QFile file(QDir::currentPath() + "/Animals/" + filename);
 
-        if (file.open(QIODevice::ReadWrite)) {
+        if (file.open(QIODevice::ReadOnly)) {
 
             QTextStream in(&file);
             int count = 0; //Indicates what # the line is
@@ -347,6 +349,25 @@ void MainWindow::initClients() {
             string pNum = "";
             string email = "";
             string gender = "";
+            string type = "";
+            bool claws = false;
+            bool sheds = false;
+            bool hasFur = false;
+            int intell = 0;
+            int aggro = 0;
+            int cour = 0;
+            int play = 0;
+            int stren = 0;
+            string favFood = "";
+            string specSkill = "";
+            int kidFriendly = 0;
+            int commSkills = 0;
+            int houseTrained = 0;
+            int trust = 0;
+            int curiosity = 0;
+            int furLen = 0;
+            int climate = 0;
+
 
             //Reads each line of the client file and each line corresponds to each respective basic info of the client, plus sets it to it's corresponding variable
             while(!in.atEnd()) {
@@ -362,18 +383,70 @@ void MainWindow::initClients() {
                     email = in.readLine().toStdString();
                 else if (count == 5)
                      gender = in.readLine().toStdString();
+                else if (count == 6)
+                      type = in.readLine().toStdString();
+                else if (count == 7) {
+                        QString c = in.readLine();
+                          if (c == 'Y' || c == '1')
+                            claws = true;
+                          else
+                              claws = false;
 
+                }
+                else if (count == 8) {
+                    QString s = in.readLine();
+                          if (s == 'Y' || s == '1')
+                            sheds = true;
+                          else
+                             sheds = false;
+                }
+                else if (count == 9) {
+                    QString f = in.readLine();
+                    if (f == 'Y' || f == '1')
+                      hasFur = true;
+                    else
+                      hasFur = false;
+                }
+                else if (count == 10)
+                    favFood = in.readLine().toStdString();
+                else if (count == 11)
+                    intell = in.readLine().toInt();
+                else if (count == 12)
+                    aggro = in.readLine().toInt();
+                else if (count == 13)
+                    cour = in.readLine().toInt();
+                else if (count == 14)
+                    play = in.readLine().toInt();
+                else if (count == 15)
+                    stren = in.readLine().toInt();
+                else if (count == 16)
+                    specSkill = in.readLine().toStdString();
+                else if (count == 17)
+                    kidFriendly = in.readLine().toInt();
+                else if (count == 18)
+                    commSkills = in.readLine().toInt();
+                else if (count == 19)
+                    houseTrained = in.readLine().toInt();
+                else if (count == 20)
+                    trust = in.readLine().toInt();
+                else if (count == 21)
+                    curiosity = in.readLine().toInt();
+                else if (count == 22)
+                    furLen = in.readLine().toInt();
+                else if (count == 23)
+                    climate = in.readLine().toInt();
                 else
                     break;
 
-                /*There is no readline calls for preferences which are the other remaining lines. Therefore, this break statement is there in the else statement for the
-                 * while loop to not infinitely loop */
+                /*It supposedly reaches the end of the file, but this break statement is there to ensure the
+                 * while loop does not infinitely loop */
 
                 count++;
             }
             file.close();
 
-            Client *client = new Client(name.toStdString(), age, gender, address, pNum, email);
+            Client *client = new Client(name.toStdString(), age, gender, address, pNum, email, type, specSkill, favFood, claws, sheds, hasFur, intell, aggro,
+                                        cour, play, stren, kidFriendly, commSkills, houseTrained, trust, curiosity, furLen, climate);
 
             nodes2[i].storedClient = client;
             nodes2[i].clientFileName = filename.toStdString();

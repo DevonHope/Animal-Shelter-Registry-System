@@ -3,12 +3,12 @@ Devon Hope
 210 Carlsen Avenue
 6134679321
 devonhope@gmail.com
-3
 Male
 Dog
 N
 Y
 Y
+N/A
 8
 6
 8
@@ -21,3 +21,4 @@ N/A
 8
 7
 5
+3

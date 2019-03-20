@@ -3,12 +3,12 @@ Craig Jodoin
 123 Albion Ave
 123 321 1111
 cj21@coolmail.com
-2
 Male
 Fish
 N
 N
 N
+Meat
 0
 3
 0
@@ -21,3 +21,4 @@ Can Talk
 0
 0
 0
+2

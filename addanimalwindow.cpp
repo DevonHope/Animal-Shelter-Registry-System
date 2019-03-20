@@ -97,7 +97,7 @@ void AddAnimalWIndow::on_addButton_clicked()
                  climatePref, claws, sheds, hasFur, gender.toStdString(), colour.toStdString(),
                  favFood.toStdString(), intelligence, aggressiveness, courage, playfulness, strength,
                  specialSkill.toStdString(), kidFriendly, commSkills, houseTrained, curiosity, trust); //Construct animal
-        fm.saveAnimalAs(a); //Save constructed animal to file
+        fm.saveAnimalAs(a, this); //Save constructed animal to file
         this->destroy(); //Close Window
     }
 }

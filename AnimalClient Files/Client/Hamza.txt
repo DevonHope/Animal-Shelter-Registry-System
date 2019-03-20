@@ -3,12 +3,12 @@ Hamza Aburaneh
 11 Dragon Avenue
 6131234444
 hamzaaburaneh@gmail.com
-7
 Male
 Alien
 N
 N
 N
+N/A
 0
 0
 7
@@ -21,3 +21,4 @@ Can fly
 9
 3
 0
+4

@@ -119,7 +119,7 @@ ViewAnimalWindow::~ViewAnimalWindow()
 void ViewAnimalWindow::on_deleteButton_clicked()
 {
     QString storagePath = QDir::currentPath() + "/Animals/";
-    fm.deleteFile(storagePath + fName);
+    fm.deleteFile(storagePath + fName, this);
     this->destroy(); //Close window
 }
 
@@ -192,7 +192,7 @@ void ViewAnimalWindow::on_editButton_clicked()
         ui->shedsCheck->setEnabled(true);
         
     } else { //Save edits
-        isEditing = true;
+        isEditing = false;
         ui->label->setText("Reading Mode");
         ui->editButton->setText("Edit");
 
@@ -273,7 +273,7 @@ void ViewAnimalWindow::on_editButton_clicked()
                      favFood.toStdString(), intelligence, aggressiveness, courage, playfulness, strength,
                      specialSkill.toStdString(), kidFriendly, commSkills, houseTrained, curiosity, trust); //Construct animal
             QString storagePath = QDir::currentPath() + "/Animals/";
-            fm.saveAnimal(a, storagePath + fName); //Save constructed animal
+            fm.saveAnimal(a, storagePath + fName, this); //Save constructed animal
 
             //Disable all UI elements to edit
             ui->nameText->setReadOnly(true);

@@ -97,6 +97,7 @@ void AddClientWindow::on_addButton_clicked()
     int strength = ui->strSlider->sliderPosition();
     int commSkills = ui->commSlider->sliderPosition();
     int trust = ui->trustSlider->sliderPosition();
+    int climate = ui->climateSlider->sliderPosition();
 
     bool claws = ui->clawsCheck->isChecked();
     bool sheds = ui->shedsCheck->isChecked();
@@ -105,8 +106,8 @@ void AddClientWindow::on_addButton_clicked()
     if(validClient){ //Valid Cleint
         Client c(name.toStdString(), age, gender.toStdString(), addr.toStdString(), pNumString.toStdString(), email.toStdString(),
                  type.toStdString(), skill.toStdString(), favFood.toStdString(), claws, sheds, fur, intelligence, aggressiveness,
-                 courage, playfulness, strength, kidFriendly, commSkills, houseTrained, trust, curiosity, furLength); //Construct Client
-        fm.saveClientAs(c); //Save constructed client
+                 courage, playfulness, strength, kidFriendly, commSkills, houseTrained, trust, curiosity, furLength, climate); //Construct Client
+        fm.saveClientAs(c, this); //Save constructed client
         this->destroy(); //Close Window*/
     }
 }
