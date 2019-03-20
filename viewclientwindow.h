@@ -26,6 +26,8 @@ private slots:
 
     void on_editButton_clicked();
 
+    void on_cancelButton_clicked();
+
 private:
     Ui::ViewClientWindow *ui;
     QString fName;

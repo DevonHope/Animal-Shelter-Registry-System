@@ -121,6 +121,29 @@ void ViewClientWindow::disableDeleteButton() {
     ui->deleteButton->setDisabled(true);
 }
 
+void ViewClientWindow::on_cancelButton_clicked()
+{
+    bool confirm = false;
+    switch( QMessageBox::question(
+                this,
+                tr("Application Name"),
+                tr("Are you sure you want to cancel? Any unsaved data may be lost."),
+                QMessageBox::Cancel | QMessageBox::Ok,
+                QMessageBox::Ok ) )
+    {
+        case QMessageBox::Ok:
+            confirm = true;
+            break;
+        case QMessageBox::Cancel:
+            break;
+        default:
+            break;
+    }
+
+    if(confirm){
+        this->destroy(); //Close window
+    }
+}
 
 /*
  * Deletes the client being viewed from the file system, it will

@@ -39,11 +39,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->scrollArea_3->setDisabled(false);
     ui->addAnimalButton->setDisabled(false);
     ui->addClientButton->setDisabled(false);
-
-    for(int i = 0; i < fm.getNumClients(); i++) {
-        QString name = QString::fromStdString((fm.getClients()[i]).storedClient->getName());
-        ui->clientDropDown->addItem(name);
-    }
 }
 
 MainWindow::~MainWindow()
@@ -103,9 +98,13 @@ void MainWindow::initClients() {
     }
 
     /* Loading all clients again makes them not disabled, so this is to ensure that only the current client can view their own profile */
-    if (currentUser != "Staff" && currentUser != "") {
-        qDebug() << QString::fromStdString(currentUser);
+    if (currentUser != "Staff" && currentUser != "")
         onlyViewLoggedInClient(currentUser);
+
+    ui->clientDropDown->clear();
+    for(int i = 0; i < fm.getNumClients(); i++) {
+        QString name = QString::fromStdString((fm.getClients()[i]).storedClient->getName());
+        ui->clientDropDown->addItem(name);
     }
 }
 
