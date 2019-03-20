@@ -17,6 +17,7 @@ public:
     void fillProfileInfo(Animal);
     void selectedFileName(QString);
     void disableDeleteButton();
+    void disableEditButton();
     explicit ViewAnimalWindow(QWidget *parent = 0);
     ~ViewAnimalWindow();
 

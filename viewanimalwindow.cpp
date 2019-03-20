@@ -131,6 +131,10 @@ void ViewAnimalWindow::disableDeleteButton() {
     ui->deleteButton->setEnabled(false);
 }
 
+void ViewAnimalWindow::disableEditButton() {
+    ui->editButton->setEnabled(false);
+}
+
 void ViewAnimalWindow::on_cancelButton_clicked()
 {
     bool confirm = false;

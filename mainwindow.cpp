@@ -152,8 +152,10 @@ void MainWindow::showAnimalProfile() {
             viewAnim.fillProfileInfo(a);
             viewAnim.selectedFileName(QString::fromStdString((fm.getAnimals()[i]).animalFileName));
 
-            if (currentUser != "Staff" && currentUser != "") //Clients cannot delete animals, so if current user is a client then disable the delete button when viewing an animal
+            if (currentUser != "Staff" && currentUser != "") {//Clients cannot delete animals, so if current user is a client then disable the delete button when viewing an animal
                 viewAnim.disableDeleteButton();
+                viewAnim.disableEditButton();
+            }
 
             viewAnim.setModal(true);
             viewAnim.exec();
@@ -176,6 +178,12 @@ void MainWindow::showClientProfile() {
             Client c = *((fm.getClients()[i]).storedClient);
             viewCln.fillProfileInfo(c);
             viewCln.selectedFileName(QString::fromStdString((fm.getClients()[i]).clientFileName));
+
+            if (currentUser == "Staff")
+                viewCln.disableEditButton();
+            else
+                viewCln.disableDeleteButton();
+
 
             viewCln.setModal(true);
             viewCln.exec();

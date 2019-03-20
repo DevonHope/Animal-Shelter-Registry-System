@@ -113,11 +113,19 @@ ViewClientWindow::~ViewClientWindow()
     delete ui;
 }
 
+void ViewClientWindow::disableEditButton() {
+    ui->editButton->setDisabled(true);
+}
+
+void ViewClientWindow::disableDeleteButton() {
+    ui->deleteButton->setDisabled(true);
+}
+
+
 /*
  * Deletes the client being viewed from the file system, it will
  * remain loaded in until the user refreshes the client list.
  */
-
 
 void ViewClientWindow::on_deleteButton_clicked()
 {
