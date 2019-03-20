@@ -238,9 +238,9 @@ font: 15pt &quot;DejaVu Sans&quot;;
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>370</x>
       <y>10</y>
-      <width>271</width>
+      <width>401</width>
       <height>34</height>
      </rect>
     </property>
@@ -265,19 +265,6 @@ font: 15pt &quot;DejaVu Sans&quot;;
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="clientButton">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>50</y>
-      <width>83</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Client</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="staffButton">
     <property name="geometry">
      <rect>
@@ -289,6 +276,19 @@ font: 15pt &quot;DejaVu Sans&quot;;
     </property>
     <property name="text">
      <string>Staff</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="clientDropDown">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>50</y>
+      <width>86</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="currentText">
+     <string/>
     </property>
    </widget>
   </widget>

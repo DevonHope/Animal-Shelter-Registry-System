@@ -27,17 +27,19 @@ private slots:
 
     void showClientProfile();
 
+    void onlyViewLoggedInClient(string name);
+
     void on_addAnimalButton_clicked();
 
     void on_refreshAnimalsButton_clicked();
 
     void on_refreshClientsButton_clicked();
 
-    void on_clientButton_clicked();
-
     void on_staffButton_clicked();
 
     void on_addClientButton_clicked();
+
+    void on_clientDropDown_activated(int index);
 
 private:
     Ui::MainWindow *ui;

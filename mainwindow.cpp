@@ -35,10 +35,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->staffButton->setDisabled(true);
 
-    ui->clientButton->setDisabled(false);
+    ui->clientDropDown->setDisabled(false);
     ui->scrollArea_3->setDisabled(false);
     ui->addAnimalButton->setDisabled(false);
     ui->addClientButton->setDisabled(false);
+
+    for(int i = 0; i < fm.getNumClients(); i++) {
+        QString name = QString::fromStdString((fm.getClients()[i]).storedClient->getName());
+        ui->clientDropDown->addItem(name);
+    }
 }
 
 MainWindow::~MainWindow()
@@ -89,11 +94,18 @@ void MainWindow::initClients() {
     for(int i = 0; i < fm.getNumClients(); i++) {
             QString name = QString::fromStdString((fm.getClients()[i]).storedClient->getName());
             QPushButton *button = new QPushButton(name, this);
+            button->setObjectName(name);
             button->setStyleSheet("height: 25px");
             connect(button, SIGNAL(clicked()), this, SLOT(showClientProfile())); //Connect each button to view client ui form
             ui->verticalLayout_4->addWidget(button); //Add button to the scrolling area layout
 
         ui->scrollArea_3->setWidget(ui->verticalLayoutWidget_4);
+    }
+
+    /* Loading all clients again makes them not disabled, so this is to ensure that only the current client can view their own profile */
+    if (currentUser != "Staff" && currentUser != "") {
+        qDebug() << QString::fromStdString(currentUser);
+        onlyViewLoggedInClient(currentUser);
     }
 }
 
@@ -116,6 +128,15 @@ void MainWindow::refreshClients() {
     initClients();
 }
 
+void MainWindow::onlyViewLoggedInClient(string name) {
+    for(int i = 0; i < fm.getNumClients(); i++) {
+        if (ui->verticalLayout_4->itemAt(i)->widget()->objectName() != QString::fromStdString(name))
+            ui->verticalLayout_4->itemAt(i)->widget()->setDisabled(true);
+        else
+            ui->verticalLayout_4->itemAt(i)->widget()->setDisabled(false);
+    }
+}
+
 /*
  * Opens up a new window that is used to view a specific
  * animal's information.
@@ -131,7 +152,7 @@ void MainWindow::showAnimalProfile() {
             viewAnim.fillProfileInfo(a);
             viewAnim.selectedFileName(QString::fromStdString((fm.getAnimals()[i]).animalFileName));
 
-            if (currentUser == "Client") //Clients cannot delete animals, so if current user is a client then disable the delete button when viewing an animal
+            if (currentUser != "Staff" && currentUser != "") //Clients cannot delete animals, so if current user is a client then disable the delete button when viewing an animal
                 viewAnim.disableDeleteButton();
 
             viewAnim.setModal(true);
@@ -202,21 +223,6 @@ void MainWindow::on_refreshClientsButton_clicked()
     refreshClients();
 }
 
-// Enables set user privelleges for being a client
-void MainWindow::on_clientButton_clicked()
-{
-    currentUser = "Client";
-    ui->label_3->setText("Current User: Client");
-
-    ui->scrollArea_3->setDisabled(true); //Disabled viewing detailed info of animals
-    ui->addAnimalButton->setDisabled(true);
-    ui->addClientButton->setDisabled(true);
-    ui->clientButton->setDisabled(true);
-
-    ui->staffButton->setDisabled(false);
-
-}
-
 // Enables set user privelleges for being a staff
 void MainWindow::on_staffButton_clicked()
 {
@@ -225,10 +231,28 @@ void MainWindow::on_staffButton_clicked()
 
     ui->staffButton->setDisabled(true);
 
-    ui->clientButton->setDisabled(false);
     ui->scrollArea_3->setDisabled(false); //Enabled viewing detailed info of animals
     ui->addAnimalButton->setDisabled(false);
     ui->addClientButton->setDisabled(false);
+
+    //Enables all the client buttons again
+    for(int i = 0; i<fm.getNumClients(); i++)
+         ui->verticalLayout_4->itemAt(i)->widget()->setDisabled(false);
+
 }
 
 
+
+void MainWindow::on_clientDropDown_activated(int index)
+{
+    currentUser = (fm.getClients()[index]).storedClient->getName();
+    ui->label_3->setText("Current User: " + QString::fromStdString(currentUser));
+
+    ui->addAnimalButton->setDisabled(true);
+    ui->addClientButton->setDisabled(true);
+    ui->scrollArea_3->setDisabled(false);
+
+    ui->staffButton->setDisabled(false);
+
+    onlyViewLoggedInClient(currentUser);
+}
