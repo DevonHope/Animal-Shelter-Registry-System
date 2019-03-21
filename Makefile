@@ -57,7 +57,8 @@ SOURCES       = main.cpp \
 		addanimalwindow.cpp \
 		viewclientwindow.cpp \
 		client.cpp \
-		addclientwindow.cpp qrc_animalmemstor.cpp \
+		addclientwindow.cpp \
+		filemanager.cpp qrc_animalmemstor.cpp \
 		moc_mainwindow.cpp \
 		moc_viewanimalwindow.cpp \
 		moc_addanimalwindow.cpp \
@@ -71,13 +72,18 @@ OBJECTS       = main.o \
 		viewclientwindow.o \
 		client.o \
 		addclientwindow.o \
+		filemanager.o \
 		qrc_animalmemstor.o \
 		moc_mainwindow.o \
 		moc_viewanimalwindow.o \
 		moc_addanimalwindow.o \
 		moc_viewclientwindow.o \
 		moc_addclientwindow.o
-DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
+DIST          = AnimalClient \
+		Files/Client/Craig.txt \
+		AnimalClient \
+		Files/Client/Dean.txt \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/sanitize.conf \
@@ -172,14 +178,16 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		addanimalwindow.h \
 		viewclientwindow.h \
 		client.h \
-		addclientwindow.h main.cpp \
+		addclientwindow.h \
+		filemanager.h main.cpp \
 		mainwindow.cpp \
 		animal.cpp \
 		viewanimalwindow.cpp \
 		addanimalwindow.cpp \
 		viewclientwindow.cpp \
 		client.cpp \
-		addclientwindow.cpp
+		addclientwindow.cpp \
+		filemanager.cpp
 QMAKE_TARGET  = cuACS
 DESTDIR       = 
 TARGET        = cuACS
@@ -396,8 +404,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents animalmemstor.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h animal.h viewanimalwindow.h addanimalwindow.h viewclientwindow.h client.h addclientwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp animal.cpp viewanimalwindow.cpp addanimalwindow.cpp viewclientwindow.cpp client.cpp addclientwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h animal.h viewanimalwindow.h addanimalwindow.h viewclientwindow.h client.h addclientwindow.h filemanager.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp animal.cpp viewanimalwindow.cpp addanimalwindow.cpp viewclientwindow.cpp client.cpp addclientwindow.cpp filemanager.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui viewanimalwindow.ui addanimalwindow.ui viewclientwindow.ui addclientwindow.ui $(DISTDIR)/
 
 
@@ -440,30 +448,39 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp moc_viewanimalwindow.cpp moc_addanimalwindow.cpp moc_viewclientwindow.cpp moc_addclientwindow.cpp
 moc_mainwindow.cpp: animal.h \
 		client.h \
+		filemanager.h \
 		mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/3004-2019 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
 moc_viewanimalwindow.cpp: animal.h \
+		filemanager.h \
+		client.h \
 		viewanimalwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/3004-2019 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include viewanimalwindow.h -o moc_viewanimalwindow.cpp
 
 moc_addanimalwindow.cpp: animal.h \
+		filemanager.h \
+		client.h \
 		addanimalwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/3004-2019 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include addanimalwindow.h -o moc_addanimalwindow.cpp
 
 moc_viewclientwindow.cpp: client.h \
+		filemanager.h \
+		animal.h \
 		viewclientwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/3004-2019 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include viewclientwindow.h -o moc_viewclientwindow.cpp
 
 moc_addclientwindow.cpp: client.h \
+		filemanager.h \
+		animal.h \
 		addclientwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -506,12 +523,14 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 main.o: main.cpp mainwindow.h \
 		animal.h \
-		client.h
+		client.h \
+		filemanager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
 		animal.h \
 		client.h \
+		filemanager.h \
 		ui_mainwindow.h \
 		viewanimalwindow.h \
 		ui_viewanimalwindow.h \
@@ -528,16 +547,22 @@ animal.o: animal.cpp animal.h
 
 viewanimalwindow.o: viewanimalwindow.cpp viewanimalwindow.h \
 		animal.h \
+		filemanager.h \
+		client.h \
 		ui_viewanimalwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o viewanimalwindow.o viewanimalwindow.cpp
 
 addanimalwindow.o: addanimalwindow.cpp addanimalwindow.h \
 		animal.h \
+		filemanager.h \
+		client.h \
 		ui_addanimalwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addanimalwindow.o addanimalwindow.cpp
 
 viewclientwindow.o: viewclientwindow.cpp viewclientwindow.h \
 		client.h \
+		filemanager.h \
+		animal.h \
 		ui_viewclientwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o viewclientwindow.o viewclientwindow.cpp
 
@@ -546,8 +571,15 @@ client.o: client.cpp client.h
 
 addclientwindow.o: addclientwindow.cpp addclientwindow.h \
 		client.h \
+		filemanager.h \
+		animal.h \
 		ui_addclientwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o addclientwindow.o addclientwindow.cpp
+
+filemanager.o: filemanager.cpp filemanager.h \
+		animal.h \
+		client.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o filemanager.o filemanager.cpp
 
 qrc_animalmemstor.o: qrc_animalmemstor.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_animalmemstor.o qrc_animalmemstor.cpp

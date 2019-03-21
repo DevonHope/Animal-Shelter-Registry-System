@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    fm.startUp();
+    fm.startUp(); //Starts up the lists of animals and clients from storage
 
     ui->setupUi(this);
     initAnimals();
@@ -109,7 +109,7 @@ void MainWindow::initClients() {
 }
 
 /*
- * Refreshes the list of animals, to be used
+ * Refreshes the visual list of animals, to be used
  * in the case of additions and deletions.
  */
 void MainWindow::refreshAnimals() {
@@ -118,7 +118,7 @@ void MainWindow::refreshAnimals() {
 }
 
 /*
- * Refreshes the list of clients, to be used
+ * Refreshes the visual list of clients, to be used
  * in the case of additions and deletions.
  */
 void MainWindow::refreshClients() {
@@ -249,7 +249,7 @@ void MainWindow::on_staffButton_clicked()
 }
 
 
-
+//Enables set user privelleges for being a client
 void MainWindow::on_clientDropDown_activated(int index)
 {
     currentUser = (fm.getClients()[index]).storedClient->getName();

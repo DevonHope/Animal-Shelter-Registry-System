@@ -26,7 +26,7 @@ void FileManager::startUp() {
 
     QString storagePath = QDir::currentPath() + "/Animals/";
 
-    //If project was executed for the first time, create a folder containing 5 animals from persistent storage in the build folder
+    //If project was executed for the first time, create a folder containing 25 animals from persistent storage in the build folder
     //and set their permissions to Read-Write for future use.
     if (!QDir(storagePath).exists()) {
         QDir().mkdir("Animals");
@@ -85,7 +85,7 @@ void FileManager::startUp() {
 
     QString storagePath2 = QDir::currentPath() + "/Clients/";
 
-    //If project was executed for the first time, create a folder containing 5 clients from persistent storage in the build folder
+    //If project was executed for the first time, create a folder containing 20 clients from persistent storage in the build folder
     if (!QDir(storagePath2).exists()) {
         QDir().mkdir("Clients");
 
@@ -101,6 +101,45 @@ void FileManager::startUp() {
         QFile(storagePath2 + "Robert.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
         QFile::copy(":/memstorage/AnimalClient Files/Client/Craig.txt", storagePath2 + "Craig.txt");
         QFile(storagePath2 + "Craig.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Dean.txt", storagePath2 + "Dean.txt");
+        QFile(storagePath2 + "Dean.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Ashley.txt", storagePath2 + "Ashley.txt");
+        QFile(storagePath2 + "Ashley.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Bev.txt", storagePath2 + "Bev.txt");
+        QFile(storagePath2 + "Bev.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+
+        QFile::copy(":/memstorage/AnimalClient Files/Client/DDuck.txt", storagePath2 + "DDuck.txt");
+        QFile(storagePath2 + "DDuck.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+
+        QFile::copy(":/memstorage/AnimalClient Files/Client/George.txt", storagePath2 + "George.txt");
+        QFile(storagePath2 + "George.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Flora.txt", storagePath2 + "Flora.txt");
+        QFile(storagePath2 + "Flora.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Jason.txt", storagePath2 + "Jason.txt");
+        QFile(storagePath2 + "Jason.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Lou.txt", storagePath2 + "Lou.txt");
+        QFile(storagePath2 + "Lou.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Shania.txt", storagePath2 + "Shania.txt");
+        QFile(storagePath2 + "Shania.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Skittle.txt", storagePath2 + "Skittle.txt");
+        QFile(storagePath2 + "Skittle.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Spottagus.txt", storagePath2 + "Spottagus.txt");
+        QFile(storagePath2 + "Spottagus.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Steven.txt", storagePath2 + "Steven.txt");
+        QFile(storagePath2 + "Steven.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Thor.txt", storagePath2 + "Thor.txt");
+        QFile(storagePath2 + "Thor.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
+        QFile::copy(":/memstorage/AnimalClient Files/Client/Vent.txt", storagePath2 + "Vent.txt");
+        QFile(storagePath2 + "Vent.txt").setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner);
     }
 
     initAnimals();
@@ -406,8 +445,6 @@ void FileManager::initClients() {
 
             i++;
             clientTracker = i;
-
-            qDebug() << QString::number(clientTracker);
         }
         else {
             QString str = "Could not open " + filename + "!";
@@ -558,7 +595,7 @@ void FileManager::deleteFile(QString fileName, QWidget *parent){
 }
 
 /*
- * Refreshes the list of animals, to be used
+ * Refreshes the physical list of animals from storage, to be used
  * in the case of additions and deletions.
  */
 void FileManager::refreshAnimals() {
@@ -571,7 +608,7 @@ void FileManager::refreshAnimals() {
 }
 
 /*
- * Refreshes the list of clients, to be used
+ * Refreshes the physical list of clients from storage, to be used
  * in the case of additions and deletions.
  */
 void FileManager::refreshClients() {
