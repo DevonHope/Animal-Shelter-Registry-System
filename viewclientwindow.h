@@ -16,6 +16,8 @@ class ViewClientWindow : public QDialog
 public:
     void fillProfileInfo(Client);
     void selectedFileName(QString);
+    void disableEditButton();
+    void disableDeleteButton();
     explicit ViewClientWindow(QWidget *parent = 0);
     ~ViewClientWindow();
 
@@ -24,10 +26,12 @@ private slots:
 
     void on_editButton_clicked();
 
+    void on_cancelButton_clicked();
+
 private:
     Ui::ViewClientWindow *ui;
     QString fName;
-    bool isEditing;
+    bool isEditing = false;
     FileManager fm;
     //void saveAs(Animal a);
 };

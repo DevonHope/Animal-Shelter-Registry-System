@@ -4,7 +4,7 @@ using namespace std;
 #include <sstream>
 #include <iostream>
 
-Client::Client(string n, int a, string g, string add, string pnum, string mail, int cl, string ty, string sskill, string food, bool clws, bool shd, bool HF, int intel, int ag, int cour, int pl, int stren, int kf, int cs, int ht, int tru, int cur, int furLen)
+Client::Client(string n, int a, string g, string add, string pnum, string mail, string ty, string sskill, string food, bool clws, bool shd, bool HF, int intel, int ag, int cour, int pl, int stren, int kf, int cs, int ht, int tru, int cur, int furLen, int cl)
 {
     name = n;
     age = a;
@@ -14,6 +14,7 @@ Client::Client(string n, int a, string g, string add, string pnum, string mail, 
     pNumber = pnum;
     eMail = mail;
     type = ty;
+    favFood = food;
     claws = clws;
     sheds = shd;
     intell = intel;
@@ -42,10 +43,10 @@ string Client::getGender() const{return gender;}
 string Client::getMail() const {return eMail;}
 
 string Client::getType() const {return type;}
+string Client::getFavFood() const {return favFood;}
 bool Client::getHasFur() const{return hasFur;}
 bool Client::getClaws() const{return claws;}
 bool Client::getSheds() const{ return sheds;}
-string Client::getColour() const{return colour;}
 int Client::getIntell() const{return intell;}
 int Client::getAggro() const{return aggro;}
 int Client::getCourage() const{ return courage;}
@@ -73,9 +74,8 @@ void Client::setMail(string m){eMail = m;}
 void Client::setHasFur(int s){ hasFur = s;}
 void Client::setClaws(bool b){ claws = b;}
 void Client::setSheds(bool b){ sheds = b;}
-void Client::setBreed(string s){breed = s;}
 void Client::setType(string s){type = s;}
-void Client::setColour(string s){colour = s;}
+void Client::setFavFood(string f){favFood = f;}
 void Client::setIntell(int intel){intell = intel;}
 void Client::setAggro(int ag){aggro = ag;}
 void Client::setCourage(int cou){courage = cou;}
@@ -97,9 +97,9 @@ string Client::toString() const{
     out << getAddress() << "\n";
     out << getPNum() << "\n";
     out << getMail() << "\n";
-    out << getClimate() << "\n";
     out << getGender() << "\n";
     out << getType() << "\n";
+    out <<getFavFood() << "\n";
     out << getClaws() << "\n";
     out << getSheds() << "\n";
     out << getHasFur() << "\n";
@@ -115,6 +115,7 @@ string Client::toString() const{
     out << getTrust() << "\n";
     out << getCuriosity() << "\n";
     out << getFurLen() << "\n";
+    out << getClimate() << "\n";
 
     return out.str();
 }

@@ -13,6 +13,30 @@ AddClientWindow::AddClientWindow(QWidget *parent) :
     ui(new Ui::AddClientWindow)
 {
     ui->setupUi(this);
+
+    //Animal Preferences
+    //Sets the fields to read only as the staff user can't add in any of the clients preferences
+    ui->skillText->setDisabled(true);
+    ui->typeText->setDisabled(true);
+    ui->favFoodText->setDisabled(true);
+
+    //Disables the sliders and checkboxes as the staff user can't add in any of the clients preferences
+    ui->furLenSlider->setDisabled(true);
+    ui->aggressivenessSlider->setDisabled(true);
+    ui->playfulSlider->setDisabled(true);
+    ui->kidFriendlySlider->setDisabled(true);
+    ui->houseTrainedSlider->setDisabled(true);
+    ui->curiositySlider->setDisabled(true);
+    ui->intSlider->setDisabled(true);
+    ui->courageSlider->setDisabled(true);
+    ui->strSlider->setDisabled(true);
+     ui->commSlider->setDisabled(true);
+    ui->trustSlider->setDisabled(true);
+    ui->climateSlider->setDisabled(true);
+
+    ui->clawsCheck->setDisabled(true);
+    ui->shedsCheck->setDisabled(true);
+    ui->furCheck->setDisabled(true);
 }
 
 AddClientWindow::~AddClientWindow()
@@ -43,6 +67,7 @@ void AddClientWindow::on_femaleCheck_clicked()
  */
 void AddClientWindow::on_addButton_clicked()
 {
+
     bool validClient = true;
     //Retrive data from UI
     QString name = ui->nameText->toPlainText();
@@ -81,32 +106,12 @@ void AddClientWindow::on_addButton_clicked()
     QString addr = ui->addrText->toPlainText();
     QString email = ui->emailText->toPlainText();
 
-    //Animal Preferences
-    QString type = ui->typeText->toPlainText();
-    QString skill = ui->skillText->toPlainText();
-    QString favFood = ui->favFoodText->toPlainText();
-
-    int furLength = ui->furLenSlider->sliderPosition();
-    int aggressiveness = ui->aggressivenessSlider->sliderPosition();
-    int playfulness = ui->playfulSlider->sliderPosition();
-    int kidFriendly = ui->kidFriendlySlider->sliderPosition();
-    int houseTrained = ui->houseTrainedSlider->sliderPosition();
-    int curiosity = ui->curiositySlider->sliderPosition();
-    int intelligence = ui->intSlider->sliderPosition();
-    int courage = ui->courageSlider->sliderPosition();
-    int strength = ui->strSlider->sliderPosition();
-    int commSkills = ui->commSlider->sliderPosition();
-    int trust = ui->trustSlider->sliderPosition();
-
-    bool claws = ui->clawsCheck->isChecked();
-    bool sheds = ui->shedsCheck->isChecked();
-    bool fur = ui->furCheck->isChecked();
 
     if(validClient){ //Valid Cleint
         Client c(name.toStdString(), age, gender.toStdString(), addr.toStdString(), pNumString.toStdString(), email.toStdString(),
-                 type.toStdString(), skill.toStdString(), favFood.toStdString(), claws, sheds, fur, intelligence, aggressiveness,
-                 courage, playfulness, strength, kidFriendly, commSkills, houseTrained, trust, curiosity, furLength); //Construct Client
-        fm.saveClientAs(c); //Save constructed client
+                 "", "", "", false, false, false, 0, 0,
+                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0); //Construct Client
+        fm.saveClientAs(c, this); //Save constructed client
         this->destroy(); //Close Window*/
     }
 }

@@ -31,5 +31,19 @@
         <file>AnimalClient Files/Animal/Stuart.txt</file>
         <file>AnimalClient Files/Animal/Zoboomafoo.txt</file>
         <file>AnimalClient Files/Client/Craig.txt</file>
+        <file>AnimalClient Files/Client/Dean.txt</file>
+        <file>AnimalClient Files/Client/Ashley.txt</file>
+        <file>AnimalClient Files/Client/Bev.txt</file>
+        <file>AnimalClient Files/Client/DDuck.txt</file>
+        <file>AnimalClient Files/Client/Flora.txt</file>
+        <file>AnimalClient Files/Client/George.txt</file>
+        <file>AnimalClient Files/Client/Jason.txt</file>
+        <file>AnimalClient Files/Client/Lou.txt</file>
+        <file>AnimalClient Files/Client/Shania.txt</file>
+        <file>AnimalClient Files/Client/Skittle.txt</file>
+        <file>AnimalClient Files/Client/Spottagus.txt</file>
+        <file>AnimalClient Files/Client/Steven.txt</file>
+        <file>AnimalClient Files/Client/Thor.txt</file>
+        <file>AnimalClient Files/Client/Vent.txt</file>
     </qresource>
 </RCC>

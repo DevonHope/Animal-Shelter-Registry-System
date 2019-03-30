@@ -3,12 +3,12 @@ Robert Collier
 10 Cool Crescent
 6131112222
 iamcool@gmail.com
-5
 Male
 Cat
 N
 N
 Y
+N/A
 7
 8
 5
@@ -21,3 +21,4 @@ Can smell colour
 0
 0
 2
+9

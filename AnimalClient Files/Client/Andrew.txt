@@ -3,12 +3,12 @@ Andrew LaPage
 465 Carlsen Avenue
 6134445555
 andrewlapage@gmail.com
-4
 Male
 Cat
 Y
 Y
 Y
+Hay
 7
 3
 5
@@ -21,3 +21,4 @@ Can do backflips
 8
 4
 3
+5

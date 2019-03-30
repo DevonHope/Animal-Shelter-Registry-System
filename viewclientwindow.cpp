@@ -27,6 +27,23 @@ void ViewClientWindow::fillProfileInfo(Client c) {
     ui->emailText->setReadOnly(true);
     ui->pNumText->setReadOnly(true);
     ui->addrText->setReadOnly(true);
+    ui->skillText->setReadOnly(true);
+    ui->typeText->setReadOnly(true);
+    ui->favFoodText->setReadOnly(true);
+
+    //Disables the sliders so they cannot be modified by the user
+    ui->furLenSlider->setDisabled(true);
+    ui->aggressivenessSlider->setDisabled(true);
+    ui->playfulSlider->setDisabled(true);
+    ui->kidFriendlySlider->setDisabled(true);
+    ui->houseTrainedSlider->setDisabled(true);
+    ui->curiositySlider->setDisabled(true);
+    ui->intSlider->setDisabled(true);
+    ui->courageSlider->setDisabled(true);
+    ui->strSlider->setDisabled(true);
+     ui->commSlider->setDisabled(true);
+    ui->trustSlider->setDisabled(true);
+    ui->climateSlider->setDisabled(true);
 
     //Display specific client information from the object
     ui->nameText->setPlainText(QString::fromStdString(c.getName()));
@@ -34,6 +51,22 @@ void ViewClientWindow::fillProfileInfo(Client c) {
     ui->emailText->setPlainText(QString::fromStdString(c.getMail()));
     ui->pNumText->setPlainText(QString::fromStdString(c.getPNum()));
     ui->addrText->setPlainText(QString::fromStdString(c.getAddress()));
+    ui->skillText->setPlainText(QString::fromStdString(c.getSSkill()));
+    ui->typeText->setPlainText(QString::fromStdString(c.getType()));
+    ui->favFoodText->setPlainText(QString::fromStdString(c.getFavFood()));
+
+    ui->furLenSlider->setValue(c.getFurLen());
+    ui->aggressivenessSlider->setValue(c.getAggro());
+    ui->playfulSlider->setValue(c.getPlay());
+    ui->kidFriendlySlider->setValue(c.getKF());
+    ui->houseTrainedSlider->setValue(c.getHTrained());
+    ui->curiositySlider->setValue(c.getCuriosity());
+    ui->intSlider->setValue(c.getIntell());
+    ui->courageSlider->setValue(c.getCourage());
+    ui->strSlider->setValue(c.getStrength());
+     ui->commSlider->setValue(c.getCSkill());
+    ui->trustSlider->setValue(c.getTrust());
+    ui->climateSlider->setValue(c.getClimate());
 
     //Set check box values and disable them from being changed.
     if (c.getGender() == "Male") {
@@ -46,6 +79,33 @@ void ViewClientWindow::fillProfileInfo(Client c) {
         ui->femaleCheck->setEnabled(false);
         ui->maleCheck->setEnabled(false);
     }
+
+    if (c.getHasFur() == true) {
+            ui->furCheck->setChecked(true);
+            ui->furCheck->setEnabled(false);
+        }
+        else {
+            ui->furCheck->setChecked(false);
+            ui->furCheck->setEnabled(false);
+        }
+
+        if (c.getClaws() == true) {
+            ui->clawsCheck->setChecked(true);
+            ui->clawsCheck->setEnabled(false);
+        }
+        else {
+            ui->clawsCheck->setChecked(false);
+            ui->clawsCheck->setEnabled(false);
+        }
+
+        if (c.getSheds() == true) {
+            ui->shedsCheck->setChecked(true);
+            ui->shedsCheck->setEnabled(false);
+        }
+        else {
+            ui->shedsCheck->setChecked(false);
+            ui->shedsCheck->setEnabled(false);
+        }
 }
 
 ViewClientWindow::~ViewClientWindow()
@@ -53,16 +113,47 @@ ViewClientWindow::~ViewClientWindow()
     delete ui;
 }
 
+void ViewClientWindow::disableEditButton() {
+    ui->editButton->setDisabled(true);
+}
+
+void ViewClientWindow::disableDeleteButton() {
+    ui->deleteButton->setDisabled(true);
+}
+
+void ViewClientWindow::on_cancelButton_clicked()
+{
+    bool confirm = false;
+    switch( QMessageBox::question(
+                this,
+                tr("Application Name"),
+                tr("Are you sure you want to cancel? Any unsaved data may be lost."),
+                QMessageBox::Cancel | QMessageBox::Ok,
+                QMessageBox::Ok ) )
+    {
+        case QMessageBox::Ok:
+            confirm = true;
+            break;
+        case QMessageBox::Cancel:
+            break;
+        default:
+            break;
+    }
+
+    if(confirm){
+        this->destroy(); //Close window
+    }
+}
+
 /*
  * Deletes the client being viewed from the file system, it will
  * remain loaded in until the user refreshes the client list.
  */
 
-
 void ViewClientWindow::on_deleteButton_clicked()
 {
     QString storagePath = QDir::currentPath() + "/Clients/";
-    fm.deleteFile(storagePath + fName);
+    fm.deleteFile(storagePath + fName, this);
     this->destroy(); //Close window
 }
 
@@ -108,7 +199,7 @@ void ViewClientWindow::on_editButton_clicked()
         ui->shedsCheck->setEnabled(true);
 
     } else { //Save edits
-        isEditing = true;
+        isEditing = false;
         ui->label->setText("Reading Mode");
         ui->editButton->setText("Edit");
 
@@ -154,6 +245,10 @@ void ViewClientWindow::on_editButton_clicked()
         QString skill = ui->skillText->toPlainText();
         QString favFood = ui->favFoodText->toPlainText();
 
+        bool hasFur = ui->furCheck->isChecked();
+        bool claws = ui->clawsCheck->isChecked();
+        bool sheds = ui->shedsCheck->isChecked();
+
         int furLength = ui->furLenSlider->sliderPosition();
         int aggressiveness = ui->aggressivenessSlider->sliderPosition();
         int playfulness = ui->playfulSlider->sliderPosition();
@@ -165,13 +260,14 @@ void ViewClientWindow::on_editButton_clicked()
         int strength = ui->strSlider->sliderPosition();
         int commSkills = ui->commSlider->sliderPosition();
         int trust = ui->trustSlider->sliderPosition();
+        int climate = ui->climateSlider->sliderPosition();
 
         if(validClient){ //Valid Cleint
             Client c(name.toStdString(), age, gender.toStdString(), addr.toStdString(), pNumString.toStdString(), email.toStdString(),
-                     type.toStdString(), skill.toStdString(), favFood.toStdString(), claws, sheds, fur, intelligence, aggressiveness,
-                     courage, playfulness, strength, kidFriendly, commSkills, houseTrained, trust, curiosity, furLength); //Construct Client
+                     type.toStdString(), skill.toStdString(), favFood.toStdString(), claws, sheds, hasFur, intelligence, aggressiveness,
+                     courage, playfulness, strength, kidFriendly, commSkills, houseTrained, trust, curiosity, furLength, climate); //Construct Client
             QString storagePath = QDir::currentPath() + "/Clients/";
-            fm.saveClient(c, storagePath + fName); //Save constructed client
+            fm.saveClient(c, storagePath + fName, this); //Save constructed client
 
             //Disable all UI elements to edit
             ui->nameText->setReadOnly(true);
@@ -210,7 +306,7 @@ void ViewClientWindow::on_editButton_clicked()
  * Will save the animal input in a text document by
  * utilizing the Animal's toString() function.
  */
-void ViewClientWindow::saveAs(Client c){
+/*void ViewClientWindow::saveAs(Client c){
     //Get file name from user
     if(!(fName.isEmpty())){ //Check if a file name was entered
         if(!(fName.endsWith(".txt"))){
@@ -253,3 +349,4 @@ void ViewClientWindow::saveAs(Client c){
             }
         }
     }
+}*/
