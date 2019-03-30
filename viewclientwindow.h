@@ -31,7 +31,7 @@ private slots:
 private:
     Ui::ViewClientWindow *ui;
     QString fName;
-    bool isEditing;
+    bool isEditing = false;
     FileManager fm;
     //void saveAs(Animal a);
 };
