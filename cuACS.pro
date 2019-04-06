@@ -32,7 +32,8 @@ SOURCES += \
     viewclientwindow.cpp \
     client.cpp \
     addclientwindow.cpp \
-    filemanager.cpp
+    filemanager.cpp \
+    acmwindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -42,14 +43,16 @@ HEADERS += \
     viewclientwindow.h \
     client.h \
     addclientwindow.h \
-    filemanager.h
+    filemanager.h \
+    acmwindow.h
 
 FORMS += \
         mainwindow.ui \
     viewanimalwindow.ui \
     addanimalwindow.ui \
     viewclientwindow.ui \
-    addclientwindow.ui
+    addclientwindow.ui \
+    acmwindow.ui
 
 RESOURCES += \
     animalmemstor.qrc

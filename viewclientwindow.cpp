@@ -141,7 +141,7 @@ void ViewClientWindow::on_cancelButton_clicked()
     }
 
     if(confirm){
-        this->destroy(); //Close window
+        this->close(); //Close window
     }
 }
 

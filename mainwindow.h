@@ -41,6 +41,8 @@ private slots:
 
     void on_clientDropDown_activated(int index);
 
+    void on_runACMButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     FileManager fm;

@@ -291,6 +291,19 @@ font: 15pt &quot;DejaVu Sans&quot;;
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="runACMButton">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>470</y>
+      <width>83</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Run ACM</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
