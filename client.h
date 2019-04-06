@@ -7,7 +7,10 @@ using namespace std;
 class Client {
 
     public:
-        Client(string n, int a, string g, string add, string pnum, string mail, int cl, string ty, string sskill, string food, bool clws, bool shd, bool HF, int intel, int ag, int cour, int pl, int stren, int kf, int cs, int ht, int tru, int cur, int furLen);
+        Client(string n, int a, string g, string add, string pnum, string mail, int cl, string ty, string sskill, string food,
+               bool clws, bool shd, bool HF, int intel, int ag, int cour, int pl, int stren, int kf, int cs, int ht, int tru,
+               int cur, int furLen, int fR, int iR, int aR, int cR, int pR, int sR, int kFR, int commR, int hR, int tR, int cuR,
+               int skR, int clR, bool eA, int hSize, int ySize);
         ~Client();
         string toString() const;
         bool verifyAtt();
@@ -41,6 +44,24 @@ class Client {
         int getCuriosity() const;
         int getFurLen() const;
 
+        int getFurRank() const;
+        int getIntRank() const;
+        int getAggroRank() const;
+        int getCourageRank() const;
+        int getPlayRank() const;
+        int getStrRank() const;
+        int getKFRank() const; //kid friendly
+        int getCSkillRank() const; //commskills
+        int getHTrainedRank() const; //house trained
+        int getTrustRank() const;
+        int getCuriosityRank() const;
+        int getSkillRank() const;
+        int getClimateRank() const;
+
+        bool getExerciseAccessibility() const;
+        int getHouseSize() const;
+        int getYardSize() const;
+
         //setters
         void setName(string);
         void setAge(int);
@@ -68,6 +89,23 @@ class Client {
         void setCuriosity(int);
         void setFurLen(int);
 
+        void setFurRank(int);
+        void setIntRank(int);
+        void setAggroRank(int);
+        void setCourageRank(int);
+        void setPlayRank(int);
+        void setStrRank(int);
+        void setKFRank(int); //kid friendly
+        void setCSkillRank(int); //commskills
+        void setHTrainedRank(int); //house trained
+        void setTrustRank(int);
+        void setCuriosityRank(int);
+        void setClimateRank(int);
+
+        void setExerciseAccessibility(bool);
+        void setHouseSize(int);
+        void setYardSize(int);
+
     protected:
         string type;
         bool claws;
@@ -85,6 +123,26 @@ class Client {
         int trust;
         int curiosity;
         int furLength;
+
+        //ranks
+        int furRank;
+        int intRank;
+        int aggroRank;
+        int courageRank;
+        int playRank;
+        int strRank;
+        int kidFriendlyRank;
+        int commRank;
+        int houseRank;
+        int trustRank;
+        int curiosityRank;
+        int skillRank;
+        int climateRank;
+
+        //profile question answers
+        bool exerciseAccessibility;
+        int houseSize;
+        int yardSize;
 
     private:
         string name;
