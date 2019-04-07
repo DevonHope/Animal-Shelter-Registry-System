@@ -44,6 +44,24 @@ void ViewClientWindow::fillProfileInfo(Client c) {
      ui->commSlider->setDisabled(true);
     ui->trustSlider->setDisabled(true);
     ui->climateSlider->setDisabled(true);
+    ui->houseSlider->setDisabled(true);
+    ui->yardSlider->setDisabled(true);
+
+    //Disables the drop down menus so they cannot be modified by the user
+    ui->furRank->setDisabled(true);
+    ui->intRank->setDisabled(true);
+    ui->aggroRank->setDisabled(true);
+    ui->courageRank->setDisabled(true);
+    ui->playRank->setDisabled(true);
+    ui->strRank->setDisabled(true);
+    ui->kidFriendlyRank->setDisabled(true);
+    ui->commRank->setDisabled(true);
+    ui->houseTrainRank->setDisabled(true);
+    ui->trustRank->setDisabled(true);
+    ui->curiosityRank->setDisabled(true);
+    ui->skillRank->setDisabled(true);
+    ui->climateRank->setDisabled(true);
+    ui->exerciseAccessibility->setDisabled(true);
 
     //Display specific client information from the object
     ui->nameText->setPlainText(QString::fromStdString(c.getName()));
@@ -67,6 +85,28 @@ void ViewClientWindow::fillProfileInfo(Client c) {
      ui->commSlider->setValue(c.getCSkill());
     ui->trustSlider->setValue(c.getTrust());
     ui->climateSlider->setValue(c.getClimate());
+    ui->houseSlider->setValue(c.getHouseSize());
+    ui->yardSlider->setValue(c.getYardSize());
+
+    ui->furRank->setCurrentIndex(c.getFurRank() - 1);
+    ui->intRank->setCurrentIndex(c.getIntRank() - 1);
+    ui->aggroRank->setCurrentIndex(c.getAggroRank() - 1);
+    ui->courageRank->setCurrentIndex(c.getCourageRank() - 1);
+    ui->playRank->setCurrentIndex(c.getPlayRank() - 1);
+    ui->strRank->setCurrentIndex(c.getStrRank() - 1);
+    ui->kidFriendlyRank->setCurrentIndex(c.getKFRank() - 1);
+    ui->commRank->setCurrentIndex(c.getCSkillRank() - 1);
+    ui->houseTrainRank->setCurrentIndex(c.getHTrainedRank() - 1);
+    ui->trustRank->setCurrentIndex(c.getTrustRank() - 1);
+    ui->curiosityRank->setCurrentIndex(c.getCuriosityRank() - 1);
+    ui->skillRank->setCurrentIndex(c.getSkillRank() - 1);
+    ui->climateRank->setCurrentIndex(c.getClimateRank() - 1);
+
+    if (c.getExerciseAccessibility() == true)
+        ui->exerciseAccessibility->setCurrentText("Yes");
+    else
+        ui->exerciseAccessibility->setCurrentText("No");
+
 
     //Set check box values and disable them from being changed->
     if (c.getGender() == "Male") {
@@ -161,10 +201,6 @@ void ViewClientWindow::selectedFileName(QString f) {
     fName = f;
 }
 
-void ViewClientWindow::selectedClient(Client client) {
-    c = &client;
-}
-
 void ViewClientWindow::on_editButton_clicked()
 {
     if(isEditing == false){
@@ -197,10 +233,28 @@ void ViewClientWindow::on_editButton_clicked()
         ui->commSlider->setDisabled(false);
         ui->trustSlider->setDisabled(false);
         ui->climateSlider->setDisabled(false);
+        ui->houseSlider->setDisabled(false);
+        ui->yardSlider->setDisabled(false);
 
         ui->furCheck->setEnabled(true);
         ui->clawsCheck->setEnabled(true);
         ui->shedsCheck->setEnabled(true);
+
+        ui->furRank->setDisabled(false);
+        ui->intRank->setDisabled(false);
+        ui->aggroRank->setDisabled(false);
+        ui->courageRank->setDisabled(false);
+        ui->playRank->setDisabled(false);
+        ui->strRank->setDisabled(false);
+        ui->kidFriendlyRank->setDisabled(false);
+        ui->commRank->setDisabled(false);
+        ui->houseTrainRank->setDisabled(false);
+        ui->trustRank->setDisabled(false);
+        ui->curiosityRank->setDisabled(false);
+        ui->skillRank->setDisabled(false);
+        ui->climateRank->setDisabled(false);
+        ui->exerciseAccessibility->setDisabled(false);
+
 
     } else { //Save edits
         isEditing = false;
@@ -229,7 +283,8 @@ void ViewClientWindow::on_editButton_clicked()
             gender = "Male";
         } else if (ui->femaleCheck->isChecked()){
             gender = "Female";
-        } else{ //Neither is selected
+        }
+        else{ //Neither is selected
             validClient = false; //Not a valid client (does not save)
             switch( QMessageBox::question(this, tr("Error"), tr("Please check a gender"), QMessageBox::Ok, QMessageBox::Ok ) )
             {
@@ -239,6 +294,46 @@ void ViewClientWindow::on_editButton_clicked()
                     break;
             }
         }
+
+        bool rankCheck = checkRank();
+        if(!rankCheck){
+                  validClient = false;
+                  switch( QMessageBox::question(this, tr("Error"), tr("Please ensure that no ranks are equal."), QMessageBox::Ok, QMessageBox::Ok ) )
+                  {
+                      case QMessageBox::Ok:
+                          break;
+                      default:
+                          break;
+                  }
+              }
+
+        //Weighting of attributes
+          int furRank = ui->furRank->currentText().toInt();
+         int intRank = ui->intRank->currentText().toInt();
+         int aggroRank = ui->aggroRank->currentText().toInt();
+         int courageRank = ui->courageRank->currentText().toInt();
+         int playRank = ui->playRank->currentText().toInt();
+         int strRank = ui->strRank->currentText().toInt();
+         int kFRank = ui->kidFriendlyRank->currentText().toInt();
+         int commRank = ui->commRank->currentText().toInt();
+         int hTRank = ui->houseTrainRank->currentText().toInt();
+         int trustRank = ui->trustRank->currentText().toInt();
+         int curiosityRank = ui->curiosityRank->currentText().toInt();
+         int skillRank = ui->skillRank->currentText().toInt();
+         int clRank = ui->climateRank->currentText().toInt();
+
+
+         //Complex attributes
+         bool exerciseAccesibility;
+         QString exerciseString = ui->exerciseAccessibility->currentText();
+         if(exerciseString == "Yes"){
+             exerciseAccesibility = true;
+         }else{
+             exerciseAccesibility = false;
+         }
+         int houseSize = ui->houseSlider->sliderPosition();
+         int yardSize = ui->yardSlider->sliderPosition();
+
 
         QString pNumString = ui->pNumText->toPlainText();
         QString addr = ui->addrText->toPlainText();
@@ -266,15 +361,17 @@ void ViewClientWindow::on_editButton_clicked()
         int trust = ui->trustSlider->sliderPosition();
         int climate = ui->climateSlider->sliderPosition();
 
+
+
         if(validClient){ //Valid Cleint
             Client edittedClient(name.toStdString(), age, gender.toStdString(), addr.toStdString(), pNumString.toStdString(), email.toStdString(),
                      type.toStdString(), skill.toStdString(), favFood.toStdString(), claws, sheds, hasFur, intelligence, aggressiveness,
                      courage, playfulness, strength, kidFriendly, commSkills, houseTrained, trust, curiosity, furLength, climate,
-                     c->getFurRank(), c->getIntRank(), c->getAggroRank(), c->getCourageRank(), c->getPlayRank(), c->getStrRank(), c->getKFRank(),
-                     c->getCSkillRank(), c->getHTrainedRank(), c->getTrustRank(), c->getCuriosityRank(), c->getClimateRank(), c->getSkillRank(),
-                     c->getExerciseAccessibility(), c->getHouseSize(), c->getYardSize()); //Construct Client
+                     furRank, intRank, aggroRank, courageRank, playRank, strRank, kFRank, commRank, hTRank, trustRank, curiosityRank, skillRank, clRank,
+                     exerciseAccesibility, houseSize, yardSize); //Construct Client
             QString storagePath = QDir::currentPath() + "/Clients/";
             fm.saveClient(edittedClient, storagePath + fName, this); //Save constructed client
+        }
 
             //Disable all UI elements to edit
             ui->nameText->setReadOnly(true);
@@ -301,12 +398,55 @@ void ViewClientWindow::on_editButton_clicked()
             ui->commSlider->setDisabled(true);
             ui->trustSlider->setDisabled(true);
             ui->climateSlider->setDisabled(true);
+            ui->houseSlider->setDisabled(true);
+            ui->yardSlider->setDisabled(true);
 
             ui->furCheck->setEnabled(false);
             ui->clawsCheck->setEnabled(false);
             ui->shedsCheck->setEnabled(false);
+
+            ui->furRank->setDisabled(true);
+            ui->intRank->setDisabled(true);
+            ui->aggroRank->setDisabled(true);
+            ui->courageRank->setDisabled(true);
+            ui->playRank->setDisabled(true);
+            ui->strRank->setDisabled(true);
+            ui->kidFriendlyRank->setDisabled(true);
+            ui->commRank->setDisabled(true);
+            ui->houseTrainRank->setDisabled(true);
+            ui->trustRank->setDisabled(true);
+            ui->curiosityRank->setDisabled(true);
+            ui->skillRank->setDisabled(true);
+            ui->climateRank->setDisabled(true);
+            ui->exerciseAccessibility->setDisabled(true);
+    }
+}
+
+bool ViewClientWindow::checkRank()
+{
+    int rankArr[13];
+    rankArr[0] = ui->furRank->currentText().toInt();
+    rankArr[1] = ui->intRank->currentText().toInt();
+    rankArr[2] = ui->aggroRank->currentText().toInt();
+    rankArr[3] = ui->courageRank->currentText().toInt();
+    rankArr[4] = ui->playRank->currentText().toInt();
+    rankArr[5] = ui->strRank->currentText().toInt();
+    rankArr[6] = ui->kidFriendlyRank->currentText().toInt();
+    rankArr[7] = ui->commRank->currentText().toInt();
+    rankArr[8] = ui->houseTrainRank->currentText().toInt();
+    rankArr[9] = ui->trustRank->currentText().toInt();
+    rankArr[10] = ui->curiosityRank->currentText().toInt();
+    rankArr[11] = ui->climateRank->currentText().toInt();
+    rankArr[12] = ui->skillRank->currentText().toInt();
+
+    for(int i = 0; i < 13; i++){
+        for(int j = i+1; j < 13; j++){
+            if(rankArr[i] == rankArr[j]){
+                return false;
+            }
         }
     }
+    return true; //no values are the same
 }
 
 /*

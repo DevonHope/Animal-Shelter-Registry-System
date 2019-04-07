@@ -944,9 +944,9 @@
   <widget class="QComboBox" name="furRank">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>20</x>
      <y>350</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -1019,9 +1019,9 @@
   <widget class="QComboBox" name="aggroRank">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>20</x>
      <y>370</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -1094,9 +1094,9 @@
   <widget class="QComboBox" name="playRank">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>20</x>
      <y>390</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -1169,9 +1169,9 @@
   <widget class="QComboBox" name="kidFriendlyRank">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>20</x>
      <y>410</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -1244,9 +1244,9 @@
   <widget class="QComboBox" name="houseTrainRank">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>20</x>
      <y>430</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -1319,9 +1319,9 @@
   <widget class="QComboBox" name="curiosityRank">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>20</x>
      <y>450</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -1396,7 +1396,7 @@
     <rect>
      <x>690</x>
      <y>350</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -1471,7 +1471,7 @@
     <rect>
      <x>690</x>
      <y>370</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -1546,7 +1546,7 @@
     <rect>
      <x>690</x>
      <y>390</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -1621,7 +1621,7 @@
     <rect>
      <x>690</x>
      <y>410</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -1696,7 +1696,7 @@
     <rect>
      <x>690</x>
      <y>430</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -1771,7 +1771,7 @@
     <rect>
      <x>690</x>
      <y>450</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -1846,7 +1846,7 @@
     <rect>
      <x>690</x>
      <y>270</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -1940,7 +1940,7 @@
     <rect>
      <x>30</x>
      <y>540</y>
-     <width>571</width>
+     <width>551</width>
      <height>61</height>
     </rect>
    </property>
@@ -1977,7 +1977,7 @@
   <widget class="QComboBox" name="exerciseAccessibility">
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>590</x>
      <y>570</y>
      <width>51</width>
      <height>25</height>
@@ -2000,7 +2000,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>590</x>
      <y>610</y>
      <width>160</width>
      <height>16</height>
@@ -2031,7 +2031,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>590</x>
      <y>640</y>
      <width>160</width>
      <height>16</height>

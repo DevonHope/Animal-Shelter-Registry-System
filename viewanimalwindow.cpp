@@ -278,6 +278,7 @@ void ViewAnimalWindow::on_editButton_clicked()
                      specialSkill.toStdString(), kidFriendly, commSkills, houseTrained, curiosity, trust); //Construct animal
             QString storagePath = QDir::currentPath() + "/Animals/";
             fm.saveAnimal(a, storagePath + fName, this); //Save constructed animal
+        }
 
             //Disable all UI elements to edit
             ui->nameText->setReadOnly(true);
@@ -307,6 +308,6 @@ void ViewAnimalWindow::on_editButton_clicked()
             ui->furCheck->setEnabled(false);
             ui->clawsCheck->setEnabled(false);
             ui->shedsCheck->setEnabled(false);
-        }
+
     }
 }

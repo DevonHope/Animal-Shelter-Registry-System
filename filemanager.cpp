@@ -472,7 +472,7 @@ void FileManager::initClients() {
                     skillRank = in.readLine().toInt();
                 else if (count == 37) {
                         QString eA = in.readLine();
-                          if (eA == 'Y' || eA == '1')
+                          if (eA == 'Y' || eA == '1' || eA == "Yes")
                             exerciseAccessibility = true;
                           else
                             exerciseAccessibility = false;

@@ -2,6 +2,18 @@
 #define ACMWINDOW_H
 
 #include <QDialog>
+#include "filemanager.h"
+
+struct clientMatchNode {
+    Client *c;
+    bool hasMatch = false;
+    string matchedWith;
+};
+
+struct animalMatchNode {
+      Animal *a;
+      bool hasMatch = false;
+};
 
 namespace Ui {
 class ACMWindow;
@@ -20,6 +32,9 @@ private slots:
 
 private:
     Ui::ACMWindow *ui;
+    clientMatchNode *listOfClients;
+    animalMatchNode *listOfAnimals;
+    FileManager fm;
 };
 
 #endif // ACMWINDOW_H

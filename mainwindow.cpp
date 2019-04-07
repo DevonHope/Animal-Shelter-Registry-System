@@ -183,7 +183,6 @@ void MainWindow::showClientProfile() {
 
             Client c = *((fm.getClients()[i]).storedClient);
             viewCln.selectedFileName(QString::fromStdString((fm.getClients()[i]).clientFileName));
-            viewCln.selectedClient(c);
             viewCln.fillProfileInfo(c);
 
             if (currentUser == "Staff")

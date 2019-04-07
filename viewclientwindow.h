@@ -16,7 +16,6 @@ class ViewClientWindow : public QDialog
 public:
     void fillProfileInfo(Client);
     void selectedFileName(QString);
-    void selectedClient(Client);
     void disableEditButton();
     void disableDeleteButton();
     explicit ViewClientWindow(QWidget *parent = 0);
@@ -34,7 +33,7 @@ private:
     QString fName;
     bool isEditing = false;
     FileManager fm;
-    Client *c;
+    bool checkRank();
     //void saveAs(Animal a);
 };
 
