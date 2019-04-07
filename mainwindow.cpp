@@ -182,8 +182,9 @@ void MainWindow::showClientProfile() {
             ViewClientWindow viewCln;
 
             Client c = *((fm.getClients()[i]).storedClient);
-            viewCln.fillProfileInfo(c);
             viewCln.selectedFileName(QString::fromStdString((fm.getClients()[i]).clientFileName));
+            viewCln.selectedClient(c);
+            viewCln.fillProfileInfo(c);
 
             if (currentUser == "Staff")
                 viewCln.disableEditButton();

@@ -29,6 +29,7 @@ private slots:
 private:
     Ui::AddClientWindow *ui;
     FileManager fm;
+    bool checkRank();
     //void saveAs(Client c);
 };
 

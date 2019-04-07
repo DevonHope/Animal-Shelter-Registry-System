@@ -68,7 +68,7 @@ void ViewClientWindow::fillProfileInfo(Client c) {
     ui->trustSlider->setValue(c.getTrust());
     ui->climateSlider->setValue(c.getClimate());
 
-    //Set check box values and disable them from being changed.
+    //Set check box values and disable them from being changed->
     if (c.getGender() == "Male") {
         ui->maleCheck->setChecked(true);
         ui->maleCheck->setEnabled(false);
@@ -159,6 +159,10 @@ void ViewClientWindow::on_deleteButton_clicked()
 
 void ViewClientWindow::selectedFileName(QString f) {
     fName = f;
+}
+
+void ViewClientWindow::selectedClient(Client client) {
+    c = &client;
 }
 
 void ViewClientWindow::on_editButton_clicked()
@@ -263,11 +267,14 @@ void ViewClientWindow::on_editButton_clicked()
         int climate = ui->climateSlider->sliderPosition();
 
         if(validClient){ //Valid Cleint
-            Client c(name.toStdString(), age, gender.toStdString(), addr.toStdString(), pNumString.toStdString(), email.toStdString(),
+            Client edittedClient(name.toStdString(), age, gender.toStdString(), addr.toStdString(), pNumString.toStdString(), email.toStdString(),
                      type.toStdString(), skill.toStdString(), favFood.toStdString(), claws, sheds, hasFur, intelligence, aggressiveness,
-                     courage, playfulness, strength, kidFriendly, commSkills, houseTrained, trust, curiosity, furLength, climate); //Construct Client
+                     courage, playfulness, strength, kidFriendly, commSkills, houseTrained, trust, curiosity, furLength, climate,
+                     c->getFurRank(), c->getIntRank(), c->getAggroRank(), c->getCourageRank(), c->getPlayRank(), c->getStrRank(), c->getKFRank(),
+                     c->getCSkillRank(), c->getHTrainedRank(), c->getTrustRank(), c->getCuriosityRank(), c->getClimateRank(), c->getSkillRank(),
+                     c->getExerciseAccessibility(), c->getHouseSize(), c->getYardSize()); //Construct Client
             QString storagePath = QDir::currentPath() + "/Clients/";
-            fm.saveClient(c, storagePath + fName, this); //Save constructed client
+            fm.saveClient(edittedClient, storagePath + fName, this); //Save constructed client
 
             //Disable all UI elements to edit
             ui->nameText->setReadOnly(true);
