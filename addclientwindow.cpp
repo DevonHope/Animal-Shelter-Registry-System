@@ -106,11 +106,48 @@ void AddClientWindow::on_addButton_clicked()
     QString addr = ui->addrText->toPlainText();
     QString email = ui->emailText->toPlainText();
 
+    bool rankCheck = checkRank();
+       if(!rankCheck){
+           validClient = false;
+           switch( QMessageBox::question(this, tr("Error"), tr("Please ensure that no ranks are equal."), QMessageBox::Ok, QMessageBox::Ok ) )
+           {
+               case QMessageBox::Ok:
+                   break;
+               default:
+                   break;
+           }
+       }
+
+       int furRank = ui->furRank->currentText().toInt();
+          int intRank = ui->intRank->currentText().toInt();
+          int aggroRank = ui->aggroRank->currentText().toInt();
+          int courageRank = ui->courageRank->currentText().toInt();
+          int playRank = ui->playRank->currentText().toInt();
+          int strRank = ui->strRank->currentText().toInt();
+          int kFRank = ui->kidFriendlyRank->currentText().toInt();
+          int commRank = ui->commRank->currentText().toInt();
+          int hTRank = ui->houseTrainRank->currentText().toInt();
+          int trustRank = ui->trustRank->currentText().toInt();
+          int curiosityRank = ui->curiosityRank->currentText().toInt();
+          int skillRank = ui->skillRank->currentText().toInt();
+          int clRank = ui->climateRank->currentText().toInt();
+
+          bool exerciseAccesibility;
+          QString exerciseString = ui->exerciseAccessibility->currentText();
+          if(exerciseString == "Yes"){
+              exerciseAccesibility = true;
+          }else{
+              exerciseAccesibility = false;
+          }
+          int houseSize = ui->houseSlider->sliderPosition();
+          int yardSize = ui->yardSlider->sliderPosition();
+
 
     if(validClient){ //Valid Cleint
         Client c(name.toStdString(), age, gender.toStdString(), addr.toStdString(), pNumString.toStdString(), email.toStdString(),
                  "", "", "", false, false, false, 0, 0,
-                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0); //Construct Client
+                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, furRank, intRank, aggroRank, courageRank, playRank, strRank, kFRank, commRank, hTRank,
+                 trustRank, curiosityRank, skillRank, clRank, exerciseAccesibility, houseSize, yardSize); //Construct Client
         fm.saveClientAs(c, this); //Save constructed client
         this->destroy(); //Close Window*/
     }
@@ -141,4 +178,31 @@ void AddClientWindow::on_cancelButton_clicked()
     if(confirm){
         this->destroy(); //Close window
     }
+}
+
+bool AddClientWindow::checkRank()
+{
+    int rankArr[13];
+    rankArr[0] = ui->furRank->currentText().toInt();
+    rankArr[1] = ui->intRank->currentText().toInt();
+    rankArr[2] = ui->aggroRank->currentText().toInt();
+    rankArr[3] = ui->courageRank->currentText().toInt();
+    rankArr[4] = ui->playRank->currentText().toInt();
+    rankArr[5] = ui->strRank->currentText().toInt();
+    rankArr[6] = ui->kidFriendlyRank->currentText().toInt();
+    rankArr[7] = ui->commRank->currentText().toInt();
+    rankArr[8] = ui->houseTrainRank->currentText().toInt();
+    rankArr[9] = ui->trustRank->currentText().toInt();
+    rankArr[10] = ui->curiosityRank->currentText().toInt();
+    rankArr[11] = ui->climateRank->currentText().toInt();
+    rankArr[12] = ui->skillRank->currentText().toInt();
+
+    for(int i = 0; i < 13; i++){
+        for(int j = i+1; j < 13; j++){
+            if(rankArr[i] == rankArr[j]){
+                return false;
+            }
+        }
+    }
+    return true; //no values are the same
 }

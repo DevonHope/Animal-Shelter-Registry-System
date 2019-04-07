@@ -359,6 +359,23 @@ void FileManager::initClients() {
             int curiosity = 0;
             int furLen = 0;
             int climate = 0;
+            int furRank = 0;
+            int intRank = 0;
+            int aggroRank = 0;
+            int courageRank = 0;
+            int playRank = 0;
+            int strRank = 0;
+            int kidFriendlyRank = 0;
+            int commRank = 0;
+            int houseRank = 0;
+            int trustRank = 0;
+            int curiosityRank = 0;
+            int skillRank = 0;
+            int climateRank = 0;
+            bool exerciseAccessibility = false;
+            int houseSize = 0;
+            int yardSize = 0;
+
 
 
             //Reads each line of the client file and each line corresponds to each respective basic info of the client, plus sets it to it's corresponding variable
@@ -427,6 +444,43 @@ void FileManager::initClients() {
                     furLen = in.readLine().toInt();
                 else if (count == 23)
                     climate = in.readLine().toInt();
+                else if (count == 24)
+                    furRank = in.readLine().toInt();
+                else if (count == 25)
+                    intRank = in.readLine().toInt();
+                else if (count == 26)
+                    aggroRank = in.readLine().toInt();
+                else if (count == 27)
+                    courageRank = in.readLine().toInt();
+                else if (count == 28)
+                    playRank = in.readLine().toInt();
+                else if (count == 29)
+                    strRank = in.readLine().toInt();
+                else if (count == 30)
+                    kidFriendlyRank = in.readLine().toInt();
+                else if (count == 31)
+                    commRank = in.readLine().toInt();
+                else if (count == 32)
+                    houseRank = in.readLine().toInt();
+                else if (count == 33)
+                    trustRank = in.readLine().toInt();
+                else if (count == 34)
+                    curiosityRank = in.readLine().toInt();
+                else if (count == 35)
+                    climateRank = in.readLine().toInt();
+                else if (count == 36)
+                    skillRank = in.readLine().toInt();
+                else if (count == 37) {
+                        QString eA = in.readLine();
+                          if (eA == 'Y' || eA == '1' || eA == "Yes")
+                            exerciseAccessibility = true;
+                          else
+                            exerciseAccessibility = false;
+                }
+                else if (count == 38)
+                    houseSize = in.readLine().toInt();
+                else if (count == 39)
+                    yardSize = in.readLine().toInt();
                 else
                     break;
 
@@ -438,7 +492,9 @@ void FileManager::initClients() {
             file.close();
 
             Client *client = new Client(name.toStdString(), age, gender, address, pNum, email, type, specSkill, favFood, claws, sheds, hasFur, intell, aggro,
-                                        cour, play, stren, kidFriendly, commSkills, houseTrained, trust, curiosity, furLen, climate);
+                                        cour, play, stren, kidFriendly, commSkills, houseTrained, trust, curiosity, furLen, climate, furRank, intRank, aggroRank,
+                                        courageRank, playRank, strRank, kidFriendlyRank, commRank, houseRank, trustRank, curiosityRank, climateRank, skillRank,
+                                        exerciseAccessibility, houseSize, yardSize);
 
             listOfClients[i].storedClient = client;
             listOfClients[i].clientFileName = filename.toStdString();

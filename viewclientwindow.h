@@ -33,6 +33,7 @@ private:
     QString fName;
     bool isEditing = false;
     FileManager fm;
+    bool checkRank();
     //void saveAs(Animal a);
 };
 

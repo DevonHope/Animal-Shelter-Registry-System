@@ -8,6 +8,8 @@
 #include "ui_viewclientwindow.h"
 #include "addclientwindow.h"
 #include "ui_addclientwindow.h"
+#include "acmwindow.h"
+#include "ui_acmwindow.h"
 
 #include "animal.h"
 #include "client.h"
@@ -142,6 +144,7 @@ void MainWindow::onlyViewLoggedInClient(string name) {
  */
 void MainWindow::showAnimalProfile() {
 
+
     for(int i = 0; i < fm.getNumAnimals(); i++) {
 
         if (((QPushButton*)sender())->text().toStdString() == (fm.getAnimals()[i]).storedAnimal->getName()) {
@@ -161,6 +164,8 @@ void MainWindow::showAnimalProfile() {
         }
     }
 
+    refreshAnimals();
+
 }
 
 /*
@@ -169,14 +174,16 @@ void MainWindow::showAnimalProfile() {
  */
 void MainWindow::showClientProfile() {
 
+    int clientIndex = 0;
     for(int i = 0; i < fm.getNumClients(); i++) {
 
         if (((QPushButton*)sender())->text().toStdString() == (fm.getClients()[i]).storedClient->getName()) {
+            clientIndex = i;
             ViewClientWindow viewCln;
 
             Client c = *((fm.getClients()[i]).storedClient);
-            viewCln.fillProfileInfo(c);
             viewCln.selectedFileName(QString::fromStdString((fm.getClients()[i]).clientFileName));
+            viewCln.fillProfileInfo(c);
 
             if (currentUser == "Staff")
                 viewCln.disableEditButton();
@@ -189,6 +196,13 @@ void MainWindow::showClientProfile() {
         }
     }
 
+    refreshClients();
+
+    if (currentUser != fm.getClients()[clientIndex].storedClient->getName() && currentUser != "Staff") {
+        currentUser = fm.getClients()[clientIndex].storedClient->getName();
+        onlyViewLoggedInClient(currentUser);
+        ui->label_3->setText("Current User: " + QString::fromStdString(currentUser));
+    }
 
 }
 
@@ -241,6 +255,7 @@ void MainWindow::on_staffButton_clicked()
     ui->scrollArea_3->setDisabled(false); //Enabled viewing detailed info of animals
     ui->addAnimalButton->setDisabled(false);
     ui->addClientButton->setDisabled(false);
+    ui->runACMButton->setDisabled(false);
 
     //Enables all the client buttons again
     for(int i = 0; i<fm.getNumClients(); i++)
@@ -258,8 +273,16 @@ void MainWindow::on_clientDropDown_activated(int index)
     ui->addAnimalButton->setDisabled(true);
     ui->addClientButton->setDisabled(true);
     ui->scrollArea_3->setDisabled(false);
+    ui->runACMButton->setDisabled(true);
 
     ui->staffButton->setDisabled(false);
 
     onlyViewLoggedInClient(currentUser);
+}
+
+void MainWindow::on_runACMButton_clicked()
+{
+    ACMWindow acm;
+    acm.setModal(true);
+    acm.exec();
 }
