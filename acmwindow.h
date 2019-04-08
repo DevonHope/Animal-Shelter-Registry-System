@@ -15,6 +15,12 @@ struct animalMatchNode {
       bool hasMatch = false;
 };
 
+/* A struct for getting the pair score with the paired animal*/
+struct scoreNode {
+    int animalIndex;
+    float matchScore;
+};
+
 namespace Ui {
 class ACMWindow;
 }
@@ -34,7 +40,11 @@ private:
     Ui::ACMWindow *ui;
     clientMatchNode *listOfClients;
     animalMatchNode *listOfAnimals;
+    scoreNode *scoresOfMatches;
     FileManager fm;
+    bool profileQuestions(Client, Animal);
+    int calculateResult(int, int);
+    int calculateResult(string, string);
 };
 
 #endif // ACMWINDOW_H

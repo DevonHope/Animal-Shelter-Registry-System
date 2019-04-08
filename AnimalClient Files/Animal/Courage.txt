@@ -19,6 +19,6 @@ Monster Fighter
 10
 4
 10
-21953
+5
 3
-
+5

@@ -19,6 +19,6 @@ Explorer, Can Talk
 10
 6
 10
-524288
+5
 9
-
+5
